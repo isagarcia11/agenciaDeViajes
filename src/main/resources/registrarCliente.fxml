@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="210.0" prefWidth="280.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.agenciaDeViajes.controladores.RegistrarClienteControler">
+   <VBox layoutX="14.0" layoutY="14.0" prefHeight="150.0" prefWidth="115.0">
+      <Label fx:id="lblIdentificacion" prefHeight="25.0" prefWidth="80.0" text="Identificación:" />
+      <Label prefHeight="25.0" prefWidth="80.0" text="Nombre:" />
+      <Label fx:id="lblCorreo" prefHeight="25.0" prefWidth="80.0" text="Correo:" />
+      <Label fx:id="lblTelefono" prefHeight="25.0" prefWidth="80.0" text="Telefono:" />
+      <Label fx:id="lblDireccion" prefHeight="25.0" prefWidth="80.0" text="Dirección:" />
+   </VBox>
+   <VBox layoutX="140.0" layoutY="14.0" prefHeight="150.0" prefWidth="125.0">
+      <TextField fx:id="txtIdentificacion" />
+      <TextField fx:id="txtNombre" />
+      <TextField fx:id="txtCorreo" />
+      <TextField fx:id="txtTelefono" />
+      <TextField fx:id="txtDireccion" />
+   </VBox>
+   <Button fx:id="btnGuardar" layoutX="140.0" layoutY="171.0" mnemonicParsing="false" onAction="#registrarCliente" text="Guardar" />
+   <Button fx:id="btnAtras" layoutX="88.0" layoutY="171.0" mnemonicParsing="false" onAction="#regresarLogin" text="Atras" />
+</AnchorPane>
