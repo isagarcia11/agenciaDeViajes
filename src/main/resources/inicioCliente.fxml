@@ -7,7 +7,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0"
             prefWidth="917.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="co.edu.uniquindio.agenciaDeViajes.controladores.InicioController">
+            fx:controller="co.edu.uniquindio.agenciaDeViajes.controladores.InicioControlador">
    <ImageView fitHeight="87.0" fitWidth="232.0" layoutX="-24.0" pickOnBounds="true" preserveRatio="true">
       <Image url="@imagenes/miniLogoAgencia.png"/>
    </ImageView>
