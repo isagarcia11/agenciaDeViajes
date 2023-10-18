@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 
-public class InicioController {
+public class InicioControlador {
     @FXML
     private Button iniciarSesion;
 
