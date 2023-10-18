@@ -4,12 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e9afc2b-e2e2-4c28-87d0-7100edd196c3" name="Changes" comment="">
+    <list default="true" id="386293a3-08f4-4876-b227-d3b9452894c6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/imagenes/bali.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/imagenes/paris.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/imagenes/registrate.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/imagenes/roma.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/imagenes/santorini.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/InicioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/InicioControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/LoginControlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/RegistrarClienteControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/RegistrarClienteControler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/inicioCliente.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/inicioCliente.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/persistencia/clientes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/persistencia/clientes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/registrarCliente.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/registrarCliente.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,9 +47,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/hulbe/IdeaProjects/agenciaDeViajes"
+    "git-widget-placeholder": "Merging main"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -58,7 +63,14 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1697324711962</updated>
+      <workItem from="1697646027405" duration="289000" />
+      <workItem from="1697646541361" duration="374000" />
+      <workItem from="1697647756201" duration="290000" />
+      <workItem from="1697648061697" duration="4000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>

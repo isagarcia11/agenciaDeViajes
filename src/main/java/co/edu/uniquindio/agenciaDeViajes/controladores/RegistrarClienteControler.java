@@ -20,7 +20,7 @@ public class RegistrarClienteControler {
     private TextField txtIdentificacion, txtNombre, txtCorreo, txtTelefono, txtDireccion;
 
     @FXML
-    private Button btnGuardar, btnAtras;
+    private Button btnGuardar, btnRegresar;
 
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
 
@@ -42,7 +42,7 @@ public class RegistrarClienteControler {
 
     public void regresarLogin(ActionEvent event){
         Object evt = event.getSource();
-        if(evt.equals(btnAtras)){
+        if(evt.equals(btnRegresar)){
             agenciaDeViajes.loadStage("/login.fxml", event);
         }
     }
