@@ -8,14 +8,38 @@ import javafx.scene.control.Button;
 public class InicioAdminControlador {
 
     @FXML
-    private Button btnClientes;
+    private Button btnCrearDestino, btnActualizarDestino;
+
+    @FXML
+    private Button btnClientes, btnDestinos;
 
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
+
+    public void ingresarCrearDestino(ActionEvent event){
+        Object evt = event.getSource();
+        if(evt.equals(btnCrearDestino)){
+            agenciaDeViajes.loadStage("/ventanas/crearDestino.fxml", event);
+        }
+    }
+
+    public void ingresarActualizarDestino(ActionEvent event){
+        Object evt = event.getSource();
+        if(evt.equals(btnActualizarDestino)){
+            agenciaDeViajes.loadStage("/ventanas/modificarDestino.fxml", event);
+        }
+    }
+
+    public void ingresarReporteDestinos(ActionEvent event){
+        Object evt = event.getSource();
+        if(evt.equals(btnDestinos)){
+            agenciaDeViajes.loadStage("/ventanas/destinos.fxml", event);
+        }
+    }
 
     public void ingresarReporteClientes(ActionEvent event){
         Object evt = event.getSource();
         if(evt.equals(btnClientes)){
-            agenciaDeViajes.loadStage("/clientes.fxml", event);
+            agenciaDeViajes.loadStage("/ventanas/clientes.fxml", event);
         }
     }
 }

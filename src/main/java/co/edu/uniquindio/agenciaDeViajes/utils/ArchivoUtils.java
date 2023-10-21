@@ -1,7 +1,8 @@
 package co.edu.uniquindio.agenciaDeViajes.utils;
 
-import java.beans.XMLDecoder;
-import java.beans.XMLEncoder;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Cliente;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Destino;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -13,10 +14,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.Formatter;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class ArchivoUtils {
 
@@ -41,43 +39,6 @@ public class ArchivoUtils {
     }
 
     /**
-     * Permite leer un archivo desde una ruta específica mediante BufferedReader
-     * @param ruta Ruta a leer
-     * @return Lista de String por cada línea del archivo
-     * @throws IOException
-     */
-    public static ArrayList<String> leerArchivoBufferedReader(String ruta) throws IOException{
-
-        ArrayList<String> lista = new ArrayList<>();
-        FileReader fr = new FileReader(ruta);
-        BufferedReader br = new BufferedReader(fr);
-        String linea;
-
-        while( ( linea = br.readLine() )!=null ) {
-            lista.add(linea);
-        }
-
-        br.close();
-        fr.close();
-
-        return lista;
-    }
-
-    /**
-     * Escribe datos en un archivo de texo
-     * @param ruta Ruta donde se va a crear el archivo
-     * @param lista Datos que se escriben en el archivo
-     * @throws IOException
-     */
-    public static void escribirArchivoFormatter(String ruta, List<String> lista) throws IOException{
-        Formatter ft = new Formatter(ruta);
-        for(String s : lista){
-            ft.format(s+"%n");
-        }
-        ft.close();
-    }
-
-    /**
      * Escribe datos en un archivo de texo
      * @param ruta ruta Ruta donde se va a crear el archivo
      * @param lista Información a guardar en el archivo
@@ -96,6 +57,133 @@ public class ArchivoUtils {
 
         bw.close();
         fw.close();
+    }
+
+    public static void actualizarArchivoCliente(String archivo, Cliente cliente) {
+        List<String> lineas = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                lineas.add(linea);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        boolean identificacionEncontrada = false;
+
+        for (int i = 0; i < lineas.size(); i++) {
+            String linea = lineas.get(i);
+            String[] partes = linea.split(";");
+
+            if (partes[0].equals(cliente.getIdentificacion())) {
+                lineas.set(i, cliente.toFileFormat());
+                identificacionEncontrada = true;
+                break;
+            }
+        }
+
+        if (!identificacionEncontrada) {
+            System.out.println("La identificación no fue encontrada en el archivo.");
+            return;
+        }
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivo))) {
+            for (String linea : lineas) {
+                bw.write(linea);
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("El archivo ha sido actualizado.");
+    }
+
+    public static void actualizarArchivoDestino(String archivo, Destino destino) {
+        List<String> lineas = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                lineas.add(linea);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        boolean nombreDestinoEncontrado = false;
+
+        for (int i = 0; i < lineas.size(); i++) {
+            String linea = lineas.get(i);
+            String[] partes = linea.split(";");
+
+            if (partes[0].equals(destino.getNombre())) {
+                lineas.set(i, destino.toFileFormat());
+                nombreDestinoEncontrado = true;
+                break;
+            }
+        }
+
+        if (!nombreDestinoEncontrado) {
+            System.out.println("El nombre del destino no fue encontrado en el archivo.");
+            return;
+        }
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivo))) {
+            for (String linea : lineas) {
+                bw.write(linea);
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("El archivo ha sido actualizado.");
+    }
+
+    public static void eliminarDestino(String archivo, String nombreDestino) {
+        List<String> lineas = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                lineas.add(linea);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        boolean nombreDestinoEncontrado = false;
+
+        Iterator<String> iter = lineas.iterator();
+        while (iter.hasNext()) {
+            String linea = iter.next();
+            String[] partes = linea.split(";");
+
+            if (partes[0].equals(nombreDestino)) {
+                iter.remove(); // Eliminar la línea
+                nombreDestinoEncontrado = true;
+                break;
+            }
+        }
+
+        if (!nombreDestinoEncontrado) {
+            System.out.println("El nombre del destino no fue encontrado en el archivo.");
+            return;
+        }
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivo))) {
+            for (String linea : lineas) {
+                bw.write(linea);
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("El destino ha sido eliminado del archivo.");
     }
 
     /**
@@ -131,23 +219,5 @@ public class ArchivoUtils {
      * @param objeto Objeto a serializar
      * @throws FileNotFoundException
      */
-    public static void serializarObjetoXML(String ruta, Object objeto) throws FileNotFoundException {
-        XMLEncoder encoder = new XMLEncoder(new FileOutputStream(ruta));
-        encoder.writeObject(objeto);
-        encoder.close();
-    }
 
-    /**
-     * Deserializa un objeto desde un archivo XML
-     * @param ruta Ruta del archivo a deserializar
-     * @return Objeto deserializado
-     * @throws IOException
-     */
-    public static Object deserializarObjetoXML(String ruta) throws IOException{
-        XMLDecoder decoder = new XMLDecoder(new FileInputStream(ruta));
-        Object objeto = decoder.readObject();
-        decoder.close();
-
-        return objeto;
-    }
 }

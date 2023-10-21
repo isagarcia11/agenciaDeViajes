@@ -2,6 +2,7 @@ package co.edu.uniquindio.agenciaDeViajes.controladores;
 
 import co.edu.uniquindio.agenciaDeViajes.exceptions.AtributoVacioException;
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Cliente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -28,13 +29,15 @@ public class LoginControlador {
     public void iniciarSesion(ActionEvent event) {
         Object evt = event.getSource();
         try {
+            Cliente cliente = agenciaDeViajes.verificarDatos(usuarioCliente.getText(), contrasenaCliente.getText());
             if(evt.equals(btnIniciar)){
                 if(usuarioCliente.getText().equals("Alejandro Arango") && contrasenaCliente.getText().equals("1104804234")){
-                    agenciaDeViajes.loadStage("/inicioAdmin.fxml", event);
+                    agenciaDeViajes.loadStage("/ventanas/inicioAdmin.fxml", event);
                 } else{
-                    if(agenciaDeViajes.verificarDatos(usuarioCliente.getText(), contrasenaCliente.getText())){
+                    if(cliente != null){
+                        agenciaDeViajes.setClienteAutenticado(cliente);
+                        agenciaDeViajes.loadStage("/ventanas/inicio.fxml", event);
                         mostrarMensaje(Alert.AlertType.INFORMATION, "El usuario "+usuarioCliente.getText()+" ha ingresado correctamente");
-                        agenciaDeViajes.loadStage("/inicioCliente.fxml", event);
                     } else {
                         mostrarMensaje(Alert.AlertType.ERROR, "El usuario o contraseña son incorrectos");
                     }
@@ -48,7 +51,7 @@ public class LoginControlador {
     public void registrarUsuario(ActionEvent event){
         Object evt = event.getSource();
         if(evt.equals(btnRegistrarse)){
-            agenciaDeViajes.loadStage("/registrarCliente.fxml", event);
+            agenciaDeViajes.loadStage("/ventanas/registrarCliente.fxml", event);
         }
     }
 

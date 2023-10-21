@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="370.0" prefWidth="230.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.agenciaDeViajes.controladores.ModificarDestinoControlador">
+    <children>
+        <TextField fx:id="txtNombreDestino" layoutX="41.0" layoutY="22.0" promptText="Nombre del destino" />
+        <TextField fx:id="txtCiudad" layoutX="41.0" layoutY="94.0" promptText="Ciudad" />
+        <TextField fx:id="txtDescripcion" layoutX="41.0" layoutY="138.0" promptText="Descripción" />
+        <TextField fx:id="txtImagen" layoutX="41.0" layoutY="185.0" promptText="Imagen" />
+        <ComboBox fx:id="cbxClima" layoutX="40.0" layoutY="230.0" prefWidth="150.0" />
+        <Button fx:id="btnActualizar" layoutX="77.0" layoutY="308.0" mnemonicParsing="false" onAction="#actualizarDestino" text="Actualizar" />
+        <Button fx:id="btnAtras" layoutX="20.0" layoutY="308.0" mnemonicParsing="false" onAction="#regresarInicio" text="Atras" />
+      <Button fx:id="btnBuscar" layoutX="131.0" layoutY="60.0" mnemonicParsing="false" onAction="#setCliente" prefHeight="25.0" prefWidth="59.0" text="Buscar" />
+      <Button fx:id="btnEliminar" layoutX="155.0" layoutY="308.0" mnemonicParsing="false" onAction="#eliminarDestino" text="Eliminar" />
+    </children>
+</AnchorPane>

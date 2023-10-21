@@ -1,0 +1,2 @@
+Parque del Cafe;Pueblo Tapao;Es un parque tematico colombiano situado en el corregimiento de Pueblo Tapao;@../imagenes/parqueDelCafe.png;CALIDO
+Parque del Azucar;Palmira;Parque acuatico vasto y apto para familias con piscinas, toboganes e instalaciones deportivas;@../imagenes/parqueDelAzucar.png;CALIDO

@@ -15,4 +15,7 @@ public class Cliente {
     private String telefono;
     private String direccion;
 
+    public String toFileFormat() {
+        return identificacion + ";" + nombre + ";" + correo + ";" + telefono + ";" + direccion;
+    }
 }

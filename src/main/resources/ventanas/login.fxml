@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="386.0" prefWidth="503.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.agenciaDeViajes.controladores.LoginControlador">
    <ImageView fitHeight="213.0" fitWidth="193.0" layoutX="169.0" layoutY="-16.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@imagenes/logoAgencia.png" />
+      <Image url="@../imagenes/logoAgencia.png" />
    </ImageView>
    <Separator layoutX="-3.0" layoutY="171.0" prefHeight="0.0" prefWidth="503.0" />
    <TextField fx:id="usuarioCliente" layoutX="139.0" layoutY="199.0" prefHeight="25.0" prefWidth="219.0" promptText="Ingresa tu usuario" />

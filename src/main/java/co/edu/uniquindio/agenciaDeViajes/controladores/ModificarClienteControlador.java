@@ -6,27 +6,47 @@ import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Cliente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class RegistrarClienteControler {
+import java.net.URL;
+import java.util.ResourceBundle;
 
-    @FXML
-    private Label lblIdentificacion, lblNombre, lblCorreo, lblTelefono, lblDireccion;
+public class ModificarClienteControlador implements Initializable {
 
     @FXML
     private TextField txtIdentificacion, txtNombre, txtCorreo, txtTelefono, txtDireccion;
 
     @FXML
     private Button btnGuardar, btnRegresar;
-
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
 
-    public void registrarCliente(ActionEvent actionEvent){
+    private Cliente cliente;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        setCliente(cliente);
+    }
+    public void setCliente(Cliente cliente) {
+        this.cliente = agenciaDeViajes.getClienteAutenticado();
+        actualizarCampos(); // Llamamos a este método para llenar los campos inicialmente
+    }
+
+    private void actualizarCampos() {
+        if (cliente != null) {
+            txtIdentificacion.setText(cliente.getIdentificacion());
+            txtNombre.setText(cliente.getNombre());
+            txtCorreo.setText(cliente.getCorreo());
+            txtTelefono.setText(cliente.getTelefono());
+            txtDireccion.setText(cliente.getDireccion());
+        }
+    }
+
+    public void actualizarCliente(ActionEvent actionEvent){
         try{
-            Cliente cliente = agenciaDeViajes.registrarCliente(
+            agenciaDeViajes.actualizarCliente(
                     txtIdentificacion.getText(),
                     txtNombre.getText(),
                     txtCorreo.getText(),
@@ -34,16 +54,16 @@ public class RegistrarClienteControler {
                     txtDireccion.getText()
             );
 
-            mostrarMensaje(Alert.AlertType.INFORMATION, "Se ha registrado correctamente el cliente: "+cliente.getNombre());
+            mostrarMensaje(Alert.AlertType.INFORMATION, "Se ha actualizado correctamente el cliente: "+cliente.getNombre());
         } catch (AtributoVacioException | InformacionRepetidaException e){
             mostrarMensaje(Alert.AlertType.ERROR, e.getMessage());
         }
     }
 
-    public void regresarLogin(ActionEvent event){
+    public void regresarInicio(ActionEvent event){
         Object evt = event.getSource();
         if(evt.equals(btnRegresar)){
-            agenciaDeViajes.loadStage("/login.fxml", event);
+            agenciaDeViajes.loadStage("/ventanas/inicio.fxml", event);
         }
     }
 

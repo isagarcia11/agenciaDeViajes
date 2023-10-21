@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="265.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.agenciaDeViajes.controladores.DestinosControlador">
+    <children>
+        <TableView fx:id="tableView" layoutX="13.0" layoutY="35.0" prefHeight="200.0" prefWidth="565.0">
+            <columns>
+                <TableColumn fx:id="columnNombre" prefWidth="104.0" text="Nombre" />
+                <TableColumn fx:id="columnCiudad" prefWidth="83.0" text="Ciudad" />
+                <TableColumn fx:id="columnDescripcion" prefWidth="299.0" text="Descripción" />
+                <TableColumn fx:id="columnClima" prefWidth="77.0" text="Clima" />
+            </columns>
+        </TableView>
+    </children>
+
+</AnchorPane>
