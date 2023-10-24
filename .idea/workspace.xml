@@ -32,6 +32,9 @@
       <change beforePath="$PROJECT_DIR$/src/main/resources/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ventanas/login.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/persistencia/clientes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/persistencia/clientes.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/registrarCliente.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ventanas/registrarCliente.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,13 +61,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;
-  }
+
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -84,6 +88,8 @@
       <workItem from="1697646541361" duration="374000" />
       <workItem from="1697647756201" duration="290000" />
       <workItem from="1697648061697" duration="4000" />
+      <workItem from="1697650212548" duration="45000" />
+      <workItem from="1697986523370" duration="643000" />
     </task>
     <servers />
   </component>
