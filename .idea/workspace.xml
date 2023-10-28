@@ -5,33 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="386293a3-08f4-4876-b227-d3b9452894c6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/CrearDestinoControlador.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/DestinosControlador.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/ModificarClienteControlador.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/ModificarDestinoControlador.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/persistencia/destinos.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ventanas/crearDestino.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ventanas/destinos.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ventanas/modificarCliente.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ventanas/modificarDestino.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/app/AgenciaApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/app/AgenciaApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/InicioAdminControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/InicioAdminControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/InicioControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/InicioControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/LoginControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/LoginControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/RegistrarClienteControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/RegistrarClienteControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/modelo/AgenciaDeViajes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/modelo/AgenciaDeViajes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/modelo/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/modelo/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/modelo/Clima.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/enums/Clima.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/modelo/Destinos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/modelo/Destino.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/utils/ArchivoUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/utils/ArchivoUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/clientes.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ventanas/clientes.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/inicioAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ventanas/inicioAdmin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/inicioCliente.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ventanas/inicio.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ventanas/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/persistencia/clientes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/persistencia/clientes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/registrarCliente.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ventanas/registrarCliente.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/persistencia/destinos.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/persistencia/destinos.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,14 +34,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/hulbe/IdeaProjects/agenciaDeViajes"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\hulbe\IdeaProjects\agenciaDeViajes\src\main\resources\ventanas" />

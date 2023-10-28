@@ -164,3 +164,7 @@ oct. 21, 2023 4:15:36 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeVi
 INFO: Se crea una nueva instancia de la Agencia de viajes
 oct. 21, 2023 4:17:10 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarDestino
 INFO: Se ha actualizado al destino con nombre: Parque del Cafe
+oct. 22, 2023 7:52:42 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+oct. 22, 2023 7:54:46 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarDestino
+INFO: Se ha actualizado al destino con nombre: Parque del Cafe
