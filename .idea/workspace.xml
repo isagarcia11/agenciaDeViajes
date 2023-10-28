@@ -27,24 +27,25 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 6
-}</component>
+    "associatedIndex": 6
+    }</component>
   <component name="ProjectId" id="2Wm51hlDzi9P5IHdZkAwQPMGPsB" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/hulbe/IdeaProjects/agenciaDeViajes"
-  }
-}]]></component>
+    "keyToString": {
+      "ASKED_ADD_EXTERNAL_FILES": "true",
+      "RunOnceActivity.OpenProjectViewOnStart": "true",
+      "RunOnceActivity.ShowReadmeOnStart": "true",
+      "git-widget-placeholder": "main",
+      "last_opened_file_path": "C:/Users/hulbe/IdeaProjects/agenciaDeViajes"
+    }
+  }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Isabella García\IdeaProjects\agenciaDeViajes\src\main\resources\imagenes" />
       <recent name="C:\Users\hulbe\IdeaProjects\agenciaDeViajes\src\main\resources\ventanas" />
       <recent name="C:\Users\hulbe\IdeaProjects\agenciaDeViajes\src\main\resources" />
     </key>
@@ -52,7 +53,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="386293a3-08f4-4876-b227-d3b9452894c6" name="Changes" comment="" />
+      <changelist id="d2e90675-6b4d-4773-832f-61c2f35f52f5" name="Changes" comment="" />
       <created>1697324711962</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -61,6 +62,13 @@
       <workItem from="1697646541361" duration="374000" />
       <workItem from="1697647756201" duration="290000" />
       <workItem from="1697648061697" duration="4000" />
+      <workItem from="1697650212548" duration="45000" />
+      <workItem from="1697986523370" duration="643000" />
+      <workItem from="1698172396786" duration="188000" />
+      <workItem from="1698183087020" duration="6000" />
+      <workItem from="1698346901248" duration="4176000" />
+      <workItem from="1698421323605" duration="18000" />
+      <workItem from="1698437452207" duration="594000" />
     </task>
     <servers />
   </component>

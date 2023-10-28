@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="432.0" prefWidth="460.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.agenciaDeViajes.controladores.ModificarClienteControlador">
+<AnchorPane prefHeight="432.0" prefWidth="460.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.agenciaDeViajes.controladores.ModificarClienteControlador">
     <children>
         <Separator layoutX="-4.0" layoutY="131.0" prefHeight="3.0" prefWidth="463.0" />
         <TextField fx:id="txtNombre" layoutX="91.0" layoutY="158.0" prefHeight="25.0" prefWidth="273.0" promptText="Nombre completo" />
@@ -22,6 +23,11 @@
                 <Font name="Franklin Gothic Medium" size="14.0" />
             </font>
         </Button>
+      <ImageView fitHeight="222.0" fitWidth="330.0" layoutX="65.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/MODIFICARCLIENTE.png" />
+         </image>
+      </ImageView>
     </children>
 
 </AnchorPane>
