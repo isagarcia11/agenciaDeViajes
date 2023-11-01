@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="502.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.agenciaDeViajes.controladores.ModificarPaquetesTuristicosControlador">
+    <children>
+        <TextField fx:id="txtNombrePaquete" layoutX="163.0" layoutY="48.0" prefHeight="25.0" prefWidth="215.0" promptText="Nombre del paquete turístico" />
+        <TextField fx:id="txtDuracion" layoutX="163.0" layoutY="90.0" prefHeight="25.0" prefWidth="215.0" promptText="Duración" />
+        <TextField fx:id="txtServiciosAdicionales" layoutX="163.0" layoutY="134.0" prefHeight="25.0" prefWidth="215.0" promptText="Servicios adicionales" />
+        <TextField fx:id="txtPrecio" layoutX="163.0" layoutY="179.0" prefHeight="25.0" prefWidth="215.0" promptText="Precio" />
+        <TextField fx:id="txtCupoMaximo" layoutX="163.0" layoutY="224.0" prefHeight="25.0" prefWidth="215.0" promptText="Cupo máximo" />
+        <DatePicker fx:id="dpFechaInicio" layoutX="163.0" layoutY="266.0" prefHeight="25.0" prefWidth="215.0" promptText="Fecha de inicio" />
+        <DatePicker fx:id="dpFechaFin" layoutX="163.0" layoutY="308.0" prefHeight="25.0" prefWidth="215.0" promptText="Fecha de fin" />
+        <Button fx:id="btnAgregarDestino" layoutX="383.0" layoutY="395.0" mnemonicParsing="false" onAction="#buscarDestino" text="Agregar Destino" />
+        <Button fx:id="btnActualizar" layoutX="216.0" layoutY="450.0" mnemonicParsing="false" onAction="#actualizarPaqueteTuristico" text="Actualizar" />
+        <Button fx:id="btnEliminar" layoutX="294.0" layoutY="450.0" mnemonicParsing="false" onAction="#eliminarPaqueteTuristico" text="Eliminar Paquete" />
+        <Button fx:id="btnAtras" layoutX="162.0" layoutY="450.0" mnemonicParsing="false" onAction="#regresarInicio" text="Atrás" />
+        <Label layoutX="14.0" layoutY="52.0" text="Nombre del paquete:" />
+        <Label layoutX="14.0" layoutY="94.0" text="Duración:" />
+        <Label layoutX="14.0" layoutY="138.0" text="Servicios Adicionales:" />
+        <Label layoutX="14.0" layoutY="183.0" text="Precio:" />
+        <Label layoutX="14.0" layoutY="228.0" text="Cupo Máximo:" />
+        <Label layoutX="14.0" layoutY="270.0" text="Fecha de Inicio:" />
+        <Label layoutX="14.0" layoutY="312.0" text="Fecha de Fin:" />
+        <Label layoutX="14.0" layoutY="356.0" text="Destinos Asignados:" />
+      <Button fx:id="btnBuscar" layoutX="417.0" layoutY="48.0" mnemonicParsing="false" onAction="#setPaqueteTuristico" text="Buscar" />
+      <ComboBox fx:id="cbxDestinos" layoutX="162.0" layoutY="395.0" prefHeight="25.0" prefWidth="215.0" />
+      <ComboBox fx:id="cbxDestinosPaquete" layoutX="162.0" layoutY="352.0" prefHeight="25.0" prefWidth="215.0" />
+      <Button fx:id="btnEliminarDestino" layoutX="383.0" layoutY="352.0" mnemonicParsing="false" onAction="#eliminarDestino" prefHeight="25.0" prefWidth="103.0" text="Eliminar Destino" />
+    </children>
+</AnchorPane>

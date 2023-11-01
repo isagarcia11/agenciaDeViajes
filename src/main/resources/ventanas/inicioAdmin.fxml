@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.agenciaDeViajes.controladores.InicioAdminControlador">
+<AnchorPane prefHeight="450.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.agenciaDeViajes.controladores.InicioAdminControlador">
    <children>
-      <Button fx:id="btnClientes" layoutX="71.0" layoutY="258.0" mnemonicParsing="false" onAction="#ingresarReporteClientes" prefHeight="29.0" prefWidth="257.0" text="REPORTE DE CLIENTES">
+      <Button fx:id="btnClientes" layoutX="72.0" layoutY="348.0" mnemonicParsing="false" onAction="#ingresarReporteClientes" prefHeight="29.0" prefWidth="257.0" text="REPORTE DE CLIENTES">
          <font>
             <Font name="Franklin Gothic Medium" size="15.0" />
          </font></Button>
@@ -20,7 +20,7 @@
             <Font name="Franklin Gothic Medium" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="btnDestinos" layoutX="72.0" layoutY="304.0" mnemonicParsing="false" onAction="#ingresarReporteDestinos" prefHeight="29.0" prefWidth="257.0" text="REPORTE DE DESTINOS">
+      <Button fx:id="btnDestinos" layoutX="71.0" layoutY="391.0" mnemonicParsing="false" onAction="#ingresarReporteDestinos" prefHeight="29.0" prefWidth="257.0" text="REPORTE DE DESTINOS">
          <font>
             <Font name="Franklin Gothic Medium" size="15.0" />
          </font>
@@ -31,5 +31,15 @@
          </image>
       </ImageView>
       <Separator layoutY="142.0" prefHeight="0.0" prefWidth="400.0" />
+      <Button fx:id="btnCrearPaquete" layoutX="72.0" layoutY="259.0" mnemonicParsing="false" onAction="#ingresarCrearPaquete" prefHeight="25.0" prefWidth="257.0" text="CREAR PAQUETE">
+         <font>
+            <Font name="Franklin Gothic Medium" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnActualizarPaquete" layoutX="71.0" layoutY="305.0" mnemonicParsing="false" onAction="#ingresarActualizarPaquete" prefHeight="25.0" prefWidth="257.0" text="ACTUALIZAR PAQUETE">
+         <font>
+            <Font name="Franklin Gothic Medium" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

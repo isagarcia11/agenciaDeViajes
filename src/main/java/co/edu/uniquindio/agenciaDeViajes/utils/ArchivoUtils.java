@@ -1,19 +1,20 @@
 package co.edu.uniquindio.agenciaDeViajes.utils;
 
 import co.edu.uniquindio.agenciaDeViajes.modelo.Cliente;
-import co.edu.uniquindio.agenciaDeViajes.modelo.Destino;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class ArchivoUtils {
@@ -101,91 +102,6 @@ public class ArchivoUtils {
         System.out.println("El archivo ha sido actualizado.");
     }
 
-    public static void actualizarArchivoDestino(String archivo, Destino destino) {
-        List<String> lineas = new ArrayList<>();
-
-        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
-            String linea;
-            while ((linea = br.readLine()) != null) {
-                lineas.add(linea);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        boolean nombreDestinoEncontrado = false;
-
-        for (int i = 0; i < lineas.size(); i++) {
-            String linea = lineas.get(i);
-            String[] partes = linea.split(";");
-
-            if (partes[0].equals(destino.getNombre())) {
-                lineas.set(i, destino.toFileFormat());
-                nombreDestinoEncontrado = true;
-                break;
-            }
-        }
-
-        if (!nombreDestinoEncontrado) {
-            System.out.println("El nombre del destino no fue encontrado en el archivo.");
-            return;
-        }
-
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivo))) {
-            for (String linea : lineas) {
-                bw.write(linea);
-                bw.newLine();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println("El archivo ha sido actualizado.");
-    }
-
-    public static void eliminarDestino(String archivo, String nombreDestino) {
-        List<String> lineas = new ArrayList<>();
-
-        try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
-            String linea;
-            while ((linea = br.readLine()) != null) {
-                lineas.add(linea);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        boolean nombreDestinoEncontrado = false;
-
-        Iterator<String> iter = lineas.iterator();
-        while (iter.hasNext()) {
-            String linea = iter.next();
-            String[] partes = linea.split(";");
-
-            if (partes[0].equals(nombreDestino)) {
-                iter.remove(); // Eliminar la línea
-                nombreDestinoEncontrado = true;
-                break;
-            }
-        }
-
-        if (!nombreDestinoEncontrado) {
-            System.out.println("El nombre del destino no fue encontrado en el archivo.");
-            return;
-        }
-
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivo))) {
-            for (String linea : lineas) {
-                bw.write(linea);
-                bw.newLine();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println("El destino ha sido eliminado del archivo.");
-    }
-
     /**
      * Serializa un objeto en disco
      * @param ruta Ruta del archivo donde se va a serializar el objeto
@@ -213,11 +129,20 @@ public class ArchivoUtils {
         return objeto;
     }
 
-    /**
-     * Serializa un objeto en un archivo en formato XML
-     * @param ruta Ruta del archivo donde se va a serializar el objeto
-     * @param objeto Objeto a serializar
-     * @throws FileNotFoundException
-     */
+    public static void borrarArchivo(String filePath) {
+        Path path = Paths.get(filePath);
+
+        try {
+            if (Files.exists(path)) {
+                Files.walk(path)
+                        .sorted(Comparator.reverseOrder())
+                        .map(Path::toFile)
+                        .forEach(File::delete);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

@@ -36,7 +36,7 @@ public class ModificarDestinoControlador implements Initializable {
         cbxClima.setItems(FXCollections.observableArrayList( List.of(Clima.values() ) ) );
     }
 
-    public void setCliente() {
+    public void setDestino() {
         this.destino = agenciaDeViajes.obtenerDestino(txtNombreDestino.getText());
         actualizarCampos(); // Llamamos a este método para llenar los campos inicialmente
     }
@@ -46,7 +46,7 @@ public class ModificarDestinoControlador implements Initializable {
             txtNombreDestino.setText(destino.getNombre());
             txtCiudad.setText(destino.getCiudad());
             txtDescripcion.setText(destino.getDescripcion());
-            txtImagen.setText(destino.getImagen());
+            txtImagen.setText(String.join("," , destino.getImagenes()));
             cbxClima.getSelectionModel().select(destino.getClima());
         } else {
             mostrarMensaje(Alert.AlertType.INFORMATION, "El destino no esta registrado");

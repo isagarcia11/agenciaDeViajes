@@ -15,14 +15,6 @@ public class InicioControlador {
     private Button modificarCliente;
 
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
-    public void iniciarSesiones(ActionEvent event){
-
-        Object evt = event.getSource();
-
-        if(evt.equals(iniciarSesion)){
-            agenciaDeViajes.loadStage("/escogerUsuario.fxml", event);
-        }
-    }
 
     public void iniciarSesion(ActionEvent event){
 

@@ -13,6 +13,7 @@ import lombok.Getter;
 import lombok.extern.java.Log;
 
 import java.io.*;
+import java.time.LocalDate;
 import java.util.*;
 import java.util.logging.FileHandler;
 import java.util.logging.SimpleFormatter;
@@ -22,13 +23,17 @@ public class AgenciaDeViajes {
 
     private final ArrayList<Cliente> clientes;
 
-    private final ArrayList<Destino> destinos;
+    private ArrayList<Destino> destinos;
+
+    private ArrayList<PaqueteTuristico> paquetesTuristicos;
 
     private static AgenciaDeViajes agenciaDeViajes;
 
     private static final String RUTA_CLIENTES = "src/main/resources/persistencia/clientes.txt";
 
-    private static final String RUTA_DESTINOS = "src/main/resources/persistencia/destinos.txt";
+    private static final String RUTA_DESTINOS = "src/main/resources/persistencia/destinos.ser";
+
+    private static final String RUTA_PAQUETES = "src/main/resources/persistencia/paquetes.ser";
 
     private static Cliente clienteAutenticado;
 
@@ -41,6 +46,15 @@ public class AgenciaDeViajes {
 
         this.destinos = new ArrayList<>();
         leerDestinos();
+        for(Destino destino : destinos){
+            System.out.println(destino);
+        }
+
+        this.paquetesTuristicos = new ArrayList<>();
+        leerPaquetes();
+        for(PaqueteTuristico paqueteTuristico : paquetesTuristicos){
+            System.out.println(paqueteTuristico);
+        }
     }
 
     private void inicializarLogger(){
@@ -103,37 +117,118 @@ public class AgenciaDeViajes {
         return cliente;
     }
 
-    public Destino registrarDestino(String nombreDestino, String ciudad, String descripcion, String imagen, Clima clima) throws AtributoVacioException {
+    private ArrayList<String> obtenerListaDeImagenes(String imagen) throws AtributoVacioException {
+        if (imagen == null || imagen.isBlank()) {
+            throw new AtributoVacioException("La imagen es obligatoria");
+        }
 
-        if(nombreDestino == null || nombreDestino.isBlank()){
+        String[] imagenesArray = imagen.split(","); // Divide la cadena en un arreglo de strings usando la coma como delimitador
+        return new ArrayList<>(Arrays.asList(imagenesArray)); // Convierte el arreglo en un ArrayList
+    }
+
+    public Destino registrarDestino(String nombreDestino, String ciudad, String descripcion, String imagen, Clima clima) throws AtributoVacioException {
+        if (nombreDestino == null || nombreDestino.isBlank()) {
             throw new AtributoVacioException("El nombre del destino es obligatorio");
         }
 
-        if(ciudad == null || ciudad.isBlank()){
+        if (ciudad == null || ciudad.isBlank()) {
             throw new AtributoVacioException("La ciudad es obligatoria");
         }
 
-        if(descripcion == null || descripcion.isBlank()){
+        if (descripcion == null || descripcion.isBlank()) {
             throw new AtributoVacioException("La descripción es obligatoria");
         }
 
-        if(imagen == null || imagen.isBlank()){
-            throw new AtributoVacioException("La imagen es obligatoria");
-        }
+        ArrayList<String> imagenesList = obtenerListaDeImagenes(imagen);
 
         Destino destino = Destino.builder()
                 .nombre(nombreDestino)
                 .ciudad(ciudad)
                 .descripcion(descripcion)
-                .imagen(imagen)
+                .imagenes(imagenesList)
                 .clima(clima)
                 .build();
 
         destinos.add(destino);
-        escribirDestino(destino);
-        log.info("Se ha registrado el nuevo destino: "+nombreDestino);
+        escribirDestino();
+        log.info("Se ha registrado el nuevo destino: " + nombreDestino);
 
         return destino;
+    }
+
+
+    public PaqueteTuristico registrarPaquete(String nombre, ArrayList<Destino> destinos, String duracion, String serviciosAdicionales, float precio, int cupoMaximo, LocalDate fechaInicio, LocalDate fechaFin) throws AtributoVacioException, AtributoNegativoException, FechaInvalidaException{
+
+        if(nombre == null || nombre.isBlank()){
+            throw new AtributoVacioException("El nombre del paquete es obligatorio");
+        }
+
+        if(duracion == null || duracion.isBlank()){
+            throw new AtributoVacioException("La duracion del paquete es obligatoria");
+        }
+
+        if(serviciosAdicionales == null || serviciosAdicionales.isBlank()){
+            throw new AtributoVacioException("Los servicios adicionales son obligatorios");
+        }
+
+        if(precio < 0){
+            throw new AtributoNegativoException("El precio no puede ser negativo");
+        }
+
+        if(cupoMaximo < 0){
+            throw new AtributoNegativoException("El cupo no puede ser negativo");
+        }
+
+        if(fechaInicio == null){
+            throw new AtributoVacioException("Debe elegir una fecha de inicio del alquiler");
+        }
+
+        if(fechaFin == null){
+            throw new AtributoVacioException("Debe elegir una fecha de fin del alquiler");
+        }
+
+        if(fechaInicio.isAfter(fechaFin)){
+            log.severe("La fecha de inicio no puede ser después de la fecha final");
+            throw new FechaInvalidaException("La fecha de inicio no puede ser después de la fecha final");
+        }
+
+
+        PaqueteTuristico paquete = PaqueteTuristico.builder()
+                .nombre(nombre)
+                .destinos(destinos)
+                .duracion(duracion)
+                .serviciosAdicionales(serviciosAdicionales)
+                .precio(precio)
+                .cupoMaximo(cupoMaximo)
+                .fechaInicio(fechaInicio)
+                .fechaFin(fechaFin)
+                .build();
+
+        paquetesTuristicos.add(paquete);
+        escribirPaquete();
+        log.info("Se ha registrado el nuevo paquete: "+nombre);
+
+        return paquete;
+    }
+
+    private void escribirPaquete(){
+        try{
+            ArchivoUtils.serializarObjeto(RUTA_PAQUETES, paquetesTuristicos);
+        }catch (Exception e){
+            log.severe(e.getMessage());
+        }
+    }
+
+    private void leerPaquetes() {
+
+        try {
+            ArrayList<PaqueteTuristico> lista = (ArrayList<PaqueteTuristico>) ArchivoUtils.deserializarObjeto(RUTA_PAQUETES);
+            if (lista != null) {
+                this.paquetesTuristicos = lista;
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            log.severe(e.getMessage());
+        }
     }
 
     public Cliente obtenerCliente(String identificacion){
@@ -173,37 +268,24 @@ public class AgenciaDeViajes {
 
     }
 
-    private void escribirDestino(Destino destino){
-        try {
-            String linea = destino.getNombre()+";"+destino.getCiudad()+";"+destino.getDescripcion()+";"+destino.getImagen()+";"+destino.getClima();
-            ArchivoUtils.escribirArchivoBufferedWriter(RUTA_DESTINOS, List.of(linea), true);
-        }catch (IOException e){
+    private void escribirDestino(){
+        try{
+            ArchivoUtils.serializarObjeto(RUTA_DESTINOS, destinos);
+        }catch (Exception e){
             log.severe(e.getMessage());
         }
     }
 
     private void leerDestinos() {
 
-        try{
-
-            ArrayList<String> lineas = ArchivoUtils.leerArchivoScanner(RUTA_DESTINOS);
-
-            for(String linea : lineas){
-
-                String[] valores = linea.split(";");
-                this.destinos.add( Destino.builder()
-                        .nombre(valores[0])
-                        .ciudad(valores[1])
-                        .descripcion(valores[2])
-                        .imagen(valores[3])
-                        .clima(Clima.valueOf(valores[4]))
-                        .build());
+        try {
+            ArrayList<Destino> lista = (ArrayList<Destino>) ArchivoUtils.deserializarObjeto(RUTA_DESTINOS);
+            if (lista != null) {
+                this.destinos = lista;
             }
-
-        }catch (IOException e){
+        } catch (IOException | ClassNotFoundException e) {
             log.severe(e.getMessage());
         }
-
     }
 
     public Cliente verificarDatos(String nombre, String identificacion) throws AtributoVacioException{
@@ -279,7 +361,20 @@ public class AgenciaDeViajes {
     }
 
     public void eliminarDestino(String nombreDestino){
-        ArchivoUtils.eliminarDestino(RUTA_DESTINOS, nombreDestino);
+
+        destinos.removeIf(objeto -> objeto.getNombre().equals(nombreDestino));
+        ArchivoUtils.borrarArchivo(RUTA_DESTINOS);
+        escribirDestino();
+        log.info("Se ha borrado el destino: "+nombreDestino);
+        // Eliminar el destino de los paquetes turísticos
+        agenciaDeViajes.eliminarDestinoDePaquetes(nombreDestino);
+    }
+
+    public void eliminarDestinoDePaquetes(String nombreDestino) {
+        for (PaqueteTuristico paquete : paquetesTuristicos) {
+            ArrayList<Destino> destinosPaquete = paquete.getDestinos();
+            destinosPaquete.removeIf(destino -> destino.getNombre().equals(nombreDestino));
+        }
     }
 
     public void actualizarDestino(String nombreDestino, String ciudad, String descripcion, String imagen, Clima clima) throws AtributoVacioException {
@@ -296,22 +391,83 @@ public class AgenciaDeViajes {
             throw new AtributoVacioException("La descripción es obligatoria");
         }
 
-        if(imagen == null || imagen.isBlank()){
-            throw new AtributoVacioException("La imagen es obligatoria");
-        }
+        ArrayList<String> imagenesList = obtenerListaDeImagenes(imagen);
 
         for(Destino destino : destinos){
             if(nombreDestino.equals(destino.getNombre())){
                 destino.setNombre(nombreDestino);
                 destino.setCiudad(ciudad);
                 destino.setDescripcion(descripcion);
-                destino.setImagen(imagen);
+                destino.setImagenes(imagenesList);
                 destino.setClima(clima);
 
-                ArchivoUtils.actualizarArchivoDestino(RUTA_DESTINOS, destino);
+                ArchivoUtils.borrarArchivo(RUTA_DESTINOS);
+                escribirDestino();
 
                 log.info("Se ha actualizado al destino con nombre: " + nombreDestino);
 
+            }
+        }
+    }
+
+    public void eliminarPaquete(String nombrePaquete){
+
+        paquetesTuristicos.removeIf(objeto -> objeto.getNombre().equals(nombrePaquete));
+        ArchivoUtils.borrarArchivo(RUTA_PAQUETES);
+        escribirPaquete();
+        log.info("Se ha eliminado el paquete: "+nombrePaquete);
+    }
+
+    public void actualizarPaquete(String nombre, ArrayList<Destino> destinos, String duracion, String serviciosAdicionales, float precio, int cupoMaximo, LocalDate fechaInicio, LocalDate fechaFin) throws AtributoVacioException, AtributoNegativoException, FechaInvalidaException{
+
+        if(nombre == null || nombre.isBlank()){
+            throw new AtributoVacioException("El nombre del paquete es obligatorio");
+        }
+
+        if(duracion == null || duracion.isBlank()){
+            throw new AtributoVacioException("La duracion del paquete es obligatoria");
+        }
+
+        if(serviciosAdicionales == null || serviciosAdicionales.isBlank()){
+            throw new AtributoVacioException("Los servicios adicionales son obligatorios");
+        }
+
+        if(precio < 0){
+            throw new AtributoNegativoException("El precio no puede ser negativo");
+        }
+
+        if(cupoMaximo < 0){
+            throw new AtributoNegativoException("El cupo no puede ser negativo");
+        }
+
+        if(fechaInicio == null){
+            throw new AtributoVacioException("Debe elegir una fecha de inicio del alquiler");
+        }
+
+        if(fechaFin == null){
+            throw new AtributoVacioException("Debe elegir una fecha de fin del alquiler");
+        }
+
+        if(fechaInicio.isAfter(fechaFin)){
+            log.severe("La fecha de inicio no puede ser después de la fecha final");
+            throw new FechaInvalidaException("La fecha de inicio no puede ser después de la fecha final");
+        }
+
+
+        for(PaqueteTuristico paqueteTuristico : paquetesTuristicos) {
+            if (nombre.equals(paqueteTuristico.getNombre())) {
+                paqueteTuristico.setNombre(nombre);
+                paqueteTuristico.setDestinos(destinos);
+                paqueteTuristico.setDuracion(duracion);
+                paqueteTuristico.setServiciosAdicionales(serviciosAdicionales);
+                paqueteTuristico.setPrecio(precio);
+                paqueteTuristico.setCupoMaximo(cupoMaximo);
+                paqueteTuristico.setFechaInicio(fechaInicio);
+                paqueteTuristico.setFechaFin(fechaFin);
+
+                ArchivoUtils.borrarArchivo(RUTA_PAQUETES);
+                escribirPaquete();
+                log.info("Se ha actualizado al paquete con nombre: " + nombre);
             }
         }
     }
@@ -331,5 +487,14 @@ public class AgenciaDeViajes {
         } catch (Exception ignored) {
 
         }
+    }
+
+    public PaqueteTuristico obtenerPaquete(String nombrePaquete){
+        for (PaqueteTuristico paqueteTuristico : paquetesTuristicos) {
+            if (nombrePaquete.equals(paqueteTuristico.getNombre())) {
+                return paqueteTuristico;
+            }
+        }
+        return null;
     }
 }

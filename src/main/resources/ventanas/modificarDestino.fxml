@@ -20,7 +20,7 @@
          <font>
             <Font name="Franklin Gothic Medium" size="14.0" />
          </font></Button>
-      <Button fx:id="btnBuscar" layoutX="317.0" layoutY="157.0" mnemonicParsing="false" onAction="#setCliente" prefHeight="25.0" prefWidth="101.0" text="BUSCAR">
+      <Button fx:id="btnBuscar" layoutX="317.0" layoutY="157.0" mnemonicParsing="false" onAction="#setDestino" prefHeight="25.0" prefWidth="101.0" text="BUSCAR">
          <font>
             <Font name="Franklin Gothic Medium" size="14.0" />
          </font></Button>
