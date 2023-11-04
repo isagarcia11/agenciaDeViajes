@@ -7,6 +7,8 @@ import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Cliente;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Destino;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaEvent;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaListener;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,7 +22,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class CrearDestinoControlador implements Initializable {
+public class CrearDestinoControlador implements Initializable, CambioIdiomaListener {
 
     @FXML
     private TextField txtNombreDestino, txtCiudad, txtDescripcion, txtImagen;
@@ -35,6 +37,24 @@ public class CrearDestinoControlador implements Initializable {
     private final Propiedades propiedades = Propiedades.getInstance();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Inicialización normal del controlador
+
+        // Registra este controlador como un escuchador de cambios de idioma
+        Propiedades.getInstance().addCambioIdiomaListener(this);
+
+        // Actualiza las cadenas de texto según el idioma actual
+        actualizarTextos();
+
+    }
+    @Override
+    public void onCambioIdioma(CambioIdiomaEvent evento) {
+        // Se llama cuando se cambia el idioma
+
+        // Actualiza las cadenas de texto según el nuevo idioma
+        actualizarTextos();
+    }
+
+    private void actualizarTextos() {
         cbxClima.setItems(FXCollections.observableArrayList( List.of(Clima.values() ) ) );
         txtNombreDestino.setPromptText(propiedades.getResourceBundle().getString("TextoNombreDestino"));
         txtCiudad.setPromptText(propiedades.getResourceBundle().getString("TextoCiudad"));
@@ -42,8 +62,8 @@ public class CrearDestinoControlador implements Initializable {
         txtImagen.setPromptText(propiedades.getResourceBundle().getString("TextoImagen"));
         btnGuardar.setText(propiedades.getResourceBundle().getString("TextoGuardar"));
         btnAtras.setText(propiedades.getResourceBundle().getString("TextoAtras"));
-    }
 
+    }
     public void registrarDestino(ActionEvent actionEvent){
 
         try{

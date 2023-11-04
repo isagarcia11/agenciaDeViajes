@@ -7,6 +7,8 @@ import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.GuiaTuristico;
 import co.edu.uniquindio.agenciaDeViajes.enums.Idioma;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaEvent;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaListener;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,7 +20,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
-public class ModificarGuiaControlador implements Initializable {
+public class ModificarGuiaControlador implements Initializable, CambioIdiomaListener {
 
     @FXML
     private TextField txtNombre, txtIdentificacion, txtExperiencia;
@@ -38,6 +40,26 @@ public class ModificarGuiaControlador implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Inicialización normal del controlador
+
+        // Registra este controlador como un escuchador de cambios de idioma
+        Propiedades.getInstance().addCambioIdiomaListener(this);
+
+        // Actualiza las cadenas de texto según el idioma actual
+        actualizarTextos();
+
+        comboIdiomasDisponibles.setItems(FXCollections.observableArrayList(Arrays.asList(Idioma.values())));
+
+    }
+    @Override
+    public void onCambioIdioma(CambioIdiomaEvent evento) {
+        // Se llama cuando se cambia el idioma
+
+        // Actualiza las cadenas de texto según el nuevo idioma
+        actualizarTextos();
+    }
+
+    private void actualizarTextos() {
         nombre.setText(propiedades.getResourceBundle().getString("TextoNombre"));
         identificacion.setText(propiedades.getResourceBundle().getString("TextoIdentificacion"));
         experiencia.setText(propiedades.getResourceBundle().getString("TextoExperiencia"));
@@ -49,9 +71,6 @@ public class ModificarGuiaControlador implements Initializable {
         btnEliminarIdioma.setText(propiedades.getResourceBundle().getString("TextoEliminarIdioma"));
         btnAgregarIdioma.setText(propiedades.getResourceBundle().getString("TextoAgregarIdioma"));
         btnBuscar.setText(propiedades.getResourceBundle().getString("TextoBuscar"));
-
-
-        comboIdiomasDisponibles.setItems(FXCollections.observableArrayList(Arrays.asList(Idioma.values())));
 
     }
 

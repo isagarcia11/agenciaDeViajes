@@ -3,6 +3,8 @@ package co.edu.uniquindio.agenciaDeViajes.controladores;
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.GuiaTuristico;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaEvent;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaListener;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -15,7 +17,7 @@ import javafx.scene.control.TableView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class GuiasControlador implements Initializable {
+public class GuiasControlador implements Initializable, CambioIdiomaListener {
     public TableView<GuiaTuristico> tableView;
     public TableColumn<GuiaTuristico, String> columnNombre;
     public TableColumn<GuiaTuristico, String> columnIdentificacion;
@@ -30,17 +32,36 @@ public class GuiasControlador implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        columnNombre.setText(propiedades.getResourceBundle().getString("TextoNombre"));
-        columnIdentificacion.setText(propiedades.getResourceBundle().getString("TextoIdentificacion"));
-        columnIdiomas.setText(propiedades.getResourceBundle().getString("TextoIdiomas"));
-        columnExperiencia.setText(propiedades.getResourceBundle().getString("TextoExperiencia"));
-        btnAtras.setText(propiedades.getResourceBundle().getString("TextoAtras"));
+        // Inicialización normal del controlador
+
+        // Registra este controlador como un escuchador de cambios de idioma
+        Propiedades.getInstance().addCambioIdiomaListener(this);
+
+        // Actualiza las cadenas de texto según el idioma actual
+        actualizarTextos();
+
         columnNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
         columnIdentificacion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIdentificacion()));
         columnIdiomas.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIdiomas().toString()));
         columnExperiencia.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getExperiencia())));
 
         tableView.setItems(FXCollections.observableArrayList(agenciaDeViajes.getGuiasTuristicos()));
+    }
+    @Override
+    public void onCambioIdioma(CambioIdiomaEvent evento) {
+        // Se llama cuando se cambia el idioma
+
+        // Actualiza las cadenas de texto según el nuevo idioma
+        actualizarTextos();
+    }
+
+    private void actualizarTextos() {
+        columnNombre.setText(propiedades.getResourceBundle().getString("TextoNombre"));
+        columnIdentificacion.setText(propiedades.getResourceBundle().getString("TextoIdentificacion"));
+        columnIdiomas.setText(propiedades.getResourceBundle().getString("TextoIdiomas"));
+        columnExperiencia.setText(propiedades.getResourceBundle().getString("TextoExperiencia"));
+        btnAtras.setText(propiedades.getResourceBundle().getString("TextoAtras"));
+
     }
 
     public void volverAlInicio(ActionEvent event){

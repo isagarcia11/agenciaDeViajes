@@ -5,6 +5,8 @@ import co.edu.uniquindio.agenciaDeViajes.exceptions.InformacionRepetidaException
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Cliente;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaEvent;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,7 +17,7 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ModificarClienteControlador implements Initializable {
+public class ModificarClienteControlador implements Initializable, CambioIdiomaListener {
 
     @FXML
     private TextField txtIdentificacion, txtNombre, txtCorreo, txtTelefono, txtDireccion;
@@ -29,6 +31,25 @@ public class ModificarClienteControlador implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Inicialización normal del controlador
+
+        // Registra este controlador como un escuchador de cambios de idioma
+        Propiedades.getInstance().addCambioIdiomaListener(this);
+
+        // Actualiza las cadenas de texto según el idioma actual
+        actualizarTextos();
+
+        setCliente(cliente);
+    }
+    @Override
+    public void onCambioIdioma(CambioIdiomaEvent evento) {
+        // Se llama cuando se cambia el idioma
+
+        // Actualiza las cadenas de texto según el nuevo idioma
+        actualizarTextos();
+    }
+
+    private void actualizarTextos() {
         txtNombre.setPromptText(propiedades.getResourceBundle().getString("TextoNombreCompleto"));
         txtIdentificacion.setPromptText(propiedades.getResourceBundle().getString("TextoIdentificacion"));
         txtCorreo.setPromptText(propiedades.getResourceBundle().getString("TextoCorreoElectronico"));
@@ -36,8 +57,6 @@ public class ModificarClienteControlador implements Initializable {
         txtTelefono.setPromptText(propiedades.getResourceBundle().getString("TextoTelefono"));
         btnGuardar.setText(propiedades.getResourceBundle().getString("TextoGuardar"));
         btnRegresar.setText(propiedades.getResourceBundle().getString("TextoRegresar"));
-
-        setCliente(cliente);
     }
     public void setCliente(Cliente cliente) {
         this.cliente = agenciaDeViajes.getClienteAutenticado();

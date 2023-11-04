@@ -4,6 +4,8 @@ import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Destino;
 import co.edu.uniquindio.agenciaDeViajes.modelo.PaqueteTuristico;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaEvent;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,7 +17,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class CrearPaqueteTuristicoControlador implements Initializable {
+public class CrearPaqueteTuristicoControlador implements Initializable, CambioIdiomaListener {
 
     @FXML
     private TextField txtNombrePaquete;
@@ -57,6 +59,32 @@ public class CrearPaqueteTuristicoControlador implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Inicialización normal del controlador
+
+        // Registra este controlador como un escuchador de cambios de idioma
+        Propiedades.getInstance().addCambioIdiomaListener(this);
+
+        // Actualiza las cadenas de texto según el idioma actual
+        actualizarTextos();
+
+        // Obtener la lista de destinos de la agencia de viajes
+        ObservableList<String> nombresDestinos = FXCollections.observableArrayList();
+
+        for (Destino destino : agenciaDeViajes.getDestinos()) {
+            nombresDestinos.add(destino.getNombre());
+        }
+
+        cbxDestinos.setItems(nombresDestinos);
+    }
+    @Override
+    public void onCambioIdioma(CambioIdiomaEvent evento) {
+        // Se llama cuando se cambia el idioma
+
+        // Actualiza las cadenas de texto según el nuevo idioma
+        actualizarTextos();
+    }
+
+    private void actualizarTextos() {
         txtNombrePaquete.setPromptText(propiedades.getResourceBundle().getString("TextoNombrePaquete"));
         txtDuracion.setPromptText(propiedades.getResourceBundle().getString("TextoDuracion"));
         txtCupoMaximo.setPromptText(propiedades.getResourceBundle().getString("TextoCupoMaximo"));
@@ -67,14 +95,7 @@ public class CrearPaqueteTuristicoControlador implements Initializable {
         btnGuardar.setText(propiedades.getResourceBundle().getString("TextoGuardar"));
         dpFechaInicio.setPromptText(propiedades.getResourceBundle().getString("TextoFechaInicio"));
         dpFechaFin.setPromptText(propiedades.getResourceBundle().getString("TextoFechaFin"));
-        // Obtener la lista de destinos de la agencia de viajes
-        ObservableList<String> nombresDestinos = FXCollections.observableArrayList();
 
-        for (Destino destino : agenciaDeViajes.getDestinos()) {
-            nombresDestinos.add(destino.getNombre());
-        }
-
-        cbxDestinos.setItems(nombresDestinos);
     }
 
     @FXML
