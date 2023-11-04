@@ -10,7 +10,7 @@ public class AgenciaApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        FXMLLoader loader = new FXMLLoader(AgenciaApp.class.getResource("/ventanas/inicio.fxml"));
+        FXMLLoader loader = new FXMLLoader(AgenciaApp.class.getResource("/ventanas/Inicio.fxml"));
         Parent parent = loader.load();
 
         Scene scene = new Scene(parent);
