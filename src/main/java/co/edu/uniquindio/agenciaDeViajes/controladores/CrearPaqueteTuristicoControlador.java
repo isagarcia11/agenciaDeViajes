@@ -3,15 +3,19 @@ package co.edu.uniquindio.agenciaDeViajes.controladores;
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Destino;
 import co.edu.uniquindio.agenciaDeViajes.modelo.PaqueteTuristico;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class CrearPaqueteTuristicoControlador {
+public class CrearPaqueteTuristicoControlador implements Initializable {
 
     @FXML
     private TextField txtNombrePaquete;
@@ -47,11 +51,22 @@ public class CrearPaqueteTuristicoControlador {
     private Button btnAtras;
 
     public AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
+    private final Propiedades propiedades = Propiedades.getInstance();
 
     public ArrayList<Destino> destinosEncontrados = new ArrayList<>();
 
-    @FXML
-    void initialize() {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        txtNombrePaquete.setPromptText(propiedades.getResourceBundle().getString("TextoNombrePaquete"));
+        txtDuracion.setPromptText(propiedades.getResourceBundle().getString("TextoDuracion"));
+        txtCupoMaximo.setPromptText(propiedades.getResourceBundle().getString("TextoCupoMaximo"));
+        txtPrecio.setPromptText(propiedades.getResourceBundle().getString("TextoPrecio"));
+        txtServiciosAdicionales.setPromptText(propiedades.getResourceBundle().getString("TextoServiciosAdicionales"));
+        btnAgregarDestino.setText(propiedades.getResourceBundle().getString("TextoAgregarDestino"));
+        btnAtras.setText(propiedades.getResourceBundle().getString("TextoAtras"));
+        btnGuardar.setText(propiedades.getResourceBundle().getString("TextoGuardar"));
+        dpFechaInicio.setPromptText(propiedades.getResourceBundle().getString("TextoFechaInicio"));
+        dpFechaFin.setPromptText(propiedades.getResourceBundle().getString("TextoFechaFin"));
         // Obtener la lista de destinos de la agencia de viajes
         ObservableList<String> nombresDestinos = FXCollections.observableArrayList();
 

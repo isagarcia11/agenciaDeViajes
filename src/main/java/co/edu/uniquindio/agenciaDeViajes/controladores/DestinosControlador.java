@@ -4,6 +4,7 @@ import co.edu.uniquindio.agenciaDeViajes.enums.Clima;
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Cliente;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Destino;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -27,10 +28,15 @@ public class DestinosControlador implements Initializable {
     private Button btnAtras;
 
     public AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
+    private final Propiedades propiedades = Propiedades.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        columnNombre.setText(propiedades.getResourceBundle().getString("TextoNombre"));
+        columnCiudad.setText(propiedades.getResourceBundle().getString("textoCiudad"));
+        columnDescripcion.setText(propiedades.getResourceBundle().getString("TextoDescripcion"));
+        columnClima.setText(propiedades.getResourceBundle().getString("TextoClima"));
+        btnAtras.setText(propiedades.getResourceBundle().getString("TextoAtras"));
         columnNombre.setCellValueFactory( cellData -> new SimpleStringProperty( cellData.getValue().getNombre()));
         columnCiudad.setCellValueFactory( cellData -> new SimpleStringProperty( cellData.getValue().getCiudad()));
         columnDescripcion.setCellValueFactory( cellData -> new SimpleStringProperty( cellData.getValue().getDescripcion()));

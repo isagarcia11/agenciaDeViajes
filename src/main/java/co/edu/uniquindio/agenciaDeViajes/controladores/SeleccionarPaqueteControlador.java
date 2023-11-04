@@ -3,6 +3,7 @@ package co.edu.uniquindio.agenciaDeViajes.controladores;
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Destino;
 import co.edu.uniquindio.agenciaDeViajes.modelo.PaqueteTuristico;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -77,11 +78,30 @@ public class SeleccionarPaqueteControlador implements Initializable {
     private ObservableList<PaqueteTuristico> paquetesList = FXCollections.observableArrayList();
 
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
+    private final Propiedades propiedades = Propiedades.getInstance();
 
     private PaqueteTuristico paqueteSeleccionado;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        columnNombre.setText(propiedades.getResourceBundle().getString("TextoNombre"));
+        columnDuracion.setText(propiedades.getResourceBundle().getString("TextoDuracion"));
+        columnDestinos.setText(propiedades.getResourceBundle().getString("TextoDestinos"));
+        columnCupoMaximo.setText(propiedades.getResourceBundle().getString("TextoCupoMaximo"));
+        columnPrecio.setText(propiedades.getResourceBundle().getString("TextoPrecio"));
+        columnFechaInicio.setText(propiedades.getResourceBundle().getString("TextoFechaInicio"));
+        columnFechaFin.setText(propiedades.getResourceBundle().getString("TextoFechaFin"));
+        columnServiciosAdicionales.setText(propiedades.getResourceBundle().getString("TextoServAdicionales"));
+        btnDetallesPaquete.setText(propiedades.getResourceBundle().getString("TextoDetallesPaquete"));
+        filtroNombre.setPromptText(propiedades.getResourceBundle().getString("TextoNombre"));
+        filtroDestino.setPromptText(propiedades.getResourceBundle().getString("TextoDestinos"));
+        filtroCupoMaximo.setPromptText(propiedades.getResourceBundle().getString("TextoCupoMaximo"));
+        filtroDuracion.setPromptText(propiedades.getResourceBundle().getString("TextoDuracion"));
+        filtroPrecio.setPromptText(propiedades.getResourceBundle().getString("TextoPrecio"));
+        filtroServiciosAdicionales.setPromptText(propiedades.getResourceBundle().getString("TextoServAdicionales"));
+        filtroFechaInicio.setPromptText(propiedades.getResourceBundle().getString("TextoFechaInicio"));
+        filtroFechaFin.setPromptText(propiedades.getResourceBundle().getString("TextoFechaFin"));
 
         cargarPaquetes();
 

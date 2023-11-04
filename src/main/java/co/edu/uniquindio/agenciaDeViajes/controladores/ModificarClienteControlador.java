@@ -4,6 +4,7 @@ import co.edu.uniquindio.agenciaDeViajes.exceptions.AtributoVacioException;
 import co.edu.uniquindio.agenciaDeViajes.exceptions.InformacionRepetidaException;
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Cliente;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,11 +23,20 @@ public class ModificarClienteControlador implements Initializable {
     @FXML
     private Button btnGuardar, btnRegresar;
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
+    private final Propiedades propiedades = Propiedades.getInstance();
 
     private Cliente cliente;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        txtNombre.setPromptText(propiedades.getResourceBundle().getString("TextoNombreCompleto"));
+        txtIdentificacion.setPromptText(propiedades.getResourceBundle().getString("TextoIdentificacion"));
+        txtCorreo.setPromptText(propiedades.getResourceBundle().getString("TextoCorreoElectronico"));
+        txtDireccion.setPromptText(propiedades.getResourceBundle().getString("TextoDireccion"));
+        txtTelefono.setPromptText(propiedades.getResourceBundle().getString("TextoTelefono"));
+        btnGuardar.setText(propiedades.getResourceBundle().getString("TextoGuardar"));
+        btnRegresar.setText(propiedades.getResourceBundle().getString("TextoRegresar"));
+
         setCliente(cliente);
     }
     public void setCliente(Cliente cliente) {

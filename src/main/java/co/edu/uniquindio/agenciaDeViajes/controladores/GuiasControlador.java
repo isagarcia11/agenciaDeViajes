@@ -2,6 +2,7 @@ package co.edu.uniquindio.agenciaDeViajes.controladores;
 
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.GuiaTuristico;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -25,9 +26,15 @@ public class GuiasControlador implements Initializable {
     private Button btnAtras;
 
     public AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
+    private final Propiedades propiedades = Propiedades.getInstance();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        columnNombre.setText(propiedades.getResourceBundle().getString("TextoNombre"));
+        columnIdentificacion.setText(propiedades.getResourceBundle().getString("TextoIdentificacion"));
+        columnIdiomas.setText(propiedades.getResourceBundle().getString("TextoIdiomas"));
+        columnExperiencia.setText(propiedades.getResourceBundle().getString("TextoExperiencia"));
+        btnAtras.setText(propiedades.getResourceBundle().getString("TextoAtras"));
         columnNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
         columnIdentificacion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIdentificacion()));
         columnIdiomas.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIdiomas().toString()));

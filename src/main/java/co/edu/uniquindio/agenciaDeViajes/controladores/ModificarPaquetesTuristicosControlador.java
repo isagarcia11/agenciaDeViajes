@@ -3,6 +3,7 @@ package co.edu.uniquindio.agenciaDeViajes.controladores;
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Destino;
 import co.edu.uniquindio.agenciaDeViajes.modelo.PaqueteTuristico;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -62,13 +63,31 @@ public class ModificarPaquetesTuristicosControlador implements Initializable {
     @FXML
     private Button btnEliminarDestino;
 
+    @FXML
+    private Label nombrePaquete, duracion, serviciosAdicionales, precio, cupoMaximo, fechaInicio, fechaFin, destinosAsignados;
+
     public AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
+    private final Propiedades propiedades = Propiedades.getInstance();
 
     private PaqueteTuristico paqueteTuristico;
 
     private ArrayList<Destino> destinos;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        nombrePaquete.setText(propiedades.getResourceBundle().getString("TextoNombrePaquete"));
+        duracion.setText(propiedades.getResourceBundle().getString("TextoDuracion"));
+        serviciosAdicionales.setText(propiedades.getResourceBundle().getString("TextoServiciosAdicionales"));
+        precio.setText(propiedades.getResourceBundle().getString("TextoPrecio"));
+        cupoMaximo.setText(propiedades.getResourceBundle().getString("TextoCupoMaximo"));
+        fechaInicio.setText(propiedades.getResourceBundle().getString("TextoFechaInicio"));
+        fechaFin.setText(propiedades.getResourceBundle().getString("TextoFechaFin"));
+        destinosAsignados.setText(propiedades.getResourceBundle().getString("TextoDestinosAsignados"));
+        btnBuscar.setText(propiedades.getResourceBundle().getString("TextoBuscar"));
+        btnEliminarDestino.setText(propiedades.getResourceBundle().getString("TextoEliminarDestino"));
+        btnAgregarDestino.setText(propiedades.getResourceBundle().getString("TextoAgregarDestino"));
+        btnAtras.setText(propiedades.getResourceBundle().getString("TextoAtras"));
+        btnActualizar.setText(propiedades.getResourceBundle().getString("TextoActualizar"));
+        btnEliminar.setText(propiedades.getResourceBundle().getString("TextoEliminarPaquete"));
         ObservableList<String> nombresDestinos = FXCollections.observableArrayList();
 
         for (Destino destino : agenciaDeViajes.getDestinos()) {

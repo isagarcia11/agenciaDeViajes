@@ -6,6 +6,7 @@ import co.edu.uniquindio.agenciaDeViajes.exceptions.InformacionRepetidaException
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Cliente;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Destino;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,10 +32,16 @@ public class CrearDestinoControlador implements Initializable {
     private Button btnGuardar, btnAtras;
 
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
-
+    private final Propiedades propiedades = Propiedades.getInstance();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cbxClima.setItems(FXCollections.observableArrayList( List.of(Clima.values() ) ) );
+        txtNombreDestino.setPromptText(propiedades.getResourceBundle().getString("TextoNombreDestino"));
+        txtCiudad.setPromptText(propiedades.getResourceBundle().getString("TextoCiudad"));
+        txtDescripcion.setPromptText(propiedades.getResourceBundle().getString("TextoDescripcion"));
+        txtImagen.setPromptText(propiedades.getResourceBundle().getString("TextoImagen"));
+        btnGuardar.setText(propiedades.getResourceBundle().getString("TextoGuardar"));
+        btnAtras.setText(propiedades.getResourceBundle().getString("TextoAtras"));
     }
 
     public void registrarDestino(ActionEvent actionEvent){

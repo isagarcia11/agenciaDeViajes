@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="415.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.agenciaDeViajes.controladores.CrearPaqueteTuristicoControlador">
+<AnchorPane prefHeight="600.0" prefWidth="415.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.agenciaDeViajes.controladores.CrearPaqueteTuristicoControlador">
     <children>
         <TextField fx:id="txtNombrePaquete" layoutX="78.0" layoutY="155.0" prefHeight="25.0" prefWidth="269.0" promptText="Nombre del paquete" />
         <TextField fx:id="txtDuracion" layoutX="78.0" layoutY="201.0" prefHeight="25.0" prefWidth="269.0" promptText="Duración" />
@@ -14,7 +15,10 @@
         <DatePicker fx:id="dpFechaInicio" layoutX="78.0" layoutY="367.0" prefHeight="25.0" prefWidth="269.0" promptText="Fecha de Inicio" />
         <DatePicker fx:id="dpFechaFin" layoutX="78.0" layoutY="408.0" prefHeight="25.0" prefWidth="269.0" promptText="Fecha de Fin" />
         <ComboBox fx:id="cbxDestinos" layoutX="78.0" layoutY="450.0" prefHeight="25.0" prefWidth="269.0" />
-        <Button fx:id="btnAgregarDestino" layoutX="78.0" layoutY="490.0" mnemonicParsing="false" onAction="#buscarDestino" text="Agregar Destino" />
+        <Button fx:id="btnAgregarDestino" layoutX="78.0" layoutY="490.0" mnemonicParsing="false" onAction="#buscarDestino" text="AGREGAR DESTINO">
+         <font>
+            <Font name="Franklin Gothic Medium" size="14.0" />
+         </font></Button>
         <Button fx:id="btnGuardar" layoutX="222.0" layoutY="533.0" mnemonicParsing="false" onAction="#registrarPaqueteTuristico" text="GUARDAR">
             <font>
                 <Font name="Franklin Gothic Medium" size="14.0" />
@@ -23,5 +27,11 @@
             <font>
                 <Font name="Franklin Gothic Medium" size="14.0" />
             </font></Button>
+      <ImageView fitHeight="130.0" fitWidth="364.0" layoutX="38.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/CREARPAQUETE.png" />
+         </image>
+      </ImageView>
+      <Separator layoutX="-1.0" layoutY="131.0" prefHeight="3.0" prefWidth="415.0" />
     </children>
 </AnchorPane>

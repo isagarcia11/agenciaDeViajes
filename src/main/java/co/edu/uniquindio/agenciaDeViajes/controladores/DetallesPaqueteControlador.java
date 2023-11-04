@@ -3,6 +3,7 @@ package co.edu.uniquindio.agenciaDeViajes.controladores;
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Destino;
 import co.edu.uniquindio.agenciaDeViajes.modelo.PaqueteTuristico;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -68,8 +69,11 @@ public class DetallesPaqueteControlador implements Initializable {
 
     @FXML
     private Button btnAtras;
+    @FXML
+    private Button btnVer;
 
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
+    private final Propiedades propiedades = Propiedades.getInstance();
     private PaqueteTuristico paqueteTuristico;
 
     private ArrayList<String> rutasImagenes = new ArrayList<>();
@@ -77,6 +81,26 @@ public class DetallesPaqueteControlador implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        txtNombrePaquete.setPromptText(propiedades.getResourceBundle().getString("TextoNombrePaquete"));
+        btnVer.setText(propiedades.getResourceBundle().getString("TextoVer"));
+        txtDuracion.setPromptText(propiedades.getResourceBundle().getString("TextoDuracion"));
+        txtServiciosAdicionales.setPromptText(propiedades.getResourceBundle().getString("TextoServiciosAdicionales"));
+        txtPrecio.setPromptText(propiedades.getResourceBundle().getString("TextoPrecio"));
+        txtCupoMaximo.setPromptText(propiedades.getResourceBundle().getString("TextoCupoMaximo"));
+        txtFechaInicio.setPromptText(propiedades.getResourceBundle().getString("TextoFechaInicio"));
+        txtFechaFin.setPromptText(propiedades.getResourceBundle().getString("TextoFechaFin"));
+        btnAtras.setText(propiedades.getResourceBundle().getString("TextoAtras"));
+        txtCiudad.setPromptText(propiedades.getResourceBundle().getString("TextoCiudadDestino"));
+        txtDescripcion.setPromptText(propiedades.getResourceBundle().getString("TextoDescripcionDestino"));
+        txtClima.setPromptText(propiedades.getResourceBundle().getString("TextoClimaDestino"));
+        btnAnterior.setText(propiedades.getResourceBundle().getString("TextoAnterior"));
+        btnSiguiente.setText(propiedades.getResourceBundle().getString("TextoSiguiente"));
+        txtNombreDestino.setPromptText(propiedades.getResourceBundle().getString("TextoNombreDestino"));
+
+
+
+
+
         setPaqueteTuristico(paqueteTuristico);
         ArrayList<Destino> destinos = paqueteTuristico.getDestinos();
         ObservableList<String> nombresDestinos = FXCollections.observableArrayList();

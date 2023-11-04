@@ -1,11 +1,16 @@
 package co.edu.uniquindio.agenciaDeViajes.controladores;
 
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
-public class InicioAdminControlador {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class InicioAdminControlador implements Initializable {
 
     @FXML
     private Button btnCrearDestino, btnActualizarDestino, btnCrearPaquete, btnActualizarPaquete, btnCrearGuiaTuristico, btnActualizarGuia;
@@ -14,6 +19,21 @@ public class InicioAdminControlador {
     private Button btnClientes, btnDestinos, btnPaquetes, btnGuias;
 
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
+    private final Propiedades propiedades = Propiedades.getInstance();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        btnCrearDestino.setText(propiedades.getResourceBundle().getString("TextoCrearDestino"));
+        btnActualizarDestino.setText(propiedades.getResourceBundle().getString("TextoActualizarDestino"));
+        btnCrearPaquete.setText(propiedades.getResourceBundle().getString("TextoCrearPaquete"));
+        btnActualizarPaquete.setText(propiedades.getResourceBundle().getString("TextoActualizarPaquete"));
+        btnCrearGuiaTuristico.setText(propiedades.getResourceBundle().getString("TextoCrearGuia"));
+        btnActualizarGuia.setText(propiedades.getResourceBundle().getString("TextoActualizarGuia1"));
+        btnClientes.setText(propiedades.getResourceBundle().getString("TextoReporteClientes"));
+        btnDestinos.setText(propiedades.getResourceBundle().getString("TextoReporteDestinos"));
+        btnPaquetes.setText(propiedades.getResourceBundle().getString("TextoReportePaquetes"));
+        btnGuias.setText(propiedades.getResourceBundle().getString("TextoReporteGuias"));
+    }
 
     public void ingresarCrearDestino(ActionEvent event){
         Object evt = event.getSource();

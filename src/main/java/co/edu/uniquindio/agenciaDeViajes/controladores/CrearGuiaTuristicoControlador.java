@@ -5,14 +5,12 @@ import co.edu.uniquindio.agenciaDeViajes.exceptions.InformacionRepetidaException
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.GuiaTuristico;
 import co.edu.uniquindio.agenciaDeViajes.enums.Idioma;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -25,19 +23,29 @@ public class CrearGuiaTuristicoControlador implements Initializable {
     private TextField txtNombre, txtIdentificacion, txtExperiencia;
 
     @FXML
+    private Label nombre, identificacion, experiencia, idioma;
+
+    @FXML
     private ComboBox<Idioma> comboIdiomas;
 
     @FXML
     private Button btnAsignarIdioma, btnGuardar, btnRegresar;
 
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
-
+    private final Propiedades propiedades = Propiedades.getInstance();
     private ArrayList<Idioma> idiomas = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Llenar el ComboBox con los idiomas del enum Idioma
         comboIdiomas.setItems(FXCollections.observableArrayList(Arrays.asList(Idioma.values())));
+        nombre.setText(propiedades.getResourceBundle().getString("TextoNombre"));
+        identificacion.setText(propiedades.getResourceBundle().getString("TextoIdentificacion"));
+        experiencia.setText(propiedades.getResourceBundle().getString("TextoExperiencia"));
+        idioma.setText(propiedades.getResourceBundle().getString("TextoIdioma"));
+        btnAsignarIdioma.setText(propiedades.getResourceBundle().getString("TextoAsignarIdioma"));
+        btnGuardar.setText(propiedades.getResourceBundle().getString("TextoGuardar"));
+        btnRegresar.setText(propiedades.getResourceBundle().getString("TextoRegresar"));
     }
 
     public void asignarIdioma(ActionEvent actionEvent){

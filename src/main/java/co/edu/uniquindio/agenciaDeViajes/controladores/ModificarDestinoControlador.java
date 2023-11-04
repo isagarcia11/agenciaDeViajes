@@ -4,6 +4,7 @@ import co.edu.uniquindio.agenciaDeViajes.enums.Clima;
 import co.edu.uniquindio.agenciaDeViajes.exceptions.AtributoVacioException;
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Destino;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,9 +32,21 @@ public class ModificarDestinoControlador implements Initializable {
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
 
     private Destino destino;
+
+    private final Propiedades propiedades = Propiedades.getInstance();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cbxClima.setItems(FXCollections.observableArrayList( List.of(Clima.values() ) ) );
+        txtNombreDestino.setPromptText(propiedades.getResourceBundle().getString("TextoNombreDestino"));
+        btnBuscar.setText(propiedades.getResourceBundle().getString("TextoBuscar"));
+        txtCiudad.setPromptText(propiedades.getResourceBundle().getString("TextoCiudad"));
+        txtDescripcion.setPromptText(propiedades.getResourceBundle().getString("TextoDescripcion"));
+        txtImagen.setPromptText(propiedades.getResourceBundle().getString("TextoImagen"));
+        btnAtras.setText(propiedades.getResourceBundle().getString("TextoAtras"));
+        btnActualizar.setText(propiedades.getResourceBundle().getString("TextoActualizar"));
+        btnEliminar.setText(propiedades.getResourceBundle().getString("TextoEliminar"));
+
+
     }
 
     public void setDestino() {

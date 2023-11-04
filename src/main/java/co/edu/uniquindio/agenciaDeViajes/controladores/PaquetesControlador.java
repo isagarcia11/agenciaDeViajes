@@ -3,6 +3,7 @@ package co.edu.uniquindio.agenciaDeViajes.controladores;
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Destino;
 import co.edu.uniquindio.agenciaDeViajes.modelo.PaqueteTuristico;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -49,9 +50,17 @@ public class PaquetesControlador implements Initializable {
     private Button btnAtras;
 
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
-
+    private final Propiedades propiedades = Propiedades.getInstance();
+    @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        columnNombre.setText(propiedades.getResourceBundle().getString("TextoNombre"));
+        columnDuracion.setText(propiedades.getResourceBundle().getString("TextoDuracion"));
+        columnServiciosAdicionales.setText(propiedades.getResourceBundle().getString("TextoServAdicionales"));
+        columnPrecio.setText(propiedades.getResourceBundle().getString("TextoPrecio"));
+        columnCupoMaximo.setText(propiedades.getResourceBundle().getString("TextoCupoMaximo"));
+        columnFechaInicio.setText(propiedades.getResourceBundle().getString("TextpoFechaInicio"));
+        columnFechaFin.setText(propiedades.getResourceBundle().getString("TextoFechaFin"));
+        btnAtras.setText(propiedades.getResourceBundle().getString("TextoAtras"));
         columnNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
         columnDestinos.setCellValueFactory(cellData -> {
             String destinos = cellData.getValue().getDestinos().stream()
