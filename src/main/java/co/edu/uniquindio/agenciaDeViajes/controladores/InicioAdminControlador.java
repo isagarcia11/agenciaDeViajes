@@ -8,10 +8,10 @@ import javafx.scene.control.Button;
 public class InicioAdminControlador {
 
     @FXML
-    private Button btnCrearDestino, btnActualizarDestino, btnCrearPaquete, btnActualizarPaquete;
+    private Button btnCrearDestino, btnActualizarDestino, btnCrearPaquete, btnActualizarPaquete, btnCrearGuiaTuristico, btnActualizarGuia;
 
     @FXML
-    private Button btnClientes, btnDestinos;
+    private Button btnClientes, btnDestinos, btnPaquetes, btnGuias;
 
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
 
@@ -43,10 +43,17 @@ public class InicioAdminControlador {
         }
     }
 
-    public void ingresarReporteDestinos(ActionEvent event){
+    public void ingresarCrearGuia(ActionEvent event){
         Object evt = event.getSource();
-        if(evt.equals(btnDestinos)){
-            agenciaDeViajes.loadStage("/ventanas/destinos.fxml", event);
+        if(evt.equals(btnCrearGuiaTuristico)){
+            agenciaDeViajes.loadStage("/ventanas/crearGuiaTuristico.fxml", event);
+        }
+    }
+
+    public void ingresarActualizarGuia(ActionEvent event){
+        Object evt = event.getSource();
+        if(evt.equals(btnActualizarGuia)){
+            agenciaDeViajes.loadStage("/ventanas/modificarGuia.fxml", event);
         }
     }
 
@@ -54,6 +61,27 @@ public class InicioAdminControlador {
         Object evt = event.getSource();
         if(evt.equals(btnClientes)){
             agenciaDeViajes.loadStage("/ventanas/clientes.fxml", event);
+        }
+    }
+
+    public void ingresarReporteDestinos(ActionEvent event){
+        Object evt = event.getSource();
+        if(evt.equals(btnDestinos)){
+            agenciaDeViajes.loadStage("/ventanas/destinos.fxml", event);
+        }
+    }
+
+    public void ingresarReportePaquetes(ActionEvent event){
+        Object evt = event.getSource();
+        if(evt.equals(btnPaquetes)){
+            agenciaDeViajes.loadStage("/ventanas/paquetes.fxml", event);
+        }
+    }
+
+    public void ingresarReporteGuias(ActionEvent event){
+        Object evt = event.getSource();
+        if(evt.equals(btnGuias)){
+            agenciaDeViajes.loadStage("/ventanas/guias.fxml", event);
         }
     }
 }

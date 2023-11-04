@@ -457,3 +457,205 @@ nov. 01, 2023 3:22:39 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeVi
 INFO: Se crea una nueva instancia de la Agencia de viajes
 nov. 01, 2023 3:25:02 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes eliminarDestino
 INFO: Se ha borrado el destino: Destino 2
+nov. 01, 2023 7:08:04 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 01, 2023 7:15:38 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 01, 2023 7:18:13 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 01, 2023 7:20:28 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 8:03:50 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 8:19:04 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 8:29:16 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 8:37:03 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 9:50:18 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 9:52:04 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 9:54:22 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 9:56:56 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 9:57:30 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 10:03:07 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 10:20:27 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 10:21:39 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 10:22:27 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarDestino
+INFO: Se ha actualizado al destino con nombre: Destino 1
+nov. 02, 2023 10:23:59 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarDestino
+INFO: Se ha registrado el nuevo destino: Destino 2
+nov. 02, 2023 10:24:41 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarPaquete
+INFO: Se ha registrado el nuevo paquete: Paquete 3
+nov. 02, 2023 10:24:51 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes eliminarPaquete
+INFO: Se ha eliminado el paquete: Paquete 1
+nov. 02, 2023 10:25:00 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes eliminarPaquete
+INFO: Se ha eliminado el paquete: Paquete 2
+nov. 02, 2023 10:25:46 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 10:32:16 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 10:35:08 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 10:35:27 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarDestino
+INFO: Se ha actualizado al destino con nombre: Destino 1
+nov. 02, 2023 10:35:36 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarDestino
+INFO: Se ha actualizado al destino con nombre: Destino 2
+nov. 02, 2023 10:36:08 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarPaquete
+INFO: Se ha registrado el nuevo paquete: Paquete 1
+nov. 02, 2023 10:36:43 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 10:48:48 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 10:51:14 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 10:54:54 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 10:54:54 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerDestinos
+SEVERE: invalid stream header: EFBFBDEF
+nov. 02, 2023 10:54:54 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerPaquetes
+SEVERE: invalid stream header: EFBFBDEF
+nov. 02, 2023 10:55:44 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 10:55:44 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerDestinos
+SEVERE: null
+nov. 02, 2023 10:55:44 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerPaquetes
+SEVERE: null
+nov. 02, 2023 10:56:34 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarDestino
+INFO: Se ha registrado el nuevo destino: Destino 1
+nov. 02, 2023 10:57:16 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarDestino
+INFO: Se ha registrado el nuevo destino: Destino 2
+nov. 02, 2023 10:57:45 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarPaquete
+INFO: Se ha registrado el nuevo paquete: Paquete 1
+nov. 02, 2023 10:58:23 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 2:58:19 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 4:08:12 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 4:09:30 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 4:09:48 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarPaquete
+INFO: Se ha actualizado al paquete con nombre: Paquete 1
+nov. 02, 2023 4:10:19 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarPaquete
+INFO: Se ha actualizado al paquete con nombre: Paquete 1
+nov. 02, 2023 6:58:46 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 7:05:58 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 8:28:51 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 8:37:35 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 8:37:35 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerDestinos
+SEVERE: null
+nov. 02, 2023 8:37:35 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerPaquetes
+SEVERE: null
+nov. 02, 2023 8:40:06 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarDestino
+INFO: Se ha registrado el nuevo destino: Destino 1
+nov. 02, 2023 8:40:47 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarDestino
+INFO: Se ha registrado el nuevo destino: Destino 2
+nov. 02, 2023 8:41:24 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarPaquete
+INFO: Se ha registrado el nuevo paquete: Paquete 1
+nov. 02, 2023 8:42:11 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarPaquete
+INFO: Se ha registrado el nuevo paquete: Paquete 2
+nov. 02, 2023 8:42:32 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 10:05:54 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 10:05:55 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerGuias
+SEVERE: null
+nov. 02, 2023 10:06:54 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes escribirGuiaTuristico
+SEVERE: co.edu.uniquindio.agenciaDeViajes.modelo.GuiaTuristico
+nov. 02, 2023 10:06:54 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarGuiaTuristico
+INFO: Se ha registrado un nuevo guía turístico con la identificación: 0000
+nov. 02, 2023 10:07:39 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 10:07:40 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerGuias
+SEVERE: writing aborted; java.io.NotSerializableException: co.edu.uniquindio.agenciaDeViajes.modelo.GuiaTuristico
+nov. 02, 2023 10:10:04 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 10:10:04 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerGuias
+SEVERE: null
+nov. 02, 2023 10:11:33 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 10:11:34 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerGuias
+SEVERE: null
+nov. 02, 2023 10:11:56 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarGuiaTuristico
+INFO: Se ha registrado un nuevo guía turístico con la identificación: 0000
+nov. 02, 2023 10:13:21 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 10:13:22 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerGuias
+SEVERE: co.edu.uniquindio.agenciaDeViajes.modelo.GuiaTuristico; local class incompatible: stream classdesc serialVersionUID = 8795271394538723476, local class serialVersionUID = -3014192035097194841
+nov. 02, 2023 10:16:09 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 02, 2023 10:16:10 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerGuias
+SEVERE: null
+nov. 02, 2023 10:16:28 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarGuiaTuristico
+INFO: Se ha registrado un nuevo guía turístico con la identificación: 0000
+nov. 02, 2023 10:16:42 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 03, 2023 8:11:17 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 03, 2023 8:12:09 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarGuiaTuristico
+INFO: Se ha registrado un nuevo guía turístico con la identificación: 0001
+nov. 03, 2023 8:46:11 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 03, 2023 8:48:28 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 03, 2023 8:49:08 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarGuiaTuristico
+INFO: Se ha actualizado al guía turístico con identificación: 0000
+nov. 03, 2023 8:49:45 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 03, 2023 8:55:33 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 03, 2023 8:56:50 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarGuiaTuristico
+INFO: Se ha actualizado al guía turístico con identificación: 0000
+nov. 03, 2023 8:58:14 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 03, 2023 8:59:33 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarGuiaTuristico
+INFO: Se ha actualizado al guía turístico con identificación: 0001
+nov. 03, 2023 8:59:59 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarGuiaTuristico
+INFO: Se ha actualizado al guía turístico con identificación: 0000
+nov. 03, 2023 9:05:29 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 03, 2023 9:05:51 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarGuiaTuristico
+INFO: Se ha actualizado al guía turístico con identificación: 0000
+nov. 03, 2023 9:05:59 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes eliminarGuiaTuristico
+INFO: Se ha borrado el guía turístico con identificación: 0001
+nov. 03, 2023 9:06:17 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 03, 2023 11:04:28 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 03, 2023 11:05:01 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 11:13:58 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 11:15:25 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarGuiaTuristico
+INFO: Se ha registrado un nuevo guía turístico con la identificación: 0001
+nov. 04, 2023 11:18:12 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 11:22:15 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 11:26:40 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes eliminarGuiaTuristico
+INFO: Se ha borrado el guía turístico con identificación: 
+nov. 04, 2023 11:36:25 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 11:37:21 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 11:53:25 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 11:56:06 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 12:19:15 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 12:28:39 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes

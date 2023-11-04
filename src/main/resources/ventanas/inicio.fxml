@@ -5,14 +5,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="917.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.agenciaDeViajes.controladores.InicioControlador">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="917.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.agenciaDeViajes.controladores.InicioControlador">
    <children>
       <ImageView fitHeight="87.0" fitWidth="232.0" layoutX="-24.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../imagenes/miniLogoAgencia.png" />
          </image>
       </ImageView>
-      <Button fx:id="cambiarIdioma" layoutX="479.0" layoutY="31.0" mnemonicParsing="false" text="CAMBIAR IDIOMA">
+      <Button fx:id="cambiarIdioma" layoutX="637.0" layoutY="31.0" mnemonicParsing="false" text="CAMBIAR IDIOMA">
          <font>
             <Font name="Franklin Gothic Medium" size="14.0" />
          </font>
@@ -23,12 +23,6 @@
          </font>
       </Button>
       <Separator layoutX="2.0" layoutY="77.0" prefHeight="0.0" prefWidth="917.0" />
-      <TextField layoutX="27.0" layoutY="96.0" prefHeight="25.0" prefWidth="338.0" promptText="Inicia tu búsqueda" />
-      <Button fx:id="buscar" layoutX="383.0" layoutY="96.0" mnemonicParsing="false" text="BUSCAR">
-         <font>
-            <Font name="Franklin Gothic Medium" size="14.0" />
-         </font>
-      </Button>
       <ImageView fitHeight="224.0" fitWidth="247.0" layoutX="62.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../imagenes/santorini.jpg" />
@@ -74,9 +68,5 @@
             <Font name="Franklin Gothic Medium" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="modificarCliente" layoutX="621.0" layoutY="31.0" mnemonicParsing="false" onAction="#modificarCliente" text="MODIFICAR CLIENTE">
-         <font>
-            <Font name="Franklin Gothic Medium" size="14.0" />
-         </font></Button>
    </children>
 </AnchorPane>

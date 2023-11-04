@@ -1,6 +1,7 @@
 package co.edu.uniquindio.agenciaDeViajes.modelo;
 
 import co.edu.uniquindio.agenciaDeViajes.enums.Clima;
+import co.edu.uniquindio.agenciaDeViajes.enums.Idioma;
 import co.edu.uniquindio.agenciaDeViajes.exceptions.*;
 import co.edu.uniquindio.agenciaDeViajes.utils.ArchivoUtils;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +28,8 @@ public class AgenciaDeViajes {
 
     private ArrayList<PaqueteTuristico> paquetesTuristicos;
 
+    private ArrayList<GuiaTuristico> guiasTuristicos;
+
     private static AgenciaDeViajes agenciaDeViajes;
 
     private static final String RUTA_CLIENTES = "src/main/resources/persistencia/clientes.txt";
@@ -35,7 +38,13 @@ public class AgenciaDeViajes {
 
     private static final String RUTA_PAQUETES = "src/main/resources/persistencia/paquetes.ser";
 
+    private static final String RUTA_GUIAS = "src/main/resources/persistencia/guias.ser";
+
     private static Cliente clienteAutenticado;
+
+    private static PaqueteTuristico paqueteTuristico;
+
+    private static GuiaTuristico guiaTuristico;
 
     private AgenciaDeViajes(){
         inicializarLogger();
@@ -54,6 +63,12 @@ public class AgenciaDeViajes {
         leerPaquetes();
         for(PaqueteTuristico paqueteTuristico : paquetesTuristicos){
             System.out.println(paqueteTuristico);
+        }
+
+        this.guiasTuristicos = new ArrayList<>();
+        leerGuias();
+        for(GuiaTuristico guiaTuristico : guiasTuristicos){
+            System.out.println(guiaTuristico);
         }
     }
 
@@ -235,6 +250,7 @@ public class AgenciaDeViajes {
         return clientes.stream().filter(c -> c.getIdentificacion().equals(identificacion)).findFirst().orElse(null);
     }
 
+
     private void escribirCliente(Cliente cliente){
         try {
             String linea = cliente.getIdentificacion()+";"+cliente.getNombre()+";"+cliente.getCorreo()+";"+cliente.getTelefono()+";"+cliente.getDireccion();
@@ -313,6 +329,23 @@ public class AgenciaDeViajes {
         clienteAutenticado = cliente;
     }
 
+    public PaqueteTuristico getPaqueteTuristico() {
+        return paqueteTuristico;
+    }
+    public void setPaquetesTuristicos(PaqueteTuristico paquete){
+        paqueteTuristico = paquete;
+    }
+
+    public GuiaTuristico guiaTuristico(){
+        return guiaTuristico;
+    }
+
+    public void setGuiasTuristicos(GuiaTuristico guia){
+        guiaTuristico = guia;
+    }
+
+
+
     public void actualizarCliente(String identificacion, String nombre, String correo, String telefono, String direccion) throws AtributoVacioException, InformacionRepetidaException {
 
         if (identificacion == null || identificacion.isBlank()) {
@@ -369,6 +402,14 @@ public class AgenciaDeViajes {
         // Eliminar el destino de los paquetes turísticos
         agenciaDeViajes.eliminarDestinoDePaquetes(nombreDestino);
     }
+
+    public void eliminarGuiaTuristico(String identificacion) {
+        guiasTuristicos.removeIf(guia -> guia.getIdentificacion().equals(identificacion));
+        ArchivoUtils.borrarArchivo(RUTA_GUIAS);
+        escribirGuiaTuristico();
+        log.info("Se ha borrado el guía turístico con identificación: " + identificacion);
+    }
+
 
     public void eliminarDestinoDePaquetes(String nombreDestino) {
         for (PaqueteTuristico paquete : paquetesTuristicos) {
@@ -484,8 +525,8 @@ public class AgenciaDeViajes {
             newStage.setTitle("Agencia De Viajes");
             newStage.show();
 
-        } catch (Exception ignored) {
-
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -497,4 +538,116 @@ public class AgenciaDeViajes {
         }
         return null;
     }
+
+    public ArrayList<String> obtenerRutasDeImagenes(Destino destino) {
+        ArrayList<Destino> destinos = new ArrayList<>();
+        destinos.add(destino);
+        ArrayList<String> rutas = new ArrayList<>();
+
+        for (Destino destino1 : destinos) {
+            ArrayList<String> rutasDestino = destino1.getImagenes();
+            rutas.addAll(rutasDestino);
+
+            // Imprimir rutasDestino
+            for (String ruta : rutasDestino) {
+                System.out.println(ruta);
+            }
+        }
+        return rutas;
+    }
+
+    public GuiaTuristico registrarGuiaTuristico(String nombre, String identificacion, ArrayList<Idioma> idiomas, float experiencia) throws AtributoVacioException, InformacionRepetidaException {
+
+        if(identificacion == null || identificacion.isBlank()){
+            throw new AtributoVacioException("La identificación es obligatoria");
+        }
+
+        if(obtenerGuiaTuristico(identificacion) != null ){
+            throw new InformacionRepetidaException("La identificación "+identificacion+" ya está registrada");
+        }
+
+        if(nombre == null || nombre.isBlank()){
+            throw new AtributoVacioException("El nombre es obligatorio");
+        }
+
+        if(idiomas == null || idiomas.isEmpty()){
+            throw new AtributoVacioException("Debe seleccionar al menos un idioma");
+        }
+
+        // Aquí podrías realizar más validaciones según tus requisitos.
+
+        GuiaTuristico guia = GuiaTuristico.builder()
+                .nombre(nombre)
+                .identificacion(identificacion)
+                .idiomas(idiomas)
+                .experiencia(experiencia)
+                .build();
+
+        guiasTuristicos.add(guia);
+
+        escribirGuiaTuristico();
+
+        log.info("Se ha registrado un nuevo guía turístico con la identificación: "+identificacion);
+
+        return guia;
+    }
+
+    public GuiaTuristico obtenerGuiaTuristico(String identificacion) {
+        for (GuiaTuristico guiaTuristico : guiasTuristicos) {
+            if (identificacion.equals(guiaTuristico.getIdentificacion())) {
+                return guiaTuristico;
+            }
+        }
+        return null;
+    }
+
+    private void escribirGuiaTuristico() {
+        try{
+            ArchivoUtils.serializarObjeto(RUTA_GUIAS, guiasTuristicos);
+        }catch (Exception e){
+            log.severe(e.getMessage());
+        }
+    }
+
+    private void leerGuias() {
+
+        try {
+            ArrayList<GuiaTuristico> lista = (ArrayList<GuiaTuristico>) ArchivoUtils.deserializarObjeto(RUTA_GUIAS);
+            if (lista != null) {
+                this.guiasTuristicos = lista;
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            log.severe(e.getMessage());
+        }
+    }
+
+    public void actualizarGuiaTuristico(String identificacion, String nombre, ArrayList<Idioma> idiomas, float experiencia) throws AtributoVacioException {
+        if(identificacion == null || identificacion.isBlank()){
+            throw new AtributoVacioException("La identificación es obligatoria");
+        }
+
+        if(nombre == null || nombre.isBlank()){
+            throw new AtributoVacioException("El nombre es obligatorio");
+        }
+
+        if(idiomas == null || idiomas.isEmpty()){
+            throw new AtributoVacioException("Debe seleccionar al menos un idioma");
+        }
+
+        // Buscar el guía turístico por identificación
+        for(GuiaTuristico guia : guiasTuristicos){
+            if(identificacion.equals(guia.getIdentificacion())){
+                guia.setNombre(nombre);
+                guia.setIdiomas(idiomas);
+                guia.setExperiencia(experiencia);
+
+                ArchivoUtils.borrarArchivo(RUTA_GUIAS);
+                escribirGuiaTuristico();
+
+                log.info("Se ha actualizado al guía turístico con identificación: " + identificacion);
+            }
+        }
+    }
+
+
 }

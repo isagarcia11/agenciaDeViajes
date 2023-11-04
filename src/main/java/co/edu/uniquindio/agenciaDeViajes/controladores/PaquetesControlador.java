@@ -1,0 +1,79 @@
+package co.edu.uniquindio.agenciaDeViajes.controladores;
+
+import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Destino;
+import co.edu.uniquindio.agenciaDeViajes.modelo.PaqueteTuristico;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class PaquetesControlador implements Initializable {
+
+    @FXML
+    private TableColumn<PaqueteTuristico, String> columnNombre;
+
+    @FXML
+    private TableColumn<PaqueteTuristico, String> columnDestinos;
+
+    @FXML
+    private TableColumn<PaqueteTuristico, String> columnDuracion;
+
+    @FXML
+    private TableColumn<PaqueteTuristico, String> columnServiciosAdicionales;
+
+    @FXML
+    private TableColumn<PaqueteTuristico, String> columnPrecio;
+
+    @FXML
+    private TableColumn<PaqueteTuristico, String> columnCupoMaximo;
+
+    @FXML
+    private TableColumn<PaqueteTuristico, String> columnFechaInicio;
+
+    @FXML
+    private TableColumn<PaqueteTuristico, String> columnFechaFin;
+
+    @FXML
+    private TableView<PaqueteTuristico> tablaPaquetes;
+
+    @FXML
+    private Button btnAtras;
+
+    private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
+
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        columnNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
+        columnDestinos.setCellValueFactory(cellData -> {
+            String destinos = cellData.getValue().getDestinos().stream()
+                    .map(Destino::getNombre)
+                    .reduce((a, b) -> a + ", " + b)
+                    .orElse("");
+            return new SimpleStringProperty(destinos);
+        });
+        columnDuracion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDuracion()));
+        columnServiciosAdicionales.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getServiciosAdicionales()));
+        columnPrecio.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getPrecio())));
+        columnCupoMaximo.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getCupoMaximo())));
+        columnFechaInicio.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFechaInicio().toString()));
+        columnFechaFin.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFechaFin().toString()));
+
+        tablaPaquetes.setItems(FXCollections.observableArrayList(agenciaDeViajes.getPaquetesTuristicos()));
+    }
+
+    public void regresarInicio(ActionEvent event){
+        Object evt = event.getSource();
+        if(evt.equals(btnAtras)){
+            agenciaDeViajes.loadStage("/ventanas/inicioAdmin.fxml", event);
+        }
+    }
+}

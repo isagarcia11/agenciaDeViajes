@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.agenciaDeViajes.controladores.InicioClienteControlador">
+   <children>
+      <Button fx:id="btnModificarDatos" layoutX="147.0" layoutY="302.0" mnemonicParsing="false" onAction="#modificarDatos" text="MODIFICAR DATOS">
+         <font>
+            <Font name="Franklin Gothic Medium" size="15.0" />
+         </font></Button>
+      <Button fx:id="btnPaquetes" layoutX="171.0" layoutY="41.0" mnemonicParsing="false" onAction="#irAPaquetes" text="PAQUETES">
+         <font>
+            <Font name="Franklin Gothic Medium" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnSalir" layoutX="189.0" layoutY="349.0" mnemonicParsing="false" onAction="#volverLogin" text="SALIR">
+         <font>
+            <Font name="Franklin Gothic Medium" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

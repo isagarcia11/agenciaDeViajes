@@ -36,7 +36,7 @@ public class LoginControlador {
                 } else{
                     if(cliente != null){
                         agenciaDeViajes.setClienteAutenticado(cliente);
-                        agenciaDeViajes.loadStage("/ventanas/inicio.fxml", event);
+                        agenciaDeViajes.loadStage("/ventanas/inicioCliente.fxml", event);
                         mostrarMensaje(Alert.AlertType.INFORMATION, "El usuario "+usuarioCliente.getText()+" ha ingresado correctamente");
                     } else {
                         mostrarMensaje(Alert.AlertType.ERROR, "El usuario o contraseña son incorrectos");

@@ -63,7 +63,7 @@ public class ModificarClienteControlador implements Initializable {
     public void regresarInicio(ActionEvent event){
         Object evt = event.getSource();
         if(evt.equals(btnRegresar)){
-            agenciaDeViajes.loadStage("/ventanas/inicio.fxml", event);
+            agenciaDeViajes.loadStage("/ventanas/inicioCliente.fxml", event);
         }
     }
 

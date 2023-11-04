@@ -6,7 +6,10 @@ import co.edu.uniquindio.agenciaDeViajes.modelo.Cliente;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Destino;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
@@ -20,6 +23,9 @@ public class DestinosControlador implements Initializable {
     public TableColumn<Destino, String> columnDescripcion;
     public TableColumn<Destino, String> columnClima;
 
+    @FXML
+    private Button btnAtras;
+
     public AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
 
     @Override
@@ -32,5 +38,12 @@ public class DestinosControlador implements Initializable {
 
         tableView.setItems(FXCollections.observableArrayList(agenciaDeViajes.getDestinos()));
 
+    }
+
+    public void regresarInicio(ActionEvent event){
+        Object evt = event.getSource();
+        if(evt.equals(btnAtras)){
+            agenciaDeViajes.loadStage("/ventanas/inicioAdmin.fxml", event);
+        }
     }
 }
