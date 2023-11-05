@@ -3,6 +3,9 @@ package co.edu.uniquindio.agenciaDeViajes.controladores;
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Destino;
 import co.edu.uniquindio.agenciaDeViajes.modelo.PaqueteTuristico;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaEvent;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,7 +22,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class DetallesPaqueteControlador implements Initializable {
+public class DetallesPaqueteControlador implements Initializable, CambioIdiomaListener {
 
     @FXML
     private TextField txtNombrePaquete;
@@ -68,8 +71,11 @@ public class DetallesPaqueteControlador implements Initializable {
 
     @FXML
     private Button btnAtras;
+    @FXML
+    private Button btnVer;
 
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
+    private final Propiedades propiedades = Propiedades.getInstance();
     private PaqueteTuristico paqueteTuristico;
 
     private ArrayList<String> rutasImagenes = new ArrayList<>();
@@ -77,6 +83,14 @@ public class DetallesPaqueteControlador implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Inicialización normal del controlador
+
+        // Registra este controlador como un escuchador de cambios de idioma
+        Propiedades.getInstance().addCambioIdiomaListener(this);
+
+        // Actualiza las cadenas de texto según el idioma actual
+        actualizarTextos();
+
         setPaqueteTuristico(paqueteTuristico);
         ArrayList<Destino> destinos = paqueteTuristico.getDestinos();
         ObservableList<String> nombresDestinos = FXCollections.observableArrayList();
@@ -86,6 +100,32 @@ public class DetallesPaqueteControlador implements Initializable {
         }
 
         cbxDestinos.setItems(nombresDestinos);
+    }
+    @Override
+    public void onCambioIdioma(CambioIdiomaEvent evento) {
+        // Se llama cuando se cambia el idioma
+
+        // Actualiza las cadenas de texto según el nuevo idioma
+        actualizarTextos();
+    }
+
+    private void actualizarTextos() {
+        txtNombrePaquete.setPromptText(propiedades.getResourceBundle().getString("TextoNombrePaquete"));
+        btnVer.setText(propiedades.getResourceBundle().getString("TextoVer"));
+        txtDuracion.setPromptText(propiedades.getResourceBundle().getString("TextoDuracion"));
+        txtServiciosAdicionales.setPromptText(propiedades.getResourceBundle().getString("TextoServiciosAdicionales"));
+        txtPrecio.setPromptText(propiedades.getResourceBundle().getString("TextoPrecio"));
+        txtCupoMaximo.setPromptText(propiedades.getResourceBundle().getString("TextoCupoMaximo"));
+        txtFechaInicio.setPromptText(propiedades.getResourceBundle().getString("TextoFechaInicio"));
+        txtFechaFin.setPromptText(propiedades.getResourceBundle().getString("TextoFechaFin"));
+        btnAtras.setText(propiedades.getResourceBundle().getString("TextoAtras"));
+        txtCiudad.setPromptText(propiedades.getResourceBundle().getString("TextoCiudadDestino"));
+        txtDescripcion.setPromptText(propiedades.getResourceBundle().getString("TextoDescripcionDestino"));
+        txtClima.setPromptText(propiedades.getResourceBundle().getString("TextoClimaDestino"));
+        btnAnterior.setText(propiedades.getResourceBundle().getString("TextoAnterior"));
+        btnSiguiente.setText(propiedades.getResourceBundle().getString("TextoSiguiente"));
+        txtNombreDestino.setPromptText(propiedades.getResourceBundle().getString("TextoNombreDestino"));
+
     }
     public void setPaqueteTuristico(PaqueteTuristico paqueteTuristico) {
         this.paqueteTuristico = agenciaDeViajes.getPaqueteTuristico();

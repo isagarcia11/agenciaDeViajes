@@ -1,28 +1,32 @@
 package co.edu.uniquindio.agenciaDeViajes.controladores;
 
+import co.edu.uniquindio.agenciaDeViajes.exceptions.AtributoNegativoException;
 import co.edu.uniquindio.agenciaDeViajes.exceptions.AtributoVacioException;
 import co.edu.uniquindio.agenciaDeViajes.exceptions.InformacionRepetidaException;
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.GuiaTuristico;
 import co.edu.uniquindio.agenciaDeViajes.enums.Idioma;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaEvent;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaListener;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
-public class CrearGuiaTuristicoControlador implements Initializable {
+public class CrearGuiaTuristicoControlador implements Initializable, CambioIdiomaListener {
 
     @FXML
     private TextField txtNombre, txtIdentificacion, txtExperiencia;
+
+    @FXML
+    private Label nombre, identificacion, experiencia, idioma;
 
     @FXML
     private ComboBox<Idioma> comboIdiomas;
@@ -31,13 +35,39 @@ public class CrearGuiaTuristicoControlador implements Initializable {
     private Button btnAsignarIdioma, btnGuardar, btnRegresar;
 
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
-
+    private final Propiedades propiedades = Propiedades.getInstance();
     private ArrayList<Idioma> idiomas = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Inicialización normal del controlador
+
+        // Registra este controlador como un escuchador de cambios de idioma
+        Propiedades.getInstance().addCambioIdiomaListener(this);
+
+        // Actualiza las cadenas de texto según el idioma actual
+        actualizarTextos();
         // Llenar el ComboBox con los idiomas del enum Idioma
         comboIdiomas.setItems(FXCollections.observableArrayList(Arrays.asList(Idioma.values())));
+
+    }
+    @Override
+    public void onCambioIdioma(CambioIdiomaEvent evento) {
+        // Se llama cuando se cambia el idioma
+
+        // Actualiza las cadenas de texto según el nuevo idioma
+        actualizarTextos();
+    }
+
+    private void actualizarTextos() {
+        nombre.setText(propiedades.getResourceBundle().getString("TextoNombre"));
+        identificacion.setText(propiedades.getResourceBundle().getString("TextoIdentificacion"));
+        experiencia.setText(propiedades.getResourceBundle().getString("TextoExperiencia"));
+        idioma.setText(propiedades.getResourceBundle().getString("TextoIdioma"));
+        btnAsignarIdioma.setText(propiedades.getResourceBundle().getString("TextoAsignarIdioma"));
+        btnGuardar.setText(propiedades.getResourceBundle().getString("TextoGuardar"));
+        btnRegresar.setText(propiedades.getResourceBundle().getString("TextoRegresar"));
+
     }
 
     public void asignarIdioma(ActionEvent actionEvent){
@@ -62,7 +92,7 @@ public class CrearGuiaTuristicoControlador implements Initializable {
             );
 
             mostrarMensaje(Alert.AlertType.INFORMATION, "Se ha registrado correctamente el guía turístico: "+guia.getNombre());
-        } catch (AtributoVacioException | InformacionRepetidaException e){
+        } catch (AtributoVacioException | InformacionRepetidaException | AtributoNegativoException e){
             mostrarMensaje(Alert.AlertType.ERROR, e.getMessage());
         } catch (NumberFormatException e){
             mostrarMensaje(Alert.AlertType.ERROR, "La experiencia debe ser un número válido.");

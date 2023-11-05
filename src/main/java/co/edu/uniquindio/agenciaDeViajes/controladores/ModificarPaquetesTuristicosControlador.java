@@ -3,6 +3,9 @@ package co.edu.uniquindio.agenciaDeViajes.controladores;
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Destino;
 import co.edu.uniquindio.agenciaDeViajes.modelo.PaqueteTuristico;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaEvent;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.ResourceBundle;
 
-public class ModificarPaquetesTuristicosControlador implements Initializable {
+public class ModificarPaquetesTuristicosControlador implements Initializable, CambioIdiomaListener {
 
     @FXML
     private TextField txtNombrePaquete;
@@ -62,13 +65,25 @@ public class ModificarPaquetesTuristicosControlador implements Initializable {
     @FXML
     private Button btnEliminarDestino;
 
+    @FXML
+    private Label nombrePaquete, duracion, serviciosAdicionales, precio, cupoMaximo, fechaInicio, fechaFin, destinosAsignados;
+
     public AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
+    private final Propiedades propiedades = Propiedades.getInstance();
 
     private PaqueteTuristico paqueteTuristico;
 
     private ArrayList<Destino> destinos;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Inicialización normal del controlador
+
+        // Registra este controlador como un escuchador de cambios de idioma
+        Propiedades.getInstance().addCambioIdiomaListener(this);
+
+        // Actualiza las cadenas de texto según el idioma actual
+        actualizarTextos();
+
         ObservableList<String> nombresDestinos = FXCollections.observableArrayList();
 
         for (Destino destino : agenciaDeViajes.getDestinos()) {
@@ -76,6 +91,30 @@ public class ModificarPaquetesTuristicosControlador implements Initializable {
         }
 
         cbxDestinos.setItems(nombresDestinos);
+    }
+    @Override
+    public void onCambioIdioma(CambioIdiomaEvent evento) {
+        // Se llama cuando se cambia el idioma
+
+        // Actualiza las cadenas de texto según el nuevo idioma
+        actualizarTextos();
+    }
+
+    private void actualizarTextos() {
+        nombrePaquete.setText(propiedades.getResourceBundle().getString("TextoNombrePaquete"));
+        duracion.setText(propiedades.getResourceBundle().getString("TextoDuracion"));
+        serviciosAdicionales.setText(propiedades.getResourceBundle().getString("TextoServiciosAdicionales"));
+        precio.setText(propiedades.getResourceBundle().getString("TextoPrecio"));
+        cupoMaximo.setText(propiedades.getResourceBundle().getString("TextoCupoMaximo"));
+        fechaInicio.setText(propiedades.getResourceBundle().getString("TextoFechaInicio"));
+        fechaFin.setText(propiedades.getResourceBundle().getString("TextoFechaFin"));
+        destinosAsignados.setText(propiedades.getResourceBundle().getString("TextoDestinosAsignados"));
+        btnBuscar.setText(propiedades.getResourceBundle().getString("TextoBuscar"));
+        btnEliminarDestino.setText(propiedades.getResourceBundle().getString("TextoEliminarDestino"));
+        btnAgregarDestino.setText(propiedades.getResourceBundle().getString("TextoAgregarDestino"));
+        btnAtras.setText(propiedades.getResourceBundle().getString("TextoAtras"));
+        btnActualizar.setText(propiedades.getResourceBundle().getString("TextoActualizar"));
+        btnEliminar.setText(propiedades.getResourceBundle().getString("TextoEliminarPaquete"));
     }
     public void setPaqueteTuristico() {
         this.paqueteTuristico = agenciaDeViajes.obtenerPaquete(txtNombrePaquete.getText());

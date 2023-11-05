@@ -100,7 +100,7 @@ public class RegistrarReservaControlador implements Initializable {
             mostrarMensaje(Alert.AlertType.INFORMATION, "Se ha registrado correctamente la reserva.");
 
         } catch (AtributoVacioException | CupoMaximoExcedidoException | FechaInvalidaException |
-                 AtributoNegativoException | ReservaDuplicadaException e) {
+                 AtributoNegativoException | ReservaDuplicadaException | InformacionRepetidaException e) {
             mostrarMensaje(Alert.AlertType.ERROR, e.getMessage());
         }
     }

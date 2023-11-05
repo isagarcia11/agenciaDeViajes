@@ -3,14 +3,18 @@ package co.edu.uniquindio.agenciaDeViajes.controladores;
 import co.edu.uniquindio.agenciaDeViajes.exceptions.AtributoVacioException;
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Cliente;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaEvent;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 
-public class LoginControlador {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class LoginControlador implements Initializable, CambioIdiomaListener {
 
     @FXML
     private TextField usuarioCliente;
@@ -24,12 +28,44 @@ public class LoginControlador {
     @FXML
     private Button btnRegistrarse;
 
+    @FXML
+    private Label banner2;
+
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
+    private final Propiedades propiedades = Propiedades.getInstance();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Inicialización normal del controlador
+
+        // Registra este controlador como un escuchador de cambios de idioma
+        Propiedades.getInstance().addCambioIdiomaListener(this);
+
+        // Actualiza las cadenas de texto según el idioma actual
+        actualizarTextos();
+
+    }
+    @Override
+    public void onCambioIdioma(CambioIdiomaEvent evento) {
+        // Se llama cuando se cambia el idioma
+
+        // Actualiza las cadenas de texto según el nuevo idioma
+        actualizarTextos();
+    }
+
+    private void actualizarTextos() {
+        usuarioCliente.setPromptText(propiedades.getResourceBundle().getString("TextoIngresaUsuario"));
+        contrasenaCliente.setPromptText(propiedades.getResourceBundle().getString("TextoIngresaContrasena"));
+        btnIniciar.setText(propiedades.getResourceBundle().getString("TextoIniciarSesion"));
+        btnRegistrarse.setText(propiedades.getResourceBundle().getString("TextoRegistrarse"));
+        banner2.setText(propiedades.getResourceBundle().getString("TextoBanner2"));
+
+    }
 
     public void iniciarSesion(ActionEvent event) {
         Object evt = event.getSource();
         try {
-            Cliente cliente = agenciaDeViajes.verificarDatos(usuarioCliente.getText(), contrasenaCliente.getText());
+            Cliente cliente = agenciaDeViajes.verificarDatos(usuarioCliente.getText(), contrasenaCliente.getText(), 0);
             if(evt.equals(btnIniciar)){
                 if(usuarioCliente.getText().equals("Alejandro Arango") && contrasenaCliente.getText().equals("1104804234")){
                     agenciaDeViajes.loadStage("/ventanas/inicioAdmin.fxml", event);

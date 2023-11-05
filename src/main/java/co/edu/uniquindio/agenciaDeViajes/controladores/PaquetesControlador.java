@@ -3,6 +3,9 @@ package co.edu.uniquindio.agenciaDeViajes.controladores;
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Destino;
 import co.edu.uniquindio.agenciaDeViajes.modelo.PaqueteTuristico;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaEvent;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaListener;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,7 +19,7 @@ import javafx.scene.control.TableView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PaquetesControlador implements Initializable {
+public class PaquetesControlador implements Initializable, CambioIdiomaListener {
 
     @FXML
     private TableColumn<PaqueteTuristico, String> columnNombre;
@@ -50,8 +53,17 @@ public class PaquetesControlador implements Initializable {
 
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
 
-    @FXML
+    private final Propiedades propiedades = Propiedades.getInstance();
+    @Override
+
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Inicialización normal del controlador
+
+        // Registra este controlador como un escuchador de cambios de idioma
+        Propiedades.getInstance().addCambioIdiomaListener(this);
+
+        // Actualiza las cadenas de texto según el idioma actual
+        actualizarTextos();
 
         columnNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
         columnDestinos.setCellValueFactory(cellData -> {
@@ -69,6 +81,24 @@ public class PaquetesControlador implements Initializable {
         columnFechaFin.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFechaFin().toString()));
 
         tablaPaquetes.setItems(FXCollections.observableArrayList(agenciaDeViajes.getPaquetesTuristicos()));
+    }
+    @Override
+    public void onCambioIdioma(CambioIdiomaEvent evento) {
+        // Se llama cuando se cambia el idioma
+
+        // Actualiza las cadenas de texto según el nuevo idioma
+        actualizarTextos();
+    }
+
+    private void actualizarTextos() {
+        columnNombre.setText(propiedades.getResourceBundle().getString("TextoNombre"));
+        columnDuracion.setText(propiedades.getResourceBundle().getString("TextoDuracion"));
+        columnServiciosAdicionales.setText(propiedades.getResourceBundle().getString("TextoServAdicionales"));
+        columnPrecio.setText(propiedades.getResourceBundle().getString("TextoPrecio"));
+        columnCupoMaximo.setText(propiedades.getResourceBundle().getString("TextoCupoMaximo"));
+        columnFechaInicio.setText(propiedades.getResourceBundle().getString("TextoFechaInicio"));
+        columnFechaFin.setText(propiedades.getResourceBundle().getString("TextoFechaFin"));
+        btnAtras.setText(propiedades.getResourceBundle().getString("TextoAtras"));
     }
 
     public void regresarInicio(ActionEvent event){

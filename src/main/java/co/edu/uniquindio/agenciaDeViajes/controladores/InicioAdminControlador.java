@@ -1,19 +1,62 @@
 package co.edu.uniquindio.agenciaDeViajes.controladores;
 
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaEvent;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
-public class InicioAdminControlador {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class InicioAdminControlador implements Initializable, CambioIdiomaListener {
 
     @FXML
-    private Button btnCrearDestino, btnActualizarDestino, btnCrearPaquete, btnActualizarPaquete, btnCrearGuiaTuristico, btnActualizarGuia;
+    private Button btnCrearDestino, btnActualizarDestino, btnCrearPaquete, btnActualizarPaquete, btnCrearGuiaTuristico;
+
+    @FXML
+    private Button btnActualizarGuia;
 
     @FXML
     private Button btnClientes, btnDestinos, btnPaquetes, btnGuias;
 
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
+    private final Propiedades propiedades = Propiedades.getInstance();
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Inicialización normal del controlador
+
+        // Registra este controlador como un escuchador de cambios de idioma
+        Propiedades.getInstance().addCambioIdiomaListener(this);
+
+        // Actualiza las cadenas de texto según el idioma actual
+        actualizarTextos();
+    }
+    @Override
+    public void onCambioIdioma(CambioIdiomaEvent evento) {
+        // Se llama cuando se cambia el idioma
+
+        // Actualiza las cadenas de texto según el nuevo idioma
+        actualizarTextos();
+    }
+
+    private void actualizarTextos() {
+        btnCrearDestino.setText(propiedades.getResourceBundle().getString("TextoCrearDestino"));
+        btnActualizarDestino.setText(propiedades.getResourceBundle().getString("TextoActualizarDestino"));
+        btnCrearPaquete.setText(propiedades.getResourceBundle().getString("TextoCrearPaquete"));
+        btnActualizarPaquete.setText(propiedades.getResourceBundle().getString("TextoActualizarPaquete"));
+        btnCrearGuiaTuristico.setText(propiedades.getResourceBundle().getString("TextoCrearGuia"));
+        btnActualizarGuia.setText(propiedades.getResourceBundle().getString("TextoActualizarGuia1"));
+        btnClientes.setText(propiedades.getResourceBundle().getString("TextoReporteClientes"));
+        btnDestinos.setText(propiedades.getResourceBundle().getString("TextoReporteDestinos"));
+        btnPaquetes.setText(propiedades.getResourceBundle().getString("TextoReportePaquetes"));
+        btnGuias.setText(propiedades.getResourceBundle().getString("TextoReporteGuias"));
+
+    }
 
     public void ingresarCrearDestino(ActionEvent event){
         Object evt = event.getSource();

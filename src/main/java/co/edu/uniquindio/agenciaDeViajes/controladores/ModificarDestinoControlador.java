@@ -2,8 +2,12 @@ package co.edu.uniquindio.agenciaDeViajes.controladores;
 
 import co.edu.uniquindio.agenciaDeViajes.enums.Clima;
 import co.edu.uniquindio.agenciaDeViajes.exceptions.AtributoVacioException;
+import co.edu.uniquindio.agenciaDeViajes.exceptions.InformacionRepetidaException;
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Destino;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaEvent;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaListener;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,7 +21,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ModificarDestinoControlador implements Initializable {
+public class ModificarDestinoControlador implements Initializable, CambioIdiomaListener {
 
     @FXML
     private TextField txtNombreDestino, txtCiudad, txtDescripcion, txtImagen;
@@ -31,9 +35,39 @@ public class ModificarDestinoControlador implements Initializable {
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
 
     private Destino destino;
+
+    private final Propiedades propiedades = Propiedades.getInstance();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Inicialización normal del controlador
+
+        // Registra este controlador como un escuchador de cambios de idioma
+        Propiedades.getInstance().addCambioIdiomaListener(this);
+
+        // Actualiza las cadenas de texto según el idioma actual
+        actualizarTextos();
         cbxClima.setItems(FXCollections.observableArrayList( List.of(Clima.values() ) ) );
+
+
+    }
+
+    @Override
+    public void onCambioIdioma(CambioIdiomaEvent evento) {
+        // Se llama cuando se cambia el idioma
+
+        // Actualiza las cadenas de texto según el nuevo idioma
+        actualizarTextos();
+    }
+
+    private void actualizarTextos() {
+        txtNombreDestino.setPromptText(propiedades.getResourceBundle().getString("TextoNombreDestino"));
+        btnBuscar.setText(propiedades.getResourceBundle().getString("TextoBuscar"));
+        txtCiudad.setPromptText(propiedades.getResourceBundle().getString("TextoCiudad"));
+        txtDescripcion.setPromptText(propiedades.getResourceBundle().getString("TextoDescripcion"));
+        txtImagen.setPromptText(propiedades.getResourceBundle().getString("TextoImagen"));
+        btnAtras.setText(propiedades.getResourceBundle().getString("TextoAtras"));
+        btnActualizar.setText(propiedades.getResourceBundle().getString("TextoActualizar"));
+        btnEliminar.setText(propiedades.getResourceBundle().getString("TextoEliminar"));
     }
 
     public void setDestino() {
@@ -64,7 +98,7 @@ public class ModificarDestinoControlador implements Initializable {
             );
 
             mostrarMensaje(Alert.AlertType.INFORMATION, "Se ha actualizado correctamente el destino: "+destino.getNombre());
-        } catch (AtributoVacioException e){
+        } catch (AtributoVacioException | InformacionRepetidaException e){
             mostrarMensaje(Alert.AlertType.ERROR, e.getMessage());
         }
     }
