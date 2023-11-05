@@ -2,6 +2,7 @@ package co.edu.uniquindio.agenciaDeViajes.controladores;
 
 import co.edu.uniquindio.agenciaDeViajes.enums.Clima;
 import co.edu.uniquindio.agenciaDeViajes.exceptions.AtributoVacioException;
+import co.edu.uniquindio.agenciaDeViajes.exceptions.InformacionRepetidaException;
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Destino;
 import javafx.collections.FXCollections;
@@ -64,7 +65,7 @@ public class ModificarDestinoControlador implements Initializable {
             );
 
             mostrarMensaje(Alert.AlertType.INFORMATION, "Se ha actualizado correctamente el destino: "+destino.getNombre());
-        } catch (AtributoVacioException e){
+        } catch (AtributoVacioException | InformacionRepetidaException e){
             mostrarMensaje(Alert.AlertType.ERROR, e.getMessage());
         }
     }

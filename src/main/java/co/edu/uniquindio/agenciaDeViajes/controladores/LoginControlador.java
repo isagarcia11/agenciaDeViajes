@@ -29,7 +29,7 @@ public class LoginControlador {
     public void iniciarSesion(ActionEvent event) {
         Object evt = event.getSource();
         try {
-            Cliente cliente = agenciaDeViajes.verificarDatos(usuarioCliente.getText(), contrasenaCliente.getText());
+            Cliente cliente = agenciaDeViajes.verificarDatos(usuarioCliente.getText(), contrasenaCliente.getText(), 0);
             if(evt.equals(btnIniciar)){
                 if(usuarioCliente.getText().equals("Alejandro Arango") && contrasenaCliente.getText().equals("1104804234")){
                     agenciaDeViajes.loadStage("/ventanas/inicioAdmin.fxml", event);

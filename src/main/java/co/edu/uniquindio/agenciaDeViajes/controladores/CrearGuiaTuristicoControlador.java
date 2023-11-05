@@ -1,5 +1,6 @@
 package co.edu.uniquindio.agenciaDeViajes.controladores;
 
+import co.edu.uniquindio.agenciaDeViajes.exceptions.AtributoNegativoException;
 import co.edu.uniquindio.agenciaDeViajes.exceptions.AtributoVacioException;
 import co.edu.uniquindio.agenciaDeViajes.exceptions.InformacionRepetidaException;
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
@@ -62,7 +63,7 @@ public class CrearGuiaTuristicoControlador implements Initializable {
             );
 
             mostrarMensaje(Alert.AlertType.INFORMATION, "Se ha registrado correctamente el guía turístico: "+guia.getNombre());
-        } catch (AtributoVacioException | InformacionRepetidaException e){
+        } catch (AtributoVacioException | InformacionRepetidaException | AtributoNegativoException e){
             mostrarMensaje(Alert.AlertType.ERROR, e.getMessage());
         } catch (NumberFormatException e){
             mostrarMensaje(Alert.AlertType.ERROR, "La experiencia debe ser un número válido.");

@@ -1,6 +1,8 @@
 package co.edu.uniquindio.agenciaDeViajes.controladores;
 
+import co.edu.uniquindio.agenciaDeViajes.exceptions.AtributoNegativoException;
 import co.edu.uniquindio.agenciaDeViajes.exceptions.AtributoVacioException;
+import co.edu.uniquindio.agenciaDeViajes.exceptions.InformacionRepetidaException;
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.GuiaTuristico;
 import co.edu.uniquindio.agenciaDeViajes.enums.Idioma;
@@ -100,7 +102,7 @@ public class ModificarGuiaControlador implements Initializable {
             );
 
             mostrarMensaje(Alert.AlertType.INFORMATION, "Se ha actualizado correctamente el guía turístico: " + guiaTuristico.getNombre());
-        } catch (AtributoVacioException e) {
+        } catch (AtributoVacioException | InformacionRepetidaException | AtributoNegativoException e) {
             mostrarMensaje(Alert.AlertType.ERROR, e.getMessage());
         }
     }
