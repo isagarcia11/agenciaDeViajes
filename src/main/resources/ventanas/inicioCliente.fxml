@@ -20,5 +20,15 @@
             <Font name="Franklin Gothic Medium" size="15.0" />
          </font>
       </Button>
+      <Button fx:id="btnRealizarReserva" layoutX="140.0" layoutY="87.0" mnemonicParsing="false" onAction="#irARealizarReserva" text="REALIZAR RESERVA">
+         <font>
+            <Font name="Franklin Gothic Medium" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnMisReservas" layoutX="160.0" layoutY="131.0" mnemonicParsing="false" onAction="#irAMisReservas" text="MIS RESERVAS">
+         <font>
+            <Font name="Franklin Gothic Medium" size="15.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

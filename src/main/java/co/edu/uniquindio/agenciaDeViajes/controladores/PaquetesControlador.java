@@ -50,6 +50,7 @@ public class PaquetesControlador implements Initializable {
 
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
 
+    @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         columnNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
