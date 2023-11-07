@@ -21,11 +21,24 @@
             <Font name="Franklin Gothic Medium" size="15.0" />
          </font>
       </Button>
+<<<<<<< HEAD
+      <Button fx:id="btnRealizarReserva" layoutX="140.0" layoutY="87.0" mnemonicParsing="false" onAction="#irARealizarReserva" text="REALIZAR RESERVA">
+         <font>
+            <Font name="Franklin Gothic Medium" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnMisReservas" layoutX="160.0" layoutY="131.0" mnemonicParsing="false" onAction="#irAMisReservas" text="MIS RESERVAS">
+         <font>
+            <Font name="Franklin Gothic Medium" size="15.0" />
+         </font>
+      </Button>
+=======
       <ImageView fitHeight="131.0" fitWidth="326.0" layoutX="56.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../imagenes/INICIOADMIN.png" />
          </image>
       </ImageView>
       <Separator layoutX="-5.0" layoutY="115.0" prefHeight="5.0" prefWidth="437.0" />
+>>>>>>> a9043a2840bddce5ffa38ee2397cf74cb6cc79ce
    </children>
 </AnchorPane>

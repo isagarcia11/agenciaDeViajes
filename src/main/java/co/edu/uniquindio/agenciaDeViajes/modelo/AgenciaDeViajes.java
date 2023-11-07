@@ -1,6 +1,7 @@
 package co.edu.uniquindio.agenciaDeViajes.modelo;
 
 import co.edu.uniquindio.agenciaDeViajes.enums.Clima;
+import co.edu.uniquindio.agenciaDeViajes.enums.Estado;
 import co.edu.uniquindio.agenciaDeViajes.enums.Idioma;
 import co.edu.uniquindio.agenciaDeViajes.exceptions.*;
 import co.edu.uniquindio.agenciaDeViajes.utils.ArchivoUtils;
@@ -30,6 +31,8 @@ public class AgenciaDeViajes {
 
     private ArrayList<GuiaTuristico> guiasTuristicos;
 
+    private ArrayList<Reserva> reservas;
+
     private static AgenciaDeViajes agenciaDeViajes;
 
     private static final String RUTA_CLIENTES = "src/main/resources/persistencia/clientes.txt";
@@ -39,6 +42,8 @@ public class AgenciaDeViajes {
     private static final String RUTA_PAQUETES = "src/main/resources/persistencia/paquetes.ser";
 
     private static final String RUTA_GUIAS = "src/main/resources/persistencia/guias.ser";
+
+    private static final String RUTA_RESERVAS = "src/main/resources/persistencia/reservas.ser";
 
     private static Cliente clienteAutenticado;
 
@@ -69,6 +74,12 @@ public class AgenciaDeViajes {
         leerGuias();
         for(GuiaTuristico guiaTuristico : guiasTuristicos){
             System.out.println(guiaTuristico);
+        }
+
+        this.reservas = new ArrayList<>();
+        leerReservas();
+        for(Reserva reserva : reservas){
+            System.out.println(reserva);
         }
     }
 
@@ -696,6 +707,16 @@ public class AgenciaDeViajes {
         return null;
     }
 
+
+    public GuiaTuristico obtenerGuiaTuristicoNombre(String nombre) {
+        for (GuiaTuristico guiaTuristico : guiasTuristicos) {
+            if (nombre.equals(guiaTuristico.getNombre())) {
+                return guiaTuristico;
+            }
+        }
+        return null;
+    }
+
     public PaqueteTuristico obtenerPaquete(String nombre) {
         for (PaqueteTuristico paqueteTuristico : paquetesTuristicos) {
             if (nombre.equals(paqueteTuristico.getNombre())) {
@@ -774,5 +795,116 @@ public class AgenciaDeViajes {
         }
     }
 
+    public Reserva registrarReserva(Cliente cliente, int cantidadDePersonas, PaqueteTuristico paqueteTuristico, GuiaTuristico guiaTuristico, Estado estado, LocalDate fechaDeSolicitud, LocalDate fechaDeViaje) throws CupoMaximoExcedidoException, FechaInvalidaException, AtributoVacioException, AtributoNegativoException, ReservaDuplicadaException{
+        int cupoMaximo = paqueteTuristico.getCupoMaximo();
+
+        for (Reserva reservaExistente : agenciaDeViajes.getReservas()) {
+            if (reservaExistente.getCliente().equals(cliente) && reservaExistente.getPaqueteTuristico().equals(paqueteTuristico)) {
+                throw new ReservaDuplicadaException("Ya tienes una reserva para este paquete.");
+            }
+        }
+
+        if (cliente == null) {
+            throw new AtributoVacioException("El cliente es obligatorio.");
+        }
+
+        if (cantidadDePersonas <= 0) {
+            throw new AtributoNegativoException("La cantidad de personas debe ser mayor que cero.");
+        }
+
+        if (guiaTuristico == null) {
+            throw new AtributoVacioException("El guía turístico es obligatorio.");
+        }
+
+        if (estado == null) {
+            throw new AtributoVacioException("El estado es obligatorio.");
+        }
+
+        if (fechaDeSolicitud == null) {
+            throw new AtributoVacioException("La fecha de solicitud es obligatoria.");
+        }
+
+        if (fechaDeViaje == null) {
+            throw new AtributoVacioException("La fecha de viaje es obligatoria.");
+        }
+
+        if (cantidadDePersonas > cupoMaximo) {
+            throw new CupoMaximoExcedidoException("La cantidad de personas excede el cupo máximo del paquete turístico.");
+        }
+
+        if (fechaDeSolicitud.isAfter(fechaDeViaje)) {
+            throw new FechaInvalidaException("La fecha de solicitud no puede ser posterior a la fecha del viaje.");
+        }
+
+        if (fechaDeSolicitud.equals(paqueteTuristico.getFechaInicio())) {
+            throw new FechaInvalidaException("La fecha de solicitud no puede ser el mismo día que la fecha de inicio del paquete.");
+        }
+
+        if (fechaDeSolicitud.isAfter(paqueteTuristico.getFechaFin())) {
+            throw new FechaInvalidaException("La fecha de solicitud no puede estar después de la fecha de fin del paquete.");
+        }
+
+        if (fechaDeSolicitud.isAfter(paqueteTuristico.getFechaInicio()) && fechaDeSolicitud.isBefore(paqueteTuristico.getFechaFin())) {
+            throw new FechaInvalidaException("La fecha de solicitud no puede estar entre la fecha de inicio y fin del paquete.");
+        }
+
+        if (!fechaDeViaje.equals(paqueteTuristico.getFechaInicio())) {
+            throw new FechaInvalidaException("La fecha de viaje debe ser el mismo día que la fecha de inicio del paquete.");
+        }
+
+        if (fechaDeViaje.isBefore(paqueteTuristico.getFechaInicio())) {
+            throw new FechaInvalidaException("La fecha de viaje no puede estar antes de la fecha de inicio del paquete.");
+        }
+
+        if (fechaDeViaje.isAfter(paqueteTuristico.getFechaFin())) {
+            throw new FechaInvalidaException("La fecha de viaje no puede estar después de la fecha de fin del paquete.");
+        }
+
+        if (fechaDeViaje.isAfter(paqueteTuristico.getFechaInicio()) && fechaDeViaje.isBefore(paqueteTuristico.getFechaFin())) {
+            throw new FechaInvalidaException("La fecha de viaje no puede estar entre la fecha de inicio y fin del paquete.");
+        }
+
+        Reserva reserva = Reserva.builder()
+                .Cliente(cliente)
+                .cantidadDePersonas(cantidadDePersonas)
+                .paqueteTuristico(paqueteTuristico)
+                .guiaTuristico(guiaTuristico)
+                .estado(estado)
+                .fechaDeSolicitud(fechaDeSolicitud)
+                .fechaDeViaje(fechaDeViaje)
+                .build();
+
+        reservas.add(reserva);
+        escribirReserva();
+        log.info("Se ha registrado un nueva reserva para el usuario con la identificación: "+cliente.getIdentificacion());
+
+        return reserva;
+    }
+
+    private void escribirReserva() {
+        try{
+            ArchivoUtils.serializarObjeto(RUTA_RESERVAS, reservas);
+        }catch (Exception e){
+            log.severe(e.getMessage());
+        }
+    }
+
+    private void leerReservas() {
+
+        try {
+            ArrayList<Reserva> lista = (ArrayList<Reserva>) ArchivoUtils.deserializarObjeto(RUTA_RESERVAS);
+            if (lista != null) {
+                this.reservas = lista;
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            log.severe(e.getMessage());
+        }
+    }
+
+    public void actualizarCupoPaquete(PaqueteTuristico paquete, int cantidadReserva) throws AtributoVacioException, AtributoNegativoException, FechaInvalidaException, InformacionRepetidaException {
+        int nuevoCupo = paquete.getCupoMaximo() - cantidadReserva;
+        paquete.setCupoMaximo(nuevoCupo);
+        actualizarPaquete(paquete.getNombre(), paquete.getDestinos(), paquete.getDuracion(), paquete.getServiciosAdicionales(), paquete.getPrecio(), nuevoCupo, paquete.getFechaInicio(), paquete.getFechaFin());
+    }
 
 }

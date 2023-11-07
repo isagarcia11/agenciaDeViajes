@@ -23,6 +23,12 @@ public class InicioClienteControlador implements Initializable, CambioIdiomaList
     @FXML
     private Button btnSalir;
 
+    @FXML
+    private Button btnRealizarReserva;
+
+    @FXML
+    private Button btnMisReservas;
+
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
     private final Propiedades propiedades = Propiedades.getInstance();
 
@@ -75,6 +81,24 @@ public class InicioClienteControlador implements Initializable, CambioIdiomaList
 
         if(evt.equals(btnSalir)){
             agenciaDeViajes.loadStage("/ventanas/login.fxml", event);
+        }
+    }
+
+    public void irARealizarReserva(ActionEvent event){
+
+        Object evt = event.getSource();
+
+        if(evt.equals(btnRealizarReserva)){
+            agenciaDeViajes.loadStage("/ventanas/registrarReserva.fxml", event);
+        }
+    }
+
+    public void irAMisReservas(ActionEvent event){
+
+        Object evt = event.getSource();
+
+        if(evt.equals(btnMisReservas)){
+            agenciaDeViajes.loadStage("/ventanas/ventanaReservasControlador.fxml", event);
         }
     }
 }

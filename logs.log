@@ -712,6 +712,7 @@ nov. 04, 2023 10:33:50 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeV
 INFO: Se crea una nueva instancia de la Agencia de viajes
 nov. 04, 2023 10:41:28 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
 INFO: Se crea una nueva instancia de la Agencia de viajes
+<<<<<<< HEAD
 nov. 06, 2023 9:21:28 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
 INFO: Se crea una nueva instancia de la Agencia de viajes
 nov. 06, 2023 9:21:50 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
@@ -810,3 +811,127 @@ nov. 07, 2023 10:20:15 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeV
 INFO: Se crea una nueva instancia de la Agencia de viajes
 nov. 07, 2023 10:25:40 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
 INFO: Se crea una nueva instancia de la Agencia de viajes
+=======
+nov. 04, 2023 4:54:59 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 4:54:59 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerReservas
+SEVERE: null
+nov. 04, 2023 4:57:48 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 4:57:49 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerReservas
+SEVERE: null
+nov. 04, 2023 5:16:21 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 5:16:22 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerReservas
+SEVERE: null
+nov. 04, 2023 5:17:32 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 5:17:32 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerReservas
+SEVERE: null
+nov. 04, 2023 5:18:42 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 5:18:42 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerReservas
+SEVERE: null
+nov. 04, 2023 5:23:46 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 5:23:46 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerReservas
+SEVERE: null
+nov. 04, 2023 5:25:57 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 5:25:58 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerReservas
+SEVERE: null
+nov. 04, 2023 5:31:04 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 5:31:05 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerReservas
+SEVERE: null
+nov. 04, 2023 5:32:11 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes escribirReserva
+SEVERE: co.edu.uniquindio.agenciaDeViajes.modelo.Cliente
+nov. 04, 2023 5:32:11 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarReserva
+INFO: Se ha registrado un nueva reserva para el usuario con la identificación: 29227599
+nov. 04, 2023 5:32:33 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 5:32:34 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerReservas
+SEVERE: writing aborted; java.io.NotSerializableException: co.edu.uniquindio.agenciaDeViajes.modelo.Cliente
+nov. 04, 2023 5:34:48 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 5:34:48 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerReservas
+SEVERE: null
+nov. 04, 2023 5:39:24 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarReserva
+INFO: Se ha registrado un nueva reserva para el usuario con la identificación: 29227599
+nov. 04, 2023 5:39:38 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 5:46:45 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 5:46:46 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerReservas
+SEVERE: null
+nov. 04, 2023 5:47:28 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarReserva
+INFO: Se ha registrado un nueva reserva para el usuario con la identificación: 29227599
+nov. 04, 2023 5:47:43 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 6:32:15 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 6:34:05 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarReserva
+INFO: Se ha registrado un nueva reserva para el usuario con la identificación: 29227599
+nov. 04, 2023 6:34:05 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarPaquete
+INFO: Se ha actualizado al paquete con nombre: Paquete 1
+nov. 04, 2023 6:34:26 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 7:00:24 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 7:11:00 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 7:13:05 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 7:15:36 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarPaquete
+INFO: Se ha actualizado al paquete con nombre: Paquete 2
+nov. 04, 2023 7:15:51 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 7:17:01 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarPaquete
+INFO: Se ha actualizado al paquete con nombre: Paquete 2
+nov. 04, 2023 7:17:15 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 7:18:33 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 7:19:37 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarReserva
+INFO: Se ha registrado un nueva reserva para el usuario con la identificación: 16282664
+nov. 04, 2023 7:19:37 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarPaquete
+INFO: Se ha actualizado al paquete con nombre: Paquete 2
+nov. 04, 2023 7:19:52 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 8:21:29 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 8:21:30 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerReservas
+SEVERE: null
+nov. 04, 2023 8:23:42 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarReserva
+INFO: Se ha registrado un nueva reserva para el usuario con la identificación: 29227599
+nov. 04, 2023 8:23:42 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarPaquete
+INFO: Se ha actualizado al paquete con nombre: Paquete 2
+nov. 04, 2023 8:25:22 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 8:28:08 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 8:28:53 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarPaquete
+INFO: Se ha actualizado al paquete con nombre: Paquete 1
+nov. 04, 2023 8:29:14 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarPaquete
+INFO: Se ha actualizado al paquete con nombre: Paquete 2
+nov. 04, 2023 8:29:37 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 8:30:19 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarReserva
+INFO: Se ha registrado un nueva reserva para el usuario con la identificación: 29227599
+nov. 04, 2023 8:30:19 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarPaquete
+INFO: Se ha actualizado al paquete con nombre: Paquete 2
+nov. 04, 2023 8:31:11 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 8:31:35 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarReserva
+INFO: Se ha registrado un nueva reserva para el usuario con la identificación: 16282664
+nov. 04, 2023 8:31:35 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarPaquete
+INFO: Se ha actualizado al paquete con nombre: Paquete 2
+nov. 04, 2023 8:34:44 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 8:35:59 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 04, 2023 8:38:12 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarReserva
+INFO: Se ha registrado un nueva reserva para el usuario con la identificación: 29227599
+nov. 04, 2023 8:38:12 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarPaquete
+INFO: Se ha actualizado al paquete con nombre: Paquete 2
+>>>>>>> c3cc08e45431991d73aa78c4cf64343a5beb8f4e

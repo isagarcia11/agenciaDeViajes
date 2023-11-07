@@ -52,8 +52,10 @@ public class PaquetesControlador implements Initializable, CambioIdiomaListener 
     private Button btnAtras;
 
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
+
     private final Propiedades propiedades = Propiedades.getInstance();
     @Override
+
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Inicialización normal del controlador
 
