@@ -89,7 +89,7 @@ public class ModificarGuiaControlador implements Initializable, CambioIdiomaList
             txtIdentificacion.setText(guiaTuristico.getIdentificacion());
             txtExperiencia.setText(String.valueOf(guiaTuristico.getExperiencia()));
         } else {
-            mostrarMensaje(Alert.AlertType.INFORMATION, "El guia turistico no está registrado");
+            mostrarMensaje(Alert.AlertType.INFORMATION, propiedades.getResourceBundle().getString("TextoGuia3"));
         }
     }
 
@@ -103,7 +103,7 @@ public class ModificarGuiaControlador implements Initializable, CambioIdiomaList
                 comboIdiomasDisponibles.setValue(null); // Limpia la selección del ComboBox
                 comboIdiomasGuia.setItems(FXCollections.observableArrayList(guiaTuristico.getIdiomas()));
             } else {
-                mostrarMensaje(Alert.AlertType.WARNING, "Este idioma ya ha sido asignado al guía.");
+                mostrarMensaje(Alert.AlertType.WARNING, propiedades.getResourceBundle().getString("TextoGuia4"));
             }
         }
     }
@@ -113,7 +113,7 @@ public class ModificarGuiaControlador implements Initializable, CambioIdiomaList
         if(txtIdentificacion.getText() != null){
             agenciaDeViajes.eliminarGuiaTuristico(txtIdentificacion.getText());
         } else {
-            mostrarMensaje(Alert.AlertType.INFORMATION, "Escribir la identificacion del guia turistico");
+            mostrarMensaje(Alert.AlertType.INFORMATION, propiedades.getResourceBundle().getString("TextoGuia5"));
         }
 
     }
@@ -127,7 +127,7 @@ public class ModificarGuiaControlador implements Initializable, CambioIdiomaList
             // Actualizar ComboBox de idiomas del guía
             comboIdiomasGuia.setItems(FXCollections.observableArrayList(guiaTuristico.getIdiomas()));
 
-            mostrarMensaje(Alert.AlertType.INFORMATION, "Se ha eliminado el idioma: " + idiomaSeleccionado);
+            mostrarMensaje(Alert.AlertType.INFORMATION, propiedades.getResourceBundle().getString("TextoGuia6") + idiomaSeleccionado);
         }
     }
 
@@ -141,7 +141,7 @@ public class ModificarGuiaControlador implements Initializable, CambioIdiomaList
                     Float.parseFloat(txtExperiencia.getText())
             );
 
-            mostrarMensaje(Alert.AlertType.INFORMATION, "Se ha actualizado correctamente el guía turístico: " + guiaTuristico.getNombre());
+            mostrarMensaje(Alert.AlertType.INFORMATION, propiedades.getResourceBundle().getString("TextoGuia7") + guiaTuristico.getNombre());
         } catch (AtributoVacioException | InformacionRepetidaException | AtributoNegativoException e) {
             mostrarMensaje(Alert.AlertType.ERROR, e.getMessage());
         }

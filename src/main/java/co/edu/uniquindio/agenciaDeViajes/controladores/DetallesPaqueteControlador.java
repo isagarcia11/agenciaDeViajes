@@ -196,7 +196,7 @@ public class DetallesPaqueteControlador implements Initializable, CambioIdiomaLi
         btnAnterior.setDisable(indiceImagenActual == 0);
         btnSiguiente.setDisable(indiceImagenActual == rutasImagenes.size() - 1);
 
-        System.out.println("Ruta de la imagen: " + rutaImagen);
+        System.out.println(propiedades.getResourceBundle().getString("TextoDetalles") + rutaImagen);
     }
 
     public void volverSeleccionarPaquete(ActionEvent event){

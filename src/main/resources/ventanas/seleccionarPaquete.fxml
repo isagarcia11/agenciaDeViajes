@@ -28,7 +28,7 @@
                 <TableColumn fx:id="columnFechaFin" prefWidth="120.66668701171875" text="Fecha Fin" />
             </columns>
         </TableView>
-      <Button fx:id="btnDetallesPaquete" layoutX="453.0" layoutY="386.0" mnemonicParsing="false" onAction="#mostrarDetalle" text="DETALLES DEL PAQUETE">
+      <Button fx:id="btnDetallesPaquete" layoutX="312.0" layoutY="386.0" mnemonicParsing="false" onAction="#mostrarDetalle" text="DETALLES DEL PAQUETE">
          <font>
             <Font name="Franklin Gothic Medium" size="15.0" />
          </font>
@@ -38,5 +38,10 @@
             <Image url="@../imagenes/FILTRO.png" />
          </image>
       </ImageView>
+      <Button fx:id="btnAtras" layoutX="524.0" layoutY="388.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="179.0" text="ATRÁS">
+         <font>
+            <Font name="Franklin Gothic Medium" size="15.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

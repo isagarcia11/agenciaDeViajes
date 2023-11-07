@@ -145,7 +145,7 @@ public class ModificarPaquetesTuristicosControlador implements Initializable, Ca
             dpFechaFin.setValue(paqueteTuristico.getFechaFin());
 
         } else {
-            mostrarMensaje(Alert.AlertType.INFORMATION, "El paquete turístico no está registrado");
+            mostrarMensaje(Alert.AlertType.INFORMATION, propiedades.getResourceBundle().getString("TextoPaqueteS"));
         }
     }
 
@@ -171,7 +171,7 @@ public class ModificarPaquetesTuristicosControlador implements Initializable, Ca
                     dpFechaInicio.getValue(),
                     dpFechaFin.getValue()
             );
-            mostrarMensaje(Alert.AlertType.INFORMATION, "Se ha actualizado correctamente el paquete turístico: " + paqueteTuristico.getNombre());
+            mostrarMensaje(Alert.AlertType.INFORMATION, propiedades.getResourceBundle().getString("TextoPaqueteS1") + paqueteTuristico.getNombre());
         } catch (Exception e) {
             mostrarMensaje(Alert.AlertType.ERROR, e.getMessage());
         }
@@ -187,7 +187,7 @@ public class ModificarPaquetesTuristicosControlador implements Initializable, Ca
                 Destino destino = iter.next();
                 if(destino.getNombre().equals(nombreSeleccionado)){
                     iter.remove(); // Usamos el iterador para eliminar el destino de la lista
-                    mostrarMensaje(Alert.AlertType.INFORMATION, "Se ha eliminado el destino");
+                    mostrarMensaje(Alert.AlertType.INFORMATION, propiedades.getResourceBundle().getString("TextoPaqueteS2"));
                 }
             }
 
@@ -216,12 +216,12 @@ public class ModificarPaquetesTuristicosControlador implements Initializable, Ca
                 if (nuevoDestino != null) {
                     destinos.add(nuevoDestino);
                     llenarComboBox();
-                    mostrarMensaje(Alert.AlertType.INFORMATION, "Se ha asignado el destino " + nombreSeleccionado + " al paquete");
+                    mostrarMensaje(Alert.AlertType.INFORMATION, propiedades.getResourceBundle().getString("TextoPaqueteS3") + nombreSeleccionado + propiedades.getResourceBundle().getString("TextoPaqueteTuristico2"));
                 } else {
-                    mostrarMensaje(Alert.AlertType.ERROR, "El destino no se encontró en la lista de destinos disponibles");
+                    mostrarMensaje(Alert.AlertType.ERROR, propiedades.getResourceBundle().getString("TextoPaqueteS4"));
                 }
             } else {
-                mostrarMensaje(Alert.AlertType.ERROR, "El destino " + nombreSeleccionado + " ya hace parte del paquete");
+                mostrarMensaje(Alert.AlertType.ERROR, propiedades.getResourceBundle().getString("TextoPaqueteTuristico3") + nombreSeleccionado +propiedades.getResourceBundle().getString("TextoPaqueteS5"));
             }
         }
     }

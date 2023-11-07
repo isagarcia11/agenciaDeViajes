@@ -68,7 +68,7 @@ public class RegistrarClienteControlador implements Initializable, CambioIdiomaL
                     txtDireccion.getText()
             );
 
-            mostrarMensaje(Alert.AlertType.INFORMATION, "Se ha registrado correctamente el cliente: "+cliente.getNombre());
+            mostrarMensaje(Alert.AlertType.INFORMATION, propiedades.getResourceBundle().getString("TextoCliente1")+cliente.getNombre());
         } catch (AtributoVacioException | InformacionRepetidaException e){
             mostrarMensaje(Alert.AlertType.ERROR, e.getMessage());
         }

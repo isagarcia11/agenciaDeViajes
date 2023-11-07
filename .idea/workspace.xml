@@ -5,26 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="386293a3-08f4-4876-b227-d3b9452894c6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/VentanaBaliControlador.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/VentanaPaqueteEuropa.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/VentanaPaqueteIslas.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/VentanaParisControlador.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/VentanaRomaControlador.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/VentanaSantoriniControlador.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/imagenes/PAQUETEEUROPA.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/imagenes/PAQUETEISLAS.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ventanas/ventanaBali.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ventanas/ventanaPaqueteEuropa.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ventanas/ventanaPaqueteIslas.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ventanas/ventanaParis.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ventanas/ventanaRoma.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ventanas/ventanaSantorini.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/ClientesControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/ClientesControlador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/CrearDestinoControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/CrearDestinoControlador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/CrearGuiaTuristicoControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/CrearGuiaTuristicoControlador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/CrearPaqueteTuristicoControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/CrearPaqueteTuristicoControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/DestinosControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/DestinosControlador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/DetallesPaqueteControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/DetallesPaqueteControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/GuiasControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/GuiasControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/InicioAdminControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/InicioAdminControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/InicioClienteControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/InicioClienteControlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/InicioControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/InicioControlador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/LoginControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/LoginControlador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/ModificarClienteControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/ModificarClienteControlador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/ModificarDestinoControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/ModificarDestinoControlador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/ModificarGuiaControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/ModificarGuiaControlador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/ModificarPaquetesTuristicosControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/ModificarPaquetesTuristicosControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/PaquetesControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/PaquetesControlador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/RegistrarClienteControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/RegistrarClienteControlador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/SeleccionarPaqueteControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/SeleccionarPaqueteControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ventanas/modificarGuia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ventanas/modificarGuia.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/textos_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/textos_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/textos_es.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/textos_es.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ventanas/inicio.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ventanas/inicio.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ventanas/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ventanas/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ventanas/seleccionarPaquete.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ventanas/seleccionarPaquete.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,16 +64,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/hp/IdeaProjects/agenciaDeViajes",
-    "node.js.selected.package.tslint": "(autodetect)"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Isabella García/IdeaProjects/agenciaDeViajes/src/main/resources/ventanas/inicio.fxml&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Isabella García\IdeaProjects\agenciaDeViajes\src\main\resources\imagenes" />
@@ -91,6 +108,12 @@
       <workItem from="1698421323605" duration="18000" />
       <workItem from="1698437452207" duration="594000" />
       <workItem from="1699111089013" duration="20392000" />
+      <workItem from="1699260213036" duration="14893000" />
+      <workItem from="1699304563814" duration="20000" />
+      <workItem from="1699359069633" duration="1077000" />
+      <workItem from="1699379988184" duration="6630000" />
+      <workItem from="1699395594712" duration="29000" />
+      <workItem from="1699395900909" duration="123000" />
     </task>
     <servers />
   </component>

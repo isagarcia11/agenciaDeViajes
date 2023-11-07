@@ -121,7 +121,7 @@ public class CrearPaqueteTuristicoControlador implements Initializable, CambioId
                     dpFechaInicio.getValue(),
                     dpFechaFin.getValue()
             );
-            mostrarMensaje(Alert.AlertType.INFORMATION, "Se ha creado el paquete "+txtNombrePaquete.getText());
+            mostrarMensaje(Alert.AlertType.INFORMATION, propiedades.getResourceBundle().getString("TextoPaqueteTuristico")+txtNombrePaquete.getText());
         }catch (Exception e){
             mostrarMensaje(Alert.AlertType.ERROR, e.getMessage());
         }
@@ -136,9 +136,9 @@ public class CrearPaqueteTuristicoControlador implements Initializable, CambioId
                 if (destino.getNombre().equals(nombreSeleccionado)) {
                     if (!destinosEncontrados.contains(destino)) {
                         destinosEncontrados.add(destino);
-                        mostrarMensaje(Alert.AlertType.INFORMATION, "Se ha asignado el destino "+nombreSeleccionado+" al paquete "+txtNombrePaquete.getText());
+                        mostrarMensaje(Alert.AlertType.INFORMATION, propiedades.getResourceBundle().getString("TextoPaqueteTuristico1")+nombreSeleccionado+propiedades.getResourceBundle().getString("TextoPaqueteTuristico2")+txtNombrePaquete.getText());
                     } else {
-                        mostrarMensaje(Alert.AlertType.ERROR, "El destino "+nombreSeleccionado+" ya hace parte del paquete");
+                        mostrarMensaje(Alert.AlertType.ERROR, propiedades.getResourceBundle().getString("TextoPaqueteTuristico3")+nombreSeleccionado+propiedades.getResourceBundle().getString("TextoPaqueteTuristico4"));
                     }
                 }
             }

@@ -29,6 +29,9 @@ public class LoginControlador implements Initializable, CambioIdiomaListener {
     private Button btnRegistrarse;
 
     @FXML
+    private Button btnAtras;
+
+    @FXML
     private Label banner2;
 
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
@@ -59,6 +62,7 @@ public class LoginControlador implements Initializable, CambioIdiomaListener {
         btnIniciar.setText(propiedades.getResourceBundle().getString("TextoIniciarSesion"));
         btnRegistrarse.setText(propiedades.getResourceBundle().getString("TextoRegistrarse"));
         banner2.setText(propiedades.getResourceBundle().getString("TextoBanner2"));
+        btnAtras.setText(propiedades.getResourceBundle().getString("TextoAtras"));
 
     }
 
@@ -73,9 +77,9 @@ public class LoginControlador implements Initializable, CambioIdiomaListener {
                     if(cliente != null){
                         agenciaDeViajes.setClienteAutenticado(cliente);
                         agenciaDeViajes.loadStage("/ventanas/inicioCliente.fxml", event);
-                        mostrarMensaje(Alert.AlertType.INFORMATION, "El usuario "+usuarioCliente.getText()+" ha ingresado correctamente");
+                        mostrarMensaje(Alert.AlertType.INFORMATION, propiedades.getResourceBundle().getString("TextoUsuario1")+usuarioCliente.getText()+propiedades.getResourceBundle().getString("TextoLogin"));
                     } else {
-                        mostrarMensaje(Alert.AlertType.ERROR, "El usuario o contraseña son incorrectos");
+                        mostrarMensaje(Alert.AlertType.ERROR, propiedades.getResourceBundle().getString("TextoLogin1"));
                     }
                 }
             }
@@ -96,5 +100,12 @@ public class LoginControlador implements Initializable, CambioIdiomaListener {
         alert.setHeaderText(null);
         alert.setContentText(mensaje);
         alert.show();
+    }
+    public void atras(ActionEvent event) {
+        Object evt = event.getSource();
+        if (evt.equals(btnAtras)) {
+            agenciaDeViajes.loadStage("/ventanas/inicio.fxml", event);
+        }
+
     }
 }
