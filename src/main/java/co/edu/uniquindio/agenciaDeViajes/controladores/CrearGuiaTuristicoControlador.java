@@ -97,11 +97,11 @@ public class CrearGuiaTuristicoControlador implements Initializable, CambioIdiom
                     comentarios
             );
 
-            mostrarMensaje(Alert.AlertType.INFORMATION, "Se ha registrado correctamente el guía turístico: "+guia.getNombre());
+            mostrarMensaje(Alert.AlertType.INFORMATION, propiedades.getResourceBundle().getString("TextoCrearGuia1")+guia.getNombre());
         } catch (AtributoVacioException | InformacionRepetidaException | AtributoNegativoException e){
             mostrarMensaje(Alert.AlertType.ERROR, e.getMessage());
         } catch (NumberFormatException e){
-            mostrarMensaje(Alert.AlertType.ERROR, "La experiencia debe ser un número válido.");
+            mostrarMensaje(Alert.AlertType.ERROR, propiedades.getResourceBundle().getString("TextoCrearGuia2"));
         }
     }
 

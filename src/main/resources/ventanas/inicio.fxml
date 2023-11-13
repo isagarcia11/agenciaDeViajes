@@ -23,7 +23,7 @@
          </font>
       </Button>
       <Separator layoutX="2.0" layoutY="77.0" prefHeight="0.0" prefWidth="917.0" />
-      <Label fx:id="banner" layoutX="61.0" layoutY="103.0" text="VISITA ESTOS MARAVILLOSOS DESTINOS EN EL 2023 A PRECIOS MUY BAJOS ">
+      <Label fx:id="banner" layoutX="61.0" layoutY="102.0" text="VISITA ESTOS MARAVILLOSOS DESTINOS EN EL 2023 A PRECIOS MUY BAJOS ">
          <font>
             <Font name="Franklin Gothic Medium" size="24.0" />
          </font>
@@ -37,7 +37,5 @@
       <Button fx:id="btnAnteriorPaquete" layoutX="499.0" layoutY="469.0" text="Anterior Paquete" />
       <Button fx:id="btnSiguientePaquete" layoutX="620.0" layoutY="469.0" text="Siguiente Paquete" />
       <Button fx:id="nombrePaquete" layoutX="581.0" layoutY="166.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="113.0" />
-
-
    </children>
 </AnchorPane>

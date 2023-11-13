@@ -83,7 +83,7 @@ public class ModificarDestinoControlador implements Initializable, CambioIdiomaL
             txtImagen.setText(String.join("," , destino.getImagenes()));
             cbxClima.getSelectionModel().select(destino.getClima());
         } else {
-            mostrarMensaje(Alert.AlertType.INFORMATION, "El destino no esta registrado");
+            mostrarMensaje(Alert.AlertType.INFORMATION, propiedades.getResourceBundle().getString("TextoDestino"));
         }
     }
 
@@ -100,7 +100,7 @@ public class ModificarDestinoControlador implements Initializable, CambioIdiomaL
                     destino.getComentarios()
             );
 
-            mostrarMensaje(Alert.AlertType.INFORMATION, "Se ha actualizado correctamente el destino: "+destino.getNombre());
+            mostrarMensaje(Alert.AlertType.INFORMATION, propiedades.getResourceBundle().getString("TextoDestino1")+destino.getNombre());
         } catch (AtributoVacioException | InformacionRepetidaException e){
             mostrarMensaje(Alert.AlertType.ERROR, e.getMessage());
         }

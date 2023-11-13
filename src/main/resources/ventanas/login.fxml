@@ -27,4 +27,9 @@
          <Font name="Franklin Gothic Medium" size="14.0" />
       </font>
    </Button>
+   <Button fx:id="btnAtras" layoutX="14.0" layoutY="20.0" mnemonicParsing="false" onAction="#atras" text="ATRÁS">
+      <font>
+         <Font name="Franklin Gothic Medium" size="14.0" />
+      </font>
+   </Button>
 </AnchorPane>

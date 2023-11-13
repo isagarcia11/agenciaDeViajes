@@ -87,7 +87,7 @@ public class ModificarClienteControlador implements Initializable, CambioIdiomaL
                     destinos
             );
 
-            mostrarMensaje(Alert.AlertType.INFORMATION, "Se ha actualizado correctamente el cliente: "+cliente.getNombre());
+            mostrarMensaje(Alert.AlertType.INFORMATION, propiedades.getResourceBundle().getString("TextoCliente")+cliente.getNombre());
         } catch (AtributoVacioException | InformacionRepetidaException e){
             mostrarMensaje(Alert.AlertType.ERROR, e.getMessage());
         }

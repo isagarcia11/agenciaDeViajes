@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.agenciaDeViajes.controladores.VentanaRomaControlador">
+    <children>
+        <Label fx:id="tituloRoma" layoutX="280.0" layoutY="22.0" text="Roma">
+            <font>
+                <Font name="Franklin Gothic Medium" size="24.0" />
+            </font>
+        </Label>
+        <ImageView fitHeight="273.0" fitWidth="187.0" layoutX="24.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../imagenes/roma.jpg" />
+            </image>
+        </ImageView>
+        <Separator layoutX="-1.0" layoutY="65.0" prefHeight="10.0" prefWidth="600.0" />
+        <Label fx:id="nombre" layoutX="238.0" layoutY="107.0" text="Nombre:">
+            <font>
+                <Font name="Franklin Gothic Medium" size="18.0" />
+            </font>
+        </Label>
+        <Label fx:id="ciudad" layoutX="240.0" layoutY="161.0" text="Ciudad: ">
+            <font>
+                <Font name="Franklin Gothic Medium" size="18.0" />
+            </font>
+        </Label>
+        <Label fx:id="descripcion" layoutX="242.0" layoutY="264.0" text="Descripción:">
+            <font>
+                <Font name="Franklin Gothic Medium" size="18.0" />
+            </font>
+        </Label>
+        <Label fx:id="clima" layoutX="240.0" layoutY="212.0" text="Clima:">
+            <font>
+                <Font name="Franklin Gothic Medium" size="18.0" />
+            </font>
+        </Label>
+        <TextArea fx:id="descripcionRoma" editable="false" layoutX="357.0" layoutY="264.0" prefHeight="45.0" prefWidth="182.0" text="Roma, la capital de Italia, es una extensa ciudad cosmopolita que tiene a la vista casi 3,000 años de arte, arquitectura y cultura de influencia mundial. Las ruinas antiguas como las del Foro y el Coliseo evocan el poder del antiguo Imperio Romano.">
+            <font>
+                <Font name="Franklin Gothic Medium" size="14.0" />
+            </font>
+        </TextArea>
+        <Button fx:id="btnAtras" layoutX="325.0" layoutY="345.0" mnemonicParsing="false" onAction="#atras" text="ATRÁS">
+            <font>
+                <Font name="Franklin Gothic Medium" size="15.0" />
+            </font>
+        </Button>
+        <TextField fx:id="roma" editable="false" layoutX="337.0" layoutY="106.0" />
+        <TextField fx:id="ciudadRoma" editable="false" layoutX="337.0" layoutY="160.0" />
+        <TextField fx:id="mediterraneo" editable="false" layoutX="337.0" layoutY="210.0" />
+    </children>
+
+</AnchorPane>

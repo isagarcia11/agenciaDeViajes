@@ -81,7 +81,8 @@ public class CrearDestinoControlador implements Initializable, CambioIdiomaListe
                     comentarios
             );
 
-            mostrarMensaje(Alert.AlertType.INFORMATION, "Se ha creado corretamente el destino: "+destino.getNombre());
+            mostrarMensaje(Alert.AlertType.INFORMATION, propiedades.getResourceBundle().getString("TextoCrearDestino1")
+                    +destino.getNombre());
         } catch (AtributoVacioException | InformacionRepetidaException e){
             mostrarMensaje(Alert.AlertType.ERROR, e.getMessage());
         }

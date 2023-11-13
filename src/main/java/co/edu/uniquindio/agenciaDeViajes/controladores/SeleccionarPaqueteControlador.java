@@ -71,7 +71,7 @@ public class SeleccionarPaqueteControlador implements Initializable, CambioIdiom
     private TableView<PaqueteTuristico> tablaPaquetes;
 
     @FXML
-    private Button btnDetallesPaquete;
+    private Button btnDetallesPaquete, btnAtras;
 
     private ObservableList<PaqueteTuristico> paquetesList = FXCollections.observableArrayList();
 
@@ -135,6 +135,7 @@ public class SeleccionarPaqueteControlador implements Initializable, CambioIdiom
         filtroServiciosAdicionales.setPromptText(propiedades.getResourceBundle().getString("TextoServAdicionales"));
         filtroFechaInicio.setPromptText(propiedades.getResourceBundle().getString("TextoFechaInicio"));
         filtroFechaFin.setPromptText(propiedades.getResourceBundle().getString("TextoFechaFin"));
+        btnAtras.setText(propiedades.getResourceBundle().getString("TextoAtras"));
     }
 
 
@@ -247,6 +248,14 @@ public class SeleccionarPaqueteControlador implements Initializable, CambioIdiom
         alert.setHeaderText(null);
         alert.setContentText(mensaje);
         alert.show();
+    }
+
+    public void atras(ActionEvent event) {
+        Object evt = event.getSource();
+        if (evt.equals(btnAtras)) {
+            agenciaDeViajes.loadStage("/ventanas/inicioCliente.fxml", event);
+        }
+
     }
 
 }
