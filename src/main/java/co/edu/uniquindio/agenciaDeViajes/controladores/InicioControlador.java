@@ -22,13 +22,10 @@ import java.util.ResourceBundle;
 public class InicioControlador implements Initializable {
 
     @FXML
-    private Button iniciarSesion, cambiarIdioma, btnSantorini,btnRoma,btnParis, btnBali;
+    private Button iniciarSesion, cambiarIdioma;
 
     @FXML
-    private Label banner, banner3;
-
-    @FXML
-    private Button btnPaquete1, btnPaquete2;
+    private Label banner;
 
     @FXML
     private ImageView imagen;
@@ -43,6 +40,9 @@ public class InicioControlador implements Initializable {
     private Button botonAtras;
 
     @FXML
+    private Button btnSiguientePaquete, btnAnteriorPaquete;
+
+    @FXML
     private List<PaqueteTuristico> listaPaquetes;
 
     @FXML
@@ -51,8 +51,6 @@ public class InicioControlador implements Initializable {
     @FXML
     private ImageView imagenDestino;
 
-    @FXML
-    private Button btnAnteriorPaquete, btnSiguientePaquete;
 
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
     private final Propiedades propiedades = Propiedades.getInstance();
@@ -166,13 +164,11 @@ public class InicioControlador implements Initializable {
         iniciarSesion.setText(propiedades.getResourceBundle().getString("TextoIniciarSesion"));
         cambiarIdioma.setText(propiedades.getResourceBundle().getString("TextoCambiarIdioma"));
         banner.setText(propiedades.getResourceBundle().getString("TextoBanner"));
-        banner3.setText(propiedades.getResourceBundle().getString("TextoBanner3"));
-        btnBali.setText(propiedades.getResourceBundle().getString("TextoBali"));
-        btnParis.setText(propiedades.getResourceBundle().getString("TextoParis"));
-        btnRoma.setText(propiedades.getResourceBundle().getString("TextoRoma"));
-        btnSantorini.setText(propiedades.getResourceBundle().getString("TextoSantorini"));
-        btnPaquete1.setText(propiedades.getResourceBundle().getString("TextoPaquete1"));
-        btnPaquete2.setText(propiedades.getResourceBundle().getString("TextoPaquete2"));
+        botonAtras.setText(propiedades.getResourceBundle().getString("TextoAtras"));
+        botonSiguiente.setText(propiedades.getResourceBundle().getString("TextoSiguiente"));
+        btnAnteriorPaquete.setText(propiedades.getResourceBundle().getString("TextoAnteriorPaquete"));
+        btnSiguientePaquete.setText(propiedades.getResourceBundle().getString("TextoSiguientePaquete"));
+
     }
 
 
@@ -186,47 +182,7 @@ public class InicioControlador implements Initializable {
         }
     }
 
-    public void irSantorini(ActionEvent event){
-        Object evt = event.getSource();
-        if(evt.equals(btnSantorini)){
-            agenciaDeViajes.loadStage("/ventanas/ventanaSantorini.fxml", event);
-        }
 
-    }
-    public void irParis(ActionEvent event){
-        Object evt = event.getSource();
-        if(evt.equals(btnParis)){
-            agenciaDeViajes.loadStage("/ventanas/ventanaParis.fxml", event);
-        }
 
-    }
-    public void irBali(ActionEvent event){
-        Object evt = event.getSource();
-        if(evt.equals(btnBali)){
-            agenciaDeViajes.loadStage("/ventanas/ventanaBali.fxml", event);
-        }
-
-    }
-    public void irRoma(ActionEvent event){
-        Object evt = event.getSource();
-        if(evt.equals(btnRoma)){
-            agenciaDeViajes.loadStage("/ventanas/ventanaRoma.fxml", event);
-        }
-
-    }
-    public void siguienteVentana(ActionEvent event){
-        Object evt = event.getSource();
-        if(evt.equals(btnPaquete1)){
-            agenciaDeViajes.loadStage("/ventanas/ventanaPaqueteEuropa.fxml", event);
-        }
-
-    }
-    public void siguienteVentana2(ActionEvent event){
-        Object evt = event.getSource();
-        if(evt.equals(btnPaquete2)){
-            agenciaDeViajes.loadStage("/ventanas/ventanaPaqueteIslas.fxml", event);
-        }
-
-    }
 
 }

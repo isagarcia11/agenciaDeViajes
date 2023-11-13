@@ -2,12 +2,17 @@ package co.edu.uniquindio.agenciaDeViajes.controladores;
 
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.GuiaTuristico;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaEvent;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaListener;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -16,13 +21,26 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-public class EstadisticasGuiaTuristicoControlador implements Initializable {
+public class EstadisticasGuiaTuristicoControlador implements Initializable, CambioIdiomaListener {
 
     @FXML
     private BarChart<String, Number> graficoGuias;
 
+    @FXML
+    private Button btnAtras;
+
+    public AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
+    private final Propiedades propiedades = Propiedades.getInstance();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Inicialización normal del controlador
+
+        // Registra este controlador como un escuchador de cambios de idioma
+        Propiedades.getInstance().addCambioIdiomaListener(this);
+
+        // Actualiza las cadenas de texto según el idioma actual
+        actualizarTextos();
         // Obtener la lista de guías turísticos
         List<GuiaTuristico> guias = AgenciaDeViajes.getInstance().getGuiasTuristicos();
 
@@ -49,6 +67,25 @@ public class EstadisticasGuiaTuristicoControlador implements Initializable {
         xAxis.setLabel("Guía Turístico");
         NumberAxis yAxis = (NumberAxis) graficoGuias.getYAxis();
         yAxis.setLabel("Promedio de Calificaciones");
+    }
+    @Override
+    public void onCambioIdioma(CambioIdiomaEvent evento) {
+        // Se llama cuando se cambia el idioma
+
+        // Actualiza las cadenas de texto según el nuevo idioma
+        actualizarTextos();
+    }
+
+    private void actualizarTextos() {
+        btnAtras.setText(propiedades.getResourceBundle().getString("TextoAtras"));
+
+    }
+
+    public void atras(ActionEvent event){
+        Object evt = event.getSource();
+        if(evt.equals(btnAtras)){
+            agenciaDeViajes.loadStage("/ventanas/inicioAdmin.fxml", event);
+        }
     }
 }
 

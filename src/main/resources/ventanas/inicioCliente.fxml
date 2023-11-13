@@ -5,13 +5,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.agenciaDeViajes.controladores.InicioClienteControlador">
+<AnchorPane prefHeight="400.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.agenciaDeViajes.controladores.InicioClienteControlador">
    <children>
-      <Button fx:id="btnModificarDatos" layoutX="149.0" layoutY="300.0" mnemonicParsing="false" onAction="#modificarDatos" text="MODIFICAR DATOS">
+      <Button fx:id="btnModificarDatos" layoutX="146.0" layoutY="272.0" mnemonicParsing="false" onAction="#modificarDatos" prefHeight="29.0" prefWidth="150.0" text="MODIFICAR DATOS">
          <font>
             <Font name="Franklin Gothic Medium" size="15.0" />
          </font></Button>
-      <Button fx:id="btnPaquetes" layoutX="162.0" layoutY="141.0" mnemonicParsing="false" onAction="#irAPaquetes" prefHeight="15.0" prefWidth="118.0" text="PAQUETES">
+      <Button fx:id="btnPaquetes" layoutX="141.0" layoutY="141.0" mnemonicParsing="false" onAction="#irAPaquetes" prefHeight="29.0" prefWidth="150.0" text="PAQUETES">
          <font>
             <Font name="Franklin Gothic Medium" size="15.0" />
          </font>
@@ -21,12 +21,12 @@
             <Font name="Franklin Gothic Medium" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="btnRealizarReserva" layoutX="145.0" layoutY="186.0" mnemonicParsing="false" onAction="#irARealizarReserva" text="REALIZAR RESERVA">
+      <Button fx:id="btnRealizarReserva" layoutX="141.0" layoutY="186.0" mnemonicParsing="false" onAction="#irARealizarReserva" text="REALIZAR RESERVA">
          <font>
             <Font name="Franklin Gothic Medium" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="btnMisReservas" layoutX="161.0" layoutY="228.0" mnemonicParsing="false" onAction="#irAMisReservas" text="MIS RESERVAS">
+      <Button fx:id="btnMisReservas" layoutX="144.0" layoutY="228.0" mnemonicParsing="false" onAction="#irAMisReservas" prefHeight="29.0" prefWidth="150.0" text="MIS RESERVAS">
          <font>
             <Font name="Franklin Gothic Medium" size="15.0" />
          </font>

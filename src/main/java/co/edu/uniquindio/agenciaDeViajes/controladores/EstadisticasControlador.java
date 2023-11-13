@@ -1,28 +1,39 @@
 package co.edu.uniquindio.agenciaDeViajes.controladores;
 
-import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
-import co.edu.uniquindio.agenciaDeViajes.modelo.Destino;
-import co.edu.uniquindio.agenciaDeViajes.modelo.PaqueteTuristico;
-import co.edu.uniquindio.agenciaDeViajes.modelo.Reserva;
+import co.edu.uniquindio.agenciaDeViajes.modelo.*;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaEvent;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaListener;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.net.URL;
+import java.util.*;
 
-public class EstadisticasControlador {
+public class EstadisticasControlador implements Initializable, CambioIdiomaListener {
 
     @FXML
     private BarChart<String, Number> graficoDestinos;
 
-    public AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
+    @FXML
+    private Button btnAtras;
 
-    public void initialize() {
+    public AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
+    private final Propiedades propiedades = Propiedades.getInstance();
+
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Inicialización normal del controlador
+
+        // Registra este controlador como un escuchador de cambios de idioma
+        Propiedades.getInstance().addCambioIdiomaListener(this);
+
+        // Actualiza las cadenas de texto según el idioma actual
+        actualizarTextos();
         // Obtener la lista de reservas
         List<Reserva> reservas = agenciaDeViajes.getReservas();
 
@@ -48,6 +59,25 @@ public class EstadisticasControlador {
         xAxis.setLabel("Destino");
         NumberAxis yAxis = (NumberAxis) graficoDestinos.getYAxis();
         yAxis.setLabel("Cantidad de Reservas");
+    }
+
+    @Override
+    public void onCambioIdioma(CambioIdiomaEvent evento) {
+        // Se llama cuando se cambia el idioma
+
+        // Actualiza las cadenas de texto según el nuevo idioma
+        actualizarTextos();
+    }
+
+    private void actualizarTextos() {
+        btnAtras.setText(propiedades.getResourceBundle().getString("TextoAtras"));
+
+    }
+    public void atras(ActionEvent event){
+        Object evt = event.getSource();
+        if(evt.equals(btnAtras)){
+            agenciaDeViajes.loadStage("/ventanas/inicioAdmin.fxml", event);
+        }
     }
 }
 

@@ -4,6 +4,8 @@ import co.edu.uniquindio.agenciaDeViajes.exceptions.AtributoNegativoException;
 import co.edu.uniquindio.agenciaDeViajes.exceptions.AtributoVacioException;
 import co.edu.uniquindio.agenciaDeViajes.exceptions.InformacionRepetidaException;
 import co.edu.uniquindio.agenciaDeViajes.modelo.*;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaEvent;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,7 +19,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class CalificarDestinoControlador implements Initializable {
+public class CalificarDestinoControlador implements Initializable, CambioIdiomaListener {
 
     @FXML
     private Label lblDestinos, lblComentarioDestino, lblCalificacionDestino;
@@ -47,6 +49,13 @@ public class CalificarDestinoControlador implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Inicialización normal del controlador
+
+        // Registra este controlador como un escuchador de cambios de idioma
+        Propiedades.getInstance().addCambioIdiomaListener(this);
+
+        // Actualiza las cadenas de texto según el idioma actual
+        actualizarTextos();
         inicializarBotones();
 
         PaqueteTuristico paqueteTuristico = reserva.getPaqueteTuristico();
@@ -61,6 +70,22 @@ public class CalificarDestinoControlador implements Initializable {
 
         cbxDestinos.setItems(nombresDestinos);
 
+    }
+
+    @Override
+    public void onCambioIdioma(CambioIdiomaEvent evento) {
+        // Se llama cuando se cambia el idioma
+
+        // Actualiza las cadenas de texto según el nuevo idioma
+        actualizarTextos();
+    }
+
+    private void actualizarTextos() {
+        btnAtras.setText(propiedades.getResourceBundle().getString("TextoAtras"));
+        btnGuardar.setText(propiedades.getResourceBundle().getString("TextoGuardar"));
+        lblDestinos.setText(propiedades.getResourceBundle().getString("TextoDestinosAsociados"));
+        lblCalificacionDestino.setText(propiedades.getResourceBundle().getString("TextoCalificacion"));
+        lblComentarioDestino.setText(propiedades.getResourceBundle().getString("TextoComentario"));
     }
 
     private void inicializarBotones() {
@@ -105,7 +130,7 @@ public class CalificarDestinoControlador implements Initializable {
                     comentariosDestino
             );
 
-            mostrarMensaje(Alert.AlertType.INFORMATION, "Se han enviado tus comentarios/calificaciones");
+            mostrarMensaje(Alert.AlertType.INFORMATION, propiedades.getResourceBundle().getString("TextoAlerta7"));
         } catch (AtributoVacioException | InformacionRepetidaException e){
             mostrarMensaje(Alert.AlertType.ERROR, e.getMessage());
         }

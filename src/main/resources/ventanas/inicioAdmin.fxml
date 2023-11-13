@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="570.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.agenciaDeViajes.controladores.InicioAdminControlador">
+<AnchorPane prefHeight="723.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.agenciaDeViajes.controladores.InicioAdminControlador">
    <children>
       <Button fx:id="btnClientes" layoutX="71.0" layoutY="396.0" mnemonicParsing="false" onAction="#ingresarReporteClientes" prefHeight="29.0" prefWidth="257.0" text="REPORTE DE CLIENTES">
          <font>
@@ -57,6 +57,20 @@
          </font>
       </Button>
       <Button fx:id="btnGuias" layoutX="69.0" layoutY="519.0" mnemonicParsing="false" onAction="#ingresarReporteGuias" prefHeight="25.0" prefWidth="257.0" text="REPORTE DE GUIAS TURISTICOS">
+         <font>
+            <Font name="Franklin Gothic Medium" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnEstadisticas" layoutX="67.0" layoutY="563.0" mnemonicParsing="false" onAction="#irEstadisticas" prefHeight="25.0" prefWidth="257.0" text="ESTADISTICAS DE RESERVAS">
+         <font>
+            <Font name="Franklin Gothic Medium" size="15.0" />
+         </font></Button>
+      <Button fx:id="btnEstadisticasGuias" layoutX="68.0" layoutY="601.0" mnemonicParsing="false" onAction="#irGuias" prefHeight="25.0" prefWidth="257.0" text="ESTADISTICAS DE GUIAS">
+         <font>
+            <Font name="Franklin Gothic Medium" size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="68.0" layoutY="639.0" mnemonicParsing="false" onAction="#irPaquetes" prefHeight="25.0" prefWidth="257.0" text="ESTADISTICAS DE PAQUETES">
          <font>
             <Font name="Franklin Gothic Medium" size="15.0" />
          </font>

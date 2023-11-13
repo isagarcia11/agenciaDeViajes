@@ -2,6 +2,8 @@ package co.edu.uniquindio.agenciaDeViajes.controladores;
 
 import co.edu.uniquindio.agenciaDeViajes.enums.Estado;
 import co.edu.uniquindio.agenciaDeViajes.modelo.*;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaEvent;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaListener;
 import javafx.beans.property.SimpleSetProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -21,7 +23,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class VentanaReservasClienteControlador  implements Initializable {
+public class VentanaReservasClienteControlador  implements Initializable, CambioIdiomaListener {
 
     @FXML
     private TableView<Reserva> tablaReservas;
@@ -54,17 +56,24 @@ public class VentanaReservasClienteControlador  implements Initializable {
     private Button btnAtras;
 
     @FXML
-    private Button btnCancelarReserva;
+    private Button btnCancelarReserva,btnCalificarGuia;
 
     @FXML
-    private Button btnConfirmarReserva;
+    private Button btnConfirmarReserva, btnCalificarDestino;
 
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
-
+    private final Propiedades propiedades = Propiedades.getInstance();
     private Cliente cliente = agenciaDeViajes.getClienteAutenticado();
 
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Inicialización normal del controlador
+
+        // Registra este controlador como un escuchador de cambios de idioma
+        Propiedades.getInstance().addCambioIdiomaListener(this);
+
+        // Actualiza las cadenas de texto según el idioma actual
+        actualizarTextos();
 
         ArrayList<Reserva> reservasCliente = new ArrayList<>();
 
@@ -95,14 +104,36 @@ public class VentanaReservasClienteControlador  implements Initializable {
 
         tablaReservas.setItems(FXCollections.observableArrayList(reservasCliente));
     }
+    @Override
+    public void onCambioIdioma(CambioIdiomaEvent evento) {
+        // Se llama cuando se cambia el idioma
 
+        // Actualiza las cadenas de texto según el nuevo idioma
+        actualizarTextos();
+    }
+
+    private void actualizarTextos() {
+        btnAtras.setText(propiedades.getResourceBundle().getString("TextoAtras"));
+        btnCancelarReserva.setText(propiedades.getResourceBundle().getString("TextoCancelarReserva"));
+        btnConfirmarReserva.setText(propiedades.getResourceBundle().getString("TextoConfirmarReserva"));
+        btnCalificarDestino.setText(propiedades.getResourceBundle().getString("TextoCalificarDestino"));
+        btnCalificarGuia.setText(propiedades.getResourceBundle().getString("TextoCalificarGuia"));
+        columnNombrePaquete.setText(propiedades.getResourceBundle().getString("TextoNombrePaquete"));
+        columnDestinos.setText(propiedades.getResourceBundle().getString("TextoDestinos"));
+        columnFechaInicioPaquete.setText(propiedades.getResourceBundle().getString("TextoFechaInicio"));
+        columnFechaFinPaquete.setText(propiedades.getResourceBundle().getString("TextoFechaFin"));
+        columnCantidadPersonas.setText(propiedades.getResourceBundle().getString("TextoCantidadPersonas"));
+        columnEstado.setText(propiedades.getResourceBundle().getString("TextoEstado"));
+        columnFechaSolicitud.setText(propiedades.getResourceBundle().getString("TextoFechaSolicitud"));
+        columnFechaViaje.setText(propiedades.getResourceBundle().getString("TextoFechaViaje"));
+    }
     @FXML
     private void cancelarReserva(ActionEvent event) {
         Reserva reservaSeleccionada = tablaReservas.getSelectionModel().getSelectedItem();
 
         if (reservaSeleccionada != null) {
             if (reservaSeleccionada.getEstado() == Estado.CONFIRMADA) {
-                mostrarMensaje(Alert.AlertType.WARNING, "No se puede cancelar una reserva confirmada.");
+                mostrarMensaje(Alert.AlertType.WARNING, propiedades.getResourceBundle().getString("TextoAlerta"));
             } else {
                 // Cambiar el estado de la reserva a CANCELADA
                 reservaSeleccionada.setEstado(Estado.CANCELADA);
@@ -112,10 +143,10 @@ public class VentanaReservasClienteControlador  implements Initializable {
                 // Actualizar la tabla
                 tablaReservas.refresh();
 
-                mostrarMensaje(Alert.AlertType.INFORMATION, "La reserva ha sido cancelada.");
+                mostrarMensaje(Alert.AlertType.INFORMATION, propiedades.getResourceBundle().getString("TextoAlerta1"));
             }
         } else {
-            mostrarMensaje(Alert.AlertType.WARNING, "Por favor, selecciona una reserva para cancelar.");
+            mostrarMensaje(Alert.AlertType.WARNING, propiedades.getResourceBundle().getString("TextoAlerta2"));
         }
     }
 
@@ -133,9 +164,9 @@ public class VentanaReservasClienteControlador  implements Initializable {
             // Actualizar la tabla
             tablaReservas.refresh();
 
-            mostrarMensaje(Alert.AlertType.INFORMATION, "La reserva ha sido confirmada.");
+            mostrarMensaje(Alert.AlertType.INFORMATION, propiedades.getResourceBundle().getString("TextoAlerta3"));
         } else {
-            mostrarMensaje(Alert.AlertType.WARNING, "Por favor, selecciona una reserva para confirmar.");
+            mostrarMensaje(Alert.AlertType.WARNING, propiedades.getResourceBundle().getString("TextoAlerta4"));
         }
     }
 
@@ -148,7 +179,7 @@ public class VentanaReservasClienteControlador  implements Initializable {
         if (reservaSeleccionada != null) {
             agenciaDeViajes.loadStage("/ventanas/calificarDestino.fxml", event);
         } else {
-            mostrarMensaje(Alert.AlertType.WARNING, "Por favor selecciona una reserva.");
+            mostrarMensaje(Alert.AlertType.WARNING, propiedades.getResourceBundle().getString("TextoAlerta5"));
         }
     }
 
@@ -162,11 +193,11 @@ public class VentanaReservasClienteControlador  implements Initializable {
             if(agenciaDeViajes.reservaFinalizada(reservaSeleccionada)){
                 agenciaDeViajes.loadStage("/ventanas/calificarGuia.fxml", event);
             } else {
-                mostrarMensaje(Alert.AlertType.WARNING, "La reserva no ha finalizado");
+                mostrarMensaje(Alert.AlertType.WARNING, propiedades.getResourceBundle().getString("TextoAlerta6"));
             }
 
         } else {
-            mostrarMensaje(Alert.AlertType.WARNING, "Por favor selecciona una reserva.");
+            mostrarMensaje(Alert.AlertType.WARNING, propiedades.getResourceBundle().getString("TextoAlerta5"));
         }
     }
 

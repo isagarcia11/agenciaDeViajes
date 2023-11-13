@@ -18,7 +18,7 @@ public class InicioAdminControlador implements Initializable, CambioIdiomaListen
     private Button btnCrearDestino, btnActualizarDestino, btnCrearPaquete, btnActualizarPaquete, btnCrearGuiaTuristico;
 
     @FXML
-    private Button btnActualizarGuia;
+    private Button btnActualizarGuia, btnEstadisticas, btnEstadisticasGuias, btnEstadisticasPaquetes;
 
     @FXML
     private Button btnClientes, btnDestinos, btnPaquetes, btnGuias;
@@ -55,7 +55,9 @@ public class InicioAdminControlador implements Initializable, CambioIdiomaListen
         btnDestinos.setText(propiedades.getResourceBundle().getString("TextoReporteDestinos"));
         btnPaquetes.setText(propiedades.getResourceBundle().getString("TextoReportePaquetes"));
         btnGuias.setText(propiedades.getResourceBundle().getString("TextoReporteGuias"));
-
+        btnEstadisticas.setText(propiedades.getResourceBundle().getString("TextoEstadisticas"));
+        btnEstadisticasGuias.setText(propiedades.getResourceBundle().getString("TextoEstadisticasGuias"));
+        btnEstadisticasPaquetes.setText(propiedades.getResourceBundle().getString("TextoEstadisticasPaquetes"));
     }
 
     public void ingresarCrearDestino(ActionEvent event){
@@ -125,6 +127,24 @@ public class InicioAdminControlador implements Initializable, CambioIdiomaListen
         Object evt = event.getSource();
         if(evt.equals(btnGuias)){
             agenciaDeViajes.loadStage("/ventanas/guias.fxml", event);
+        }
+    }
+    public void irEstadisticas(ActionEvent event){
+        Object evt = event.getSource();
+        if(evt.equals(btnEstadisticas)){
+            agenciaDeViajes.loadStage("/ventanas/estadisticas.fxml", event);
+        }
+    }
+    public void irGuias(ActionEvent event){
+        Object evt = event.getSource();
+        if(evt.equals(btnEstadisticasGuias)){
+            agenciaDeViajes.loadStage("/ventanas/estadisticasGuias.fxml", event);
+        }
+    }
+    public void irPaquetes(ActionEvent event){
+        Object evt = event.getSource();
+        if(evt.equals(btnEstadisticasPaquetes)){
+            agenciaDeViajes.loadStage("/ventanas/estadisticasPaquetes.fxml", event);
         }
     }
 }

@@ -4,6 +4,8 @@ import co.edu.uniquindio.agenciaDeViajes.exceptions.AtributoNegativoException;
 import co.edu.uniquindio.agenciaDeViajes.exceptions.AtributoVacioException;
 import co.edu.uniquindio.agenciaDeViajes.exceptions.InformacionRepetidaException;
 import co.edu.uniquindio.agenciaDeViajes.modelo.*;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaEvent;
+import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,7 +19,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class CalificarGuiaControlador implements Initializable  {
+public class CalificarGuiaControlador implements Initializable, CambioIdiomaListener {
     @FXML
     private Label lblGuia, lblComentarioGuia, lblCalificacionGuia;
 
@@ -42,11 +44,33 @@ public class CalificarGuiaControlador implements Initializable  {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // Inicialización normal del controlador
 
+        // Registra este controlador como un escuchador de cambios de idioma
+        Propiedades.getInstance().addCambioIdiomaListener(this);
+
+        // Actualiza las cadenas de texto según el idioma actual
+        actualizarTextos();
         inicializarBotones();
 
         txtGuia.setText(reserva.getGuiaTuristico().getNombre());
     }
+    @Override
+    public void onCambioIdioma(CambioIdiomaEvent evento) {
+        // Se llama cuando se cambia el idioma
+
+        // Actualiza las cadenas de texto según el nuevo idioma
+        actualizarTextos();
+    }
+
+    private void actualizarTextos() {
+        btnAtras.setText(propiedades.getResourceBundle().getString("TextoAtras"));
+        btnGuardar.setText(propiedades.getResourceBundle().getString("TextoGuardar"));
+        lblGuia.setText(propiedades.getResourceBundle().getString("TextoGuiaTuristico"));
+       lblCalificacionGuia.setText(propiedades.getResourceBundle().getString("TextoCalificacion"));
+        lblComentarioGuia.setText(propiedades.getResourceBundle().getString("TextoComentario"));
+    }
+
 
     private void inicializarBotones() {
         Button[] botonesEstrellasGuia = {btnEstrella1, btnEstrella2, btnEstrella3, btnEstrella4, btnEstrella5};
