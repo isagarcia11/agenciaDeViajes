@@ -17,6 +17,8 @@ public class GuiaTuristico implements Serializable {
     private String identificacion;
     private ArrayList<Idioma> idiomas;
     private float experiencia;
+    private ArrayList<Integer> calificaciones;
+    private ArrayList<String> comentarios;
 
     @Override
     public String toString() {
@@ -25,6 +27,8 @@ public class GuiaTuristico implements Serializable {
                 ", identificacion='" + identificacion + '\'' +
                 ", idiomas=" + idiomas +
                 ", experiencia=" + experiencia +
+                ", calificaciones=" + calificaciones +
+                ", comentarios=" + comentarios +
                 '}';
     }
 }

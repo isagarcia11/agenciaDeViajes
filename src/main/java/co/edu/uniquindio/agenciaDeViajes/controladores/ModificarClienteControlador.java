@@ -4,6 +4,7 @@ import co.edu.uniquindio.agenciaDeViajes.exceptions.AtributoVacioException;
 import co.edu.uniquindio.agenciaDeViajes.exceptions.InformacionRepetidaException;
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Cliente;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Destino;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
 import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaEvent;
 import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaListener;
@@ -15,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ModificarClienteControlador implements Initializable, CambioIdiomaListener {
@@ -74,13 +76,15 @@ public class ModificarClienteControlador implements Initializable, CambioIdiomaL
     }
 
     public void actualizarCliente(ActionEvent actionEvent){
+        ArrayList<Destino> destinos = new ArrayList<>();
         try{
             agenciaDeViajes.actualizarCliente(
                     txtIdentificacion.getText(),
                     txtNombre.getText(),
                     txtCorreo.getText(),
                     txtTelefono.getText(),
-                    txtDireccion.getText()
+                    txtDireccion.getText(),
+                    destinos
             );
 
             mostrarMensaje(Alert.AlertType.INFORMATION, "Se ha actualizado correctamente el cliente: "+cliente.getNombre());

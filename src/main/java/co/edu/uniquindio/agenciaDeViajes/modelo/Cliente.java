@@ -3,12 +3,14 @@ package co.edu.uniquindio.agenciaDeViajes.modelo;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@EqualsAndHashCode
 public class Cliente implements Serializable {
 
     private String identificacion;
@@ -16,10 +18,7 @@ public class Cliente implements Serializable {
     private String correo;
     private String telefono;
     private String direccion;
-
-    public String toFileFormat() {
-        return identificacion + ";" + nombre + ";" + correo + ";" + telefono + ";" + direccion;
-    }
+    private ArrayList<Destino> busquedasDestinos;
 
     @Override
     public String toString() {
@@ -29,6 +28,7 @@ public class Cliente implements Serializable {
                 ", correo='" + correo + '\'' +
                 ", telefono='" + telefono + '\'' +
                 ", direccion='" + direccion + '\'' +
+                ", busquedasDestinos=" + busquedasDestinos +
                 '}';
     }
 }

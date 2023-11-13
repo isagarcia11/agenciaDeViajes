@@ -1,9 +1,8 @@
 package co.edu.uniquindio.agenciaDeViajes.controladores;
 
-import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
-import co.edu.uniquindio.agenciaDeViajes.modelo.Destino;
-import co.edu.uniquindio.agenciaDeViajes.modelo.PaqueteTuristico;
-import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
+import co.edu.uniquindio.agenciaDeViajes.exceptions.AtributoVacioException;
+import co.edu.uniquindio.agenciaDeViajes.exceptions.InformacionRepetidaException;
+import co.edu.uniquindio.agenciaDeViajes.modelo.*;
 import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaEvent;
 import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaListener;
 import javafx.beans.property.SimpleStringProperty;
@@ -12,10 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -190,5 +186,67 @@ public class SeleccionarPaqueteControlador implements Initializable, CambioIdiom
         }
     }
 
+    @FXML
+    private void actualizarBusquedasDestinos() {
+        Cliente clienteAutenticado = agenciaDeViajes.getClienteAutenticado();
+
+        // Verificar si el cliente está autenticado
+        if (clienteAutenticado != null) {
+            String nombreDestino = filtroDestino.getText(); // Obtener el nombre del destino desde el TextField
+
+            // Llamar a AgenciaDeViajes para obtener el destino
+            Destino destino = agenciaDeViajes.obtenerDestino(nombreDestino);
+
+            // Verificar si el destino se encontró
+            if (destino != null) {
+                // Obtener la lista de busquedasDestinos del cliente
+                ArrayList<Destino> busquedasDestinos = clienteAutenticado.getBusquedasDestinos();
+
+                // Verificar si la lista existe
+                if (busquedasDestinos == null) {
+                    busquedasDestinos = new ArrayList<>();
+                }
+
+                // Agregar el destino a la lista
+                busquedasDestinos.add(destino);
+
+                try {
+                    // Actualizar el cliente con la nueva lista de busquedasDestinos
+                    agenciaDeViajes.actualizarCliente(clienteAutenticado.getIdentificacion(),
+                            clienteAutenticado.getNombre(),
+                            clienteAutenticado.getCorreo(),
+                            clienteAutenticado.getTelefono(),
+                            clienteAutenticado.getDireccion(),
+                            busquedasDestinos);
+
+                    BusquedasDestinos busquedaDestino = new BusquedasDestinos(destino);
+                    agenciaDeViajes.registrarBusqueda(busquedaDestino);
+
+                    mostrarMensaje(Alert.AlertType.INFORMATION, "Se ha guardado la busqueda");
+                } catch (AtributoVacioException | InformacionRepetidaException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                mostrarMensaje(Alert.AlertType.INFORMATION, "El destino no se encontro");
+            }
+        }
+    }
+
+    @FXML
+    private void actualizarTabla(){
+        ArrayList<PaqueteTuristico> paqueteTuristicos = agenciaDeViajes.buscarPaquetesPorDestino();
+        ObservableList<PaqueteTuristico> paquetesFiltrados = FXCollections.observableArrayList();
+        paquetesFiltrados.setAll(paqueteTuristicos);
+        tablaPaquetes.setItems(paquetesFiltrados);
+    }
+
+
+
+    public void mostrarMensaje(Alert.AlertType tipo, String mensaje){
+        Alert alert = new Alert(tipo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.show();
+    }
 
 }

@@ -67,7 +67,7 @@ public class LoginControlador implements Initializable, CambioIdiomaListener {
         try {
             Cliente cliente = agenciaDeViajes.verificarDatos(usuarioCliente.getText(), contrasenaCliente.getText(), 0);
             if(evt.equals(btnIniciar)){
-                if(usuarioCliente.getText().equals("Alejandro Arango") && contrasenaCliente.getText().equals("1104804234")){
+                if(usuarioCliente.getText().equals("admin") && contrasenaCliente.getText().equals("admin")){
                     agenciaDeViajes.loadStage("/ventanas/inicioAdmin.fxml", event);
                 } else{
                     if(cliente != null){

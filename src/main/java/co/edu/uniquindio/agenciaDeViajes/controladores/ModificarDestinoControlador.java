@@ -88,13 +88,16 @@ public class ModificarDestinoControlador implements Initializable, CambioIdiomaL
     }
 
     public void actualizarDestino(ActionEvent actionEvent){
+
         try{
             agenciaDeViajes.actualizarDestino(
                     txtNombreDestino.getText(),
                     txtCiudad.getText(),
                     txtDescripcion.getText(),
                     txtImagen.getText(),
-                    cbxClima.getValue()
+                    cbxClima.getValue(),
+                    destino.getCalificaciones(),
+                    destino.getComentarios()
             );
 
             mostrarMensaje(Alert.AlertType.INFORMATION, "Se ha actualizado correctamente el destino: "+destino.getNombre());

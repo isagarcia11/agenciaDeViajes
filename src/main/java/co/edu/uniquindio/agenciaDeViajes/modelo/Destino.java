@@ -11,6 +11,7 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@EqualsAndHashCode
 public class Destino implements Serializable {
 
     private String nombre;
@@ -18,10 +19,8 @@ public class Destino implements Serializable {
     private String descripcion;
     private Clima clima;
     private ArrayList<String> imagenes;
-
-    public String toFileFormat() {
-        return nombre + ";" + ciudad + ";" + descripcion + ";" + imagenes + ";" + clima;
-    }
+    private ArrayList<Integer> calificaciones;
+    private ArrayList<String> comentarios;
 
     @Override
     public String toString() {
@@ -31,6 +30,8 @@ public class Destino implements Serializable {
                 ", descripcion='" + descripcion + '\'' +
                 ", clima=" + clima +
                 ", imagenes=" + imagenes +
+                ", calificaciones=" + calificaciones +
+                ", comentarios=" + comentarios +
                 '}';
     }
 }

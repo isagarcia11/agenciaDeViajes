@@ -97,6 +97,15 @@ public class RegistrarReservaControlador implements Initializable {
 
             agenciaDeViajes.actualizarCupoPaquete(paqueteSeleccionado, cantidadPersonas);
 
+            // Generar mensaje de reserva
+            String mensajeReserva = agenciaDeViajes.generarMensajeReserva(reserva);
+
+            // Enviar correo electrónico
+            agenciaDeViajes.enviarCorreoReserva(reserva, mensajeReserva);
+
+            //Enviar SMS
+            agenciaDeViajes.enviarMensajeSMS();
+
             mostrarMensaje(Alert.AlertType.INFORMATION, "Se ha registrado correctamente la reserva.");
 
         } catch (AtributoVacioException | CupoMaximoExcedidoException | FechaInvalidaException |

@@ -1,0 +1,125 @@
+package co.edu.uniquindio.agenciaDeViajes.controladores;
+
+import co.edu.uniquindio.agenciaDeViajes.exceptions.AtributoNegativoException;
+import co.edu.uniquindio.agenciaDeViajes.exceptions.AtributoVacioException;
+import co.edu.uniquindio.agenciaDeViajes.exceptions.InformacionRepetidaException;
+import co.edu.uniquindio.agenciaDeViajes.modelo.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
+public class CalificarGuiaControlador implements Initializable  {
+    @FXML
+    private Label lblGuia, lblComentarioGuia, lblCalificacionGuia;
+
+    @FXML
+    private TextField txtGuia, txtComentarioGuia;
+
+    @FXML
+    private Button btnAtras, btnGuardar;
+
+    @FXML
+    private Button btnEstrella1, btnEstrella2, btnEstrella3, btnEstrella4, btnEstrella5;
+
+    public AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
+
+    private final Propiedades propiedades = Propiedades.getInstance();
+
+    Reserva reserva = agenciaDeViajes.getReserva();
+
+    private final Image ESTRELLA_LLENA = new Image(getClass().getResourceAsStream("/imagenes/estrella_llena.jpg"));
+    private final Image ESTRELLA_VACIA = new Image(getClass().getResourceAsStream("/imagenes/estrella_vacia.jpg"));
+    private int calificacionGuia = 0;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        inicializarBotones();
+
+        txtGuia.setText(reserva.getGuiaTuristico().getNombre());
+    }
+
+    private void inicializarBotones() {
+        Button[] botonesEstrellasGuia = {btnEstrella1, btnEstrella2, btnEstrella3, btnEstrella4, btnEstrella5};
+
+        for (int i = 0; i < 5; i++) {
+            int finalI = i;
+            botonesEstrellasGuia[i].setOnAction(event -> {
+                calificacionGuia = finalI + 1;
+                actualizarCalificacion(finalI, botonesEstrellasGuia);
+            });
+
+        }
+    }
+
+    private void actualizarCalificacion(int indice, Button[] botonesEstrellas) {
+        for (int i = 0; i < 5; i++) {
+            ImageView imageView = (ImageView) botonesEstrellas[i].getGraphic();
+            if (i <= indice) {
+                imageView.setImage(ESTRELLA_LLENA);
+            } else {
+                imageView.setImage(ESTRELLA_VACIA);
+            }
+        }
+    }
+
+    @FXML
+    public void actualizarDatos(ActionEvent actionEvent){
+        GuiaTuristico guiaTuristico = reserva.getGuiaTuristico();
+        ArrayList<Integer> calificacionesGuia = guiaTuristico.getCalificaciones();
+        calificacionesGuia.add(calificacionGuia);
+        ArrayList<String> comentariosGuia = guiaTuristico.getComentarios();
+        comentariosGuia.add(txtComentarioGuia.getText());
+
+        try {
+            agenciaDeViajes.actualizarGuiaTuristico(
+                    guiaTuristico.getIdentificacion(),
+                    guiaTuristico.getNombre(),
+                    guiaTuristico.getIdiomas(),
+                    guiaTuristico.getExperiencia(),
+                    calificacionesGuia,
+                    comentariosGuia
+            );
+        } catch (AtributoVacioException | InformacionRepetidaException | AtributoNegativoException e){
+            mostrarMensaje(Alert.AlertType.ERROR, e.getMessage());
+        }
+
+        Button[] botonesEstrellasGuia = {btnEstrella1, btnEstrella2, btnEstrella3, btnEstrella4, btnEstrella5};
+
+        // Restablecer campos y estrellas
+        txtComentarioGuia.setText("");
+
+        calificacionGuia = 0;
+
+        for (Button boton : botonesEstrellasGuia) {
+            ImageView imageView = (ImageView) boton.getGraphic();
+            imageView.setImage(ESTRELLA_VACIA);
+        }
+    }
+
+    @FXML
+    public void volver(ActionEvent event){
+        Object evt = event.getSource();
+        if(evt.equals(btnAtras)){
+            agenciaDeViajes.loadStage("/ventanas/ventanaReservasControlador.fxml", event);
+        }
+    }
+
+
+
+    public void mostrarMensaje(Alert.AlertType tipo, String mensaje){
+        Alert alert = new Alert(tipo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.show();
+    }
+}
