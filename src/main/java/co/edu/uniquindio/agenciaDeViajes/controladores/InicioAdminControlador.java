@@ -18,10 +18,10 @@ public class InicioAdminControlador implements Initializable, CambioIdiomaListen
     private Button btnCrearDestino, btnActualizarDestino, btnCrearPaquete, btnActualizarPaquete, btnCrearGuiaTuristico;
 
     @FXML
-    private Button btnActualizarGuia, btnEstadisticas, btnEstadisticasGuias, btnEstadisticasPaquetes;
+    private Button btnActualizarGuia, btnEstadisticas, btnEstadisticasGuias, btnEstadisticasPaquetes, btnEstadisticasDestinos;
 
     @FXML
-    private Button btnClientes, btnDestinos, btnPaquetes, btnGuias;
+    private Button btnClientes, btnDestinos, btnPaquetes, btnGuias, btnSalir;
 
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
     private final Propiedades propiedades = Propiedades.getInstance();
@@ -36,6 +36,7 @@ public class InicioAdminControlador implements Initializable, CambioIdiomaListen
         // Actualiza las cadenas de texto según el idioma actual
         actualizarTextos();
     }
+
     @Override
     public void onCambioIdioma(CambioIdiomaEvent evento) {
         // Se llama cuando se cambia el idioma
@@ -58,93 +59,114 @@ public class InicioAdminControlador implements Initializable, CambioIdiomaListen
         btnEstadisticas.setText(propiedades.getResourceBundle().getString("TextoEstadisticas"));
         btnEstadisticasGuias.setText(propiedades.getResourceBundle().getString("TextoEstadisticasGuias"));
         btnEstadisticasPaquetes.setText(propiedades.getResourceBundle().getString("TextoEstadisticasPaquetes"));
+        btnEstadisticasDestinos.setText(propiedades.getResourceBundle().getString("TextoEstadisticasDestinos"));
+        btnSalir.setText(propiedades.getResourceBundle().getString("TextoSalir"));
     }
 
-    public void ingresarCrearDestino(ActionEvent event){
+    public void ingresarCrearDestino(ActionEvent event) {
         Object evt = event.getSource();
-        if(evt.equals(btnCrearDestino)){
+        if (evt.equals(btnCrearDestino)) {
             agenciaDeViajes.loadStage("/ventanas/crearDestino.fxml", event);
         }
     }
 
-    public void ingresarActualizarDestino(ActionEvent event){
+    public void ingresarActualizarDestino(ActionEvent event) {
         Object evt = event.getSource();
-        if(evt.equals(btnActualizarDestino)){
+        if (evt.equals(btnActualizarDestino)) {
             agenciaDeViajes.loadStage("/ventanas/modificarDestino.fxml", event);
         }
     }
 
-    public void ingresarCrearPaquete(ActionEvent event){
+    public void ingresarCrearPaquete(ActionEvent event) {
         Object evt = event.getSource();
-        if(evt.equals(btnCrearPaquete)){
+        if (evt.equals(btnCrearPaquete)) {
             agenciaDeViajes.loadStage("/ventanas/crearPaquete.fxml", event);
         }
     }
 
-    public void ingresarActualizarPaquete(ActionEvent event){
+    public void ingresarActualizarPaquete(ActionEvent event) {
         Object evt = event.getSource();
-        if(evt.equals(btnActualizarPaquete)){
+        if (evt.equals(btnActualizarPaquete)) {
             agenciaDeViajes.loadStage("/ventanas/modificarPaquetesTuristicos.fxml", event);
         }
     }
 
-    public void ingresarCrearGuia(ActionEvent event){
+    public void ingresarCrearGuia(ActionEvent event) {
         Object evt = event.getSource();
-        if(evt.equals(btnCrearGuiaTuristico)){
+        if (evt.equals(btnCrearGuiaTuristico)) {
             agenciaDeViajes.loadStage("/ventanas/crearGuiaTuristico.fxml", event);
         }
     }
 
-    public void ingresarActualizarGuia(ActionEvent event){
+    public void ingresarActualizarGuia(ActionEvent event) {
         Object evt = event.getSource();
-        if(evt.equals(btnActualizarGuia)){
+        if (evt.equals(btnActualizarGuia)) {
             agenciaDeViajes.loadStage("/ventanas/modificarGuia.fxml", event);
         }
     }
 
-    public void ingresarReporteClientes(ActionEvent event){
+    public void ingresarReporteClientes(ActionEvent event) {
         Object evt = event.getSource();
-        if(evt.equals(btnClientes)){
+        if (evt.equals(btnClientes)) {
             agenciaDeViajes.loadStage("/ventanas/clientes.fxml", event);
         }
     }
 
-    public void ingresarReporteDestinos(ActionEvent event){
+    public void ingresarReporteDestinos(ActionEvent event) {
         Object evt = event.getSource();
-        if(evt.equals(btnDestinos)){
+        if (evt.equals(btnDestinos)) {
             agenciaDeViajes.loadStage("/ventanas/destinos.fxml", event);
         }
     }
 
-    public void ingresarReportePaquetes(ActionEvent event){
+    public void ingresarReportePaquetes(ActionEvent event) {
         Object evt = event.getSource();
-        if(evt.equals(btnPaquetes)){
+        if (evt.equals(btnPaquetes)) {
             agenciaDeViajes.loadStage("/ventanas/paquetes.fxml", event);
         }
     }
 
-    public void ingresarReporteGuias(ActionEvent event){
+    public void ingresarReporteGuias(ActionEvent event) {
         Object evt = event.getSource();
-        if(evt.equals(btnGuias)){
+        if (evt.equals(btnGuias)) {
             agenciaDeViajes.loadStage("/ventanas/guias.fxml", event);
         }
     }
-    public void irEstadisticas(ActionEvent event){
+
+    public void irEstadisticas(ActionEvent event) {
         Object evt = event.getSource();
-        if(evt.equals(btnEstadisticas)){
+        if (evt.equals(btnEstadisticas)) {
             agenciaDeViajes.loadStage("/ventanas/estadisticas.fxml", event);
         }
     }
-    public void irGuias(ActionEvent event){
+
+    public void irGuias(ActionEvent event) {
         Object evt = event.getSource();
-        if(evt.equals(btnEstadisticasGuias)){
+        if (evt.equals(btnEstadisticasGuias)) {
             agenciaDeViajes.loadStage("/ventanas/estadisticasGuias.fxml", event);
         }
     }
-    public void irPaquetes(ActionEvent event){
+
+    public void irPaquetes(ActionEvent event) {
         Object evt = event.getSource();
-        if(evt.equals(btnEstadisticasPaquetes)){
+        if (evt.equals(btnEstadisticasPaquetes)) {
             agenciaDeViajes.loadStage("/ventanas/estadisticasPaquetes.fxml", event);
+        }
+
+    }
+
+    public void irDestinos(ActionEvent event) {
+        Object evt = event.getSource();
+        if (evt.equals(btnEstadisticasDestinos)) {
+            agenciaDeViajes.loadStage("/ventanas/estadisticasReservas.fxml", event);
+        }
+    }
+    public void salir(ActionEvent event){
+
+        Object evt = event.getSource();
+
+        if(evt.equals(btnSalir)){
+            agenciaDeViajes.loadStage("/ventanas/login.fxml", event);
         }
     }
 }

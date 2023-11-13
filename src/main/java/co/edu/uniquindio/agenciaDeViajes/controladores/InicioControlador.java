@@ -43,9 +43,6 @@ public class InicioControlador implements Initializable {
     private Button btnSiguientePaquete, btnAnteriorPaquete;
 
     @FXML
-    private List<PaqueteTuristico> listaPaquetes;
-
-    @FXML
     private Button nombrePaquete;
 
     @FXML
@@ -56,6 +53,8 @@ public class InicioControlador implements Initializable {
     private final Propiedades propiedades = Propiedades.getInstance();
 
     private List<Destino> destinos = agenciaDeViajes.getDestinos();
+
+    private List<PaqueteTuristico> listaPaquetes = agenciaDeViajes.getPaquetesTuristicos();
     private int indiceActual = 0;
     private int indicePaqueteActual = 0;
 
@@ -64,10 +63,11 @@ public class InicioControlador implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         actualizarTextos();
+        listaPaquetes = agenciaDeViajes.getPaquetesTuristicos();
         btnSiguientePaquete.setOnAction(event -> cambiarPaquete(1));
         btnAnteriorPaquete.setOnAction(event -> cambiarPaquete(-1));
 
-        mostrarPaquete(agenciaDeViajes.getPaquetesTuristicos().get(indicePaqueteActual));
+        mostrarPaquete();
         mostrarDestino();
     }
 
@@ -112,7 +112,8 @@ public class InicioControlador implements Initializable {
         this.imagen.setImage(imagen);
     }
 
-    private void mostrarPaquete(PaqueteTuristico paqueteTuristico) {
+    private void mostrarPaquete() {
+        PaqueteTuristico paqueteTuristico = listaPaquetes.get(indicePaqueteActual);
         if (paqueteTuristico != null) {
             nombrePaquete.setText(paqueteTuristico.getNombre());
 
@@ -134,7 +135,7 @@ public class InicioControlador implements Initializable {
 
         if (nuevoIndice >= 0 && nuevoIndice < agenciaDeViajes.getPaquetesTuristicos().size()) {
             indicePaqueteActual = nuevoIndice;
-            mostrarPaquete(agenciaDeViajes.getPaquetesTuristicos().get(indicePaqueteActual));
+            mostrarPaquete();
         }
     }
 

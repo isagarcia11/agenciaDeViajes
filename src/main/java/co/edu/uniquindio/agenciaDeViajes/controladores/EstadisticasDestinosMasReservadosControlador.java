@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class EstadisticasDestinosMasReservadosControlador implements CambioIdiomaListener{
+public class EstadisticasDestinosMasReservadosControlador implements Initializable, CambioIdiomaListener{
     @FXML
     private BarChart<String, Number> graficoDestinos;
 
