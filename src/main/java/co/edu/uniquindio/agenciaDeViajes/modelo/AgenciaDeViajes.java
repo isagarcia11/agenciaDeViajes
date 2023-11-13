@@ -1061,7 +1061,7 @@ public class AgenciaDeViajes {
         com.twilio.rest.api.v2010.account.Message message = com.twilio.rest.api.v2010.account.Message.creator(
                         new com.twilio.type.PhoneNumber("+573007590341"),
                         new com.twilio.type.PhoneNumber("+16573320921"),
-                        "El " + clienteAutenticado.getNombre() + "ha realizo una reserva")
+                        "El cliente: " + clienteAutenticado.getNombre() + " ha realizo una reserva")
                 .create();
 
         System.out.println(message.getSid());
@@ -1072,5 +1072,55 @@ public class AgenciaDeViajes {
     }
     public void setDestino(Destino destino1){
         destino = destino1;
+    }
+
+    private boolean esPrimeraReserva() {
+        for (Reserva reservaExistente : reservas) {
+            if (reservaExistente.getCliente().equals(clienteAutenticado)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void procesarReserva(Reserva reserva) {
+        if (!esPrimeraReserva()) {
+
+            double precioConDescuento = reserva.getPaqueteTuristico().getPrecio() * 0.8;
+
+            String mensajeFactura = "¡Hola " + reserva.getCliente().getNombre() + "!\n\n" +
+                    "Te informamos que tu reserva ha sido confirmada con éxito.\n" +
+                    "Aquí están los detalles de tu reserva:\n\n" +
+                    "Por ser la primera reserva con nuestra agencia de viajes te obsequiamos un excelente bono de descuento: " + "\n" +
+                    "Nombre del Cliente: " + reserva.getCliente().getNombre() + "\n" +
+                    "Cantidad de Personas: " + reserva.getCantidadDePersonas() + "\n" +
+                    "Paquete Turístico: " + reserva.getPaqueteTuristico().getNombre() + "\n" +
+                    "Precio Original del Paquete: " + reserva.getPaqueteTuristico().getPrecio() + "\n" +
+                    "Descuento del 20%: -" + (reserva.getPaqueteTuristico().getPrecio() - precioConDescuento) + "\n" +
+                    "Precio con Descuento: " + precioConDescuento + "\n" +
+                    "Guía Turístico: " + reserva.getGuiaTuristico().getNombre() + "\n" +
+                    "Estado de la Reserva: " + reserva.getEstado() + "\n" +
+                    "Fecha de Solicitud: " + reserva.getFechaDeSolicitud() + "\n" +
+                    "Fecha de Viaje: " + reserva.getFechaDeViaje() + "\n\n" +
+                    "¡Esperamos que tengas un increíble viaje!\n" +
+                    "Gracias por elegir nuestra agencia de viajes.";
+
+            enviarCorreoReserva(reserva, mensajeFactura);
+        } else {
+            String mensaje = "¡Hola " + reserva.getCliente().getNombre() + "!\n\n" +
+                    "Te informamos que tu reserva ha sido confirmada con éxito.\n" +
+                    "Aquí están los detalles de tu reserva:\n\n" +
+                    "Nombre del Cliente: " + reserva.getCliente().getNombre() + "\n" +
+                    "Cantidad de Personas: " + reserva.getCantidadDePersonas() + "\n" +
+                    "Paquete Turístico: " + reserva.getPaqueteTuristico().getNombre() + "\n" +
+                    "Precio del Paquete: " + reserva.getPaqueteTuristico().getPrecio() + "\n" +
+                    "Guía Turístico: " + reserva.getGuiaTuristico().getNombre() + "\n" +
+                    "Estado de la Reserva: " + reserva.getEstado() + "\n" +
+                    "Fecha de Solicitud: " + reserva.getFechaDeSolicitud() + "\n" +
+                    "Fecha de Viaje: " + reserva.getFechaDeViaje() + "\n\n" +
+                    "¡Esperamos que tengas un increíble viaje!\n" +
+                    "Gracias por elegir nuestra agencia de viajes.";
+            enviarCorreoReserva(reserva, mensaje);
+        }
     }
 }

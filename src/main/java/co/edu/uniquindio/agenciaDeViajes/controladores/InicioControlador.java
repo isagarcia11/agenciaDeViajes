@@ -168,7 +168,6 @@ public class InicioControlador implements Initializable {
         botonSiguiente.setText(propiedades.getResourceBundle().getString("TextoSiguiente"));
         btnAnteriorPaquete.setText(propiedades.getResourceBundle().getString("TextoAnteriorPaquete"));
         btnSiguientePaquete.setText(propiedades.getResourceBundle().getString("TextoSiguientePaquete"));
-
     }
 
 
@@ -181,8 +180,4 @@ public class InicioControlador implements Initializable {
             agenciaDeViajes.loadStage("/ventanas/login.fxml", event);
         }
     }
-
-
-
-
 }

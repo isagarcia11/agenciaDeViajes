@@ -156,15 +156,16 @@ public class VentanaReservasClienteControlador  implements Initializable, Cambio
         Reserva reservaSeleccionada = tablaReservas.getSelectionModel().getSelectedItem();
 
         if (reservaSeleccionada != null) {
-            // Cambiar el estado de la reserva a CONFIRMADA
             reservaSeleccionada.setEstado(Estado.CONFIRMADA);
 
             agenciaDeViajes.actualizarReserva();
 
-            // Actualizar la tabla
             tablaReservas.refresh();
 
             mostrarMensaje(Alert.AlertType.INFORMATION, propiedades.getResourceBundle().getString("TextoAlerta3"));
+            agenciaDeViajes.procesarReserva(reservaSeleccionada);
+
+            mostrarMensaje(Alert.AlertType.INFORMATION, "La reserva ha sido confirmada.");
         } else {
             mostrarMensaje(Alert.AlertType.WARNING, propiedades.getResourceBundle().getString("TextoAlerta4"));
         }

@@ -15,8 +15,11 @@ import javafx.scene.control.Button;
 import java.net.URL;
 import java.util.*;
 
-public class EstadisticasControlador implements Initializable, CambioIdiomaListener {
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+public class EstadisticasDestinosMasReservadosControlador implements CambioIdiomaListener{
     @FXML
     private BarChart<String, Number> graficoDestinos;
 
