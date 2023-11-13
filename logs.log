@@ -935,3 +935,17 @@ INFO: Se ha registrado un nueva reserva para el usuario con la identificación: 2
 nov. 04, 2023 8:38:12 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarPaquete
 INFO: Se ha actualizado al paquete con nombre: Paquete 2
 >>>>>>> c3cc08e45431991d73aa78c4cf64343a5beb8f4e
+nov. 08, 2023 11:50:36 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 08, 2023 11:50:36 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerPaquetes
+SEVERE: null
+nov. 08, 2023 4:10:37 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 08, 2023 4:10:37 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerPaquetes
+SEVERE: null
+nov. 08, 2023 4:10:59 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarCliente
+INFO: Se ha registrado un nuevo cliente con la cedula: 0
+nov. 08, 2023 7:29:26 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 08, 2023 7:29:26 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes leerPaquetes
+SEVERE: null
