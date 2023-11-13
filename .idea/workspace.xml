@@ -5,39 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ddb8eb6-fc07-4412-a6d6-5caa162bccfd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/VentanaBaliControlador.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/VentanaPaqueteEuropa.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/VentanaPaqueteIslas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/VentanaParisControlador.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/VentanaRomaControlador.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/VentanaSantoriniControlador.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/imagenes/PAQUETEEUROPA.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/imagenes/PAQUETEISLAS.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ventanas/ventanaBali.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ventanas/ventanaPaqueteEuropa.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ventanas/ventanaPaqueteIslas.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ventanas/ventanaParis.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ventanas/ventanaRoma.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ventanas/ventanaSantorini.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/EstadisticasDestinosMasBuscadosControlador.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ventanas/estadisticasReservas.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/CrearDestinoControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/CrearDestinoControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/CrearGuiaTuristicoControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/CrearGuiaTuristicoControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/CrearPaqueteTuristicoControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/CrearPaqueteTuristicoControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/DetallesPaqueteControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/DetallesPaqueteControlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/EstadisticasControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/EstadisticasDestinosMasReservadosControlador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/InicioControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/InicioControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/LoginControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/LoginControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/ModificarClienteControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/ModificarClienteControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/ModificarDestinoControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/ModificarDestinoControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/ModificarGuiaControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/ModificarGuiaControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/ModificarPaquetesTuristicosControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/ModificarPaquetesTuristicosControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/RegistrarClienteControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/RegistrarClienteControlador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/SeleccionarPaqueteControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/SeleccionarPaqueteControlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/VentanaBaliControlador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/VentanaPaqueteEuropa.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/VentanaPaqueteIslas.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/VentanaParisControlador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/VentanaReservasClienteControlador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/VentanaReservasClienteControlador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/VentanaRomaControlador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/controladores/VentanaSantoriniControlador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/modelo/AgenciaDeViajes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/modelo/AgenciaDeViajes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/modelo/EnviarSMS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/agenciaDeViajes/modelo/EnviarSMS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/persistencia/busquedasDestinos.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/persistencia/busquedasDestinos.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/persistencia/clientes.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/persistencia/clientes.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/persistencia/paquetes.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/persistencia/paquetes.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/persistencia/reservas.ser" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/persistencia/reservas.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/textos_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/textos_en.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/textos_es.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/textos_es.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ventanas/inicio.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ventanas/inicio.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ventanas/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ventanas/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ventanas/seleccionarPaquete.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ventanas/seleccionarPaquete.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ventanas/estadisticas.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ventanas/estadisticas.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ventanas/ventanaBali.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ventanas/ventanaPaqueteEuropa.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ventanas/ventanaPaqueteIslas.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ventanas/ventanaParis.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ventanas/ventanaRoma.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ventanas/ventanaSantorini.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,8 +43,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -62,11 +57,11 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "git-widget-placeholder": "Merging main"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Isabella García\IdeaProjects\agenciaDeViajes\src\main\resources\imagenes" />
@@ -77,7 +72,15 @@
       <recent name="co.edu.uniquindio.agenciaDeViajes.exceptions" />
     </key>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9ddb8eb6-fc07-4412-a6d6-5caa162bccfd" name="Changes" comment="" />
+      <created>1699902933426</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1699902933426</updated>
+    </task>
     <servers />
   </component>
 </project>

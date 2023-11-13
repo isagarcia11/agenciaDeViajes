@@ -1584,3 +1584,43 @@ nov. 11, 2023 2:52:59 P.ï¿½M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDe
 INFO: Se crea una nueva instancia de la Agencia de viajes
 nov. 13, 2023 11:08:47 A.ï¿½M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
 INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 13, 2023 11:53:01 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 13, 2023 11:59:12 A. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 13, 2023 12:02:10 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 13, 2023 12:57:44 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 13, 2023 12:58:51 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 13, 2023 12:59:56 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarCliente
+INFO: Se ha actualizado al cliente con la cedula: 1104804234
+nov. 13, 2023 1:00:44 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 13, 2023 2:36:27 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 13, 2023 2:39:20 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarPaquete
+INFO: Se ha actualizado al paquete con nombre: Paquete 2
+nov. 13, 2023 2:39:51 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 13, 2023 2:40:46 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarPaquete
+INFO: Se ha actualizado al paquete con nombre: Paquete 2
+nov. 13, 2023 2:41:04 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 13, 2023 2:41:26 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 13, 2023 2:42:43 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarCliente
+INFO: Se ha registrado un nuevo cliente con la cedula: 29227599
+nov. 13, 2023 2:43:15 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarReserva
+INFO: Se ha registrado un nueva reserva para el usuario con la identificación: 29227599
+nov. 13, 2023 2:43:15 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarPaquete
+INFO: Se ha actualizado al paquete con nombre: Paquete 2
+nov. 13, 2023 2:52:57 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes <init>
+INFO: Se crea una nueva instancia de la Agencia de viajes
+nov. 13, 2023 2:54:28 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarCliente
+INFO: Se ha registrado un nuevo cliente con la cedula: 16282664
+nov. 13, 2023 2:55:14 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes registrarReserva
+INFO: Se ha registrado un nueva reserva para el usuario con la identificación: 16282664
+nov. 13, 2023 2:55:14 P. M. co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes actualizarPaquete
+INFO: Se ha actualizado al paquete con nombre: Paquete 2
