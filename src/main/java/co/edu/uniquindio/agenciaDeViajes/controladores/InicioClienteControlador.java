@@ -1,7 +1,9 @@
 package co.edu.uniquindio.agenciaDeViajes.controladores;
 
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Cliente;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Reserva;
 import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaEvent;
 import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaListener;
 import javafx.event.ActionEvent;
@@ -10,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class InicioClienteControlador implements Initializable, CambioIdiomaListener {

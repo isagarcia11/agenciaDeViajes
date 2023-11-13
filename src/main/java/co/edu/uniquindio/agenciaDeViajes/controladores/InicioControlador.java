@@ -1,16 +1,20 @@
 package co.edu.uniquindio.agenciaDeViajes.controladores;
 
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Destino;
+import co.edu.uniquindio.agenciaDeViajes.modelo.PaqueteTuristico;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
-import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaEvent;
-import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.net.URL;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -26,15 +30,47 @@ public class InicioControlador implements Initializable {
     @FXML
     private Button btnPaquete1, btnPaquete2;
 
+    @FXML
+    private ImageView imagen;
+
+    @FXML
+    private Button nombreDestino;
+
+    @FXML
+    private Button botonSiguiente;
+
+    @FXML
+    private Button botonAtras;
+
+    @FXML
+    private List<PaqueteTuristico> listaPaquetes;
+
+    @FXML
+    private Button nombrePaquete;
+
+    @FXML
+    private ImageView imagenDestino;
+
+    @FXML
+    private Button btnAnteriorPaquete, btnSiguientePaquete;
+
     private final AgenciaDeViajes agenciaDeViajes = AgenciaDeViajes.getInstance();
     private final Propiedades propiedades = Propiedades.getInstance();
+
+    private List<Destino> destinos = agenciaDeViajes.getDestinos();
+    private int indiceActual = 0;
+    private int indicePaqueteActual = 0;
 
     private boolean esIngles = false;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         actualizarTextos();
+        btnSiguientePaquete.setOnAction(event -> cambiarPaquete(1));
+        btnAnteriorPaquete.setOnAction(event -> cambiarPaquete(-1));
+
+        mostrarPaquete(agenciaDeViajes.getPaquetesTuristicos().get(indicePaqueteActual));
+        mostrarDestino();
     }
 
     @FXML
@@ -53,6 +89,79 @@ public class InicioControlador implements Initializable {
         actualizarTextos();
     }
 
+    @FXML
+    private void siguienteDestino() {
+        if (indiceActual < destinos.size() - 1) {
+            indiceActual++;
+            mostrarDestino();
+        }
+    }
+
+    @FXML
+    private void destinoAnterior() {
+        if (indiceActual > 0) {
+            indiceActual--;
+            mostrarDestino();
+        }
+    }
+
+    private void mostrarDestino() {
+        Destino destinoActual = destinos.get(indiceActual);
+        nombreDestino.setText(destinoActual.getNombre());
+
+        String urlImagen = destinoActual.getImagenes().get(0);
+        Image imagen = new Image(urlImagen);
+        this.imagen.setImage(imagen);
+    }
+
+    private void mostrarPaquete(PaqueteTuristico paqueteTuristico) {
+        if (paqueteTuristico != null) {
+            nombrePaquete.setText(paqueteTuristico.getNombre());
+
+            if (!paqueteTuristico.getDestinos().isEmpty()) {
+                String primeraRutaImagen = paqueteTuristico.getDestinos().get(0).getImagenes().get(0);
+                Image img = new Image(primeraRutaImagen);
+                imagenDestino.setImage(img);
+            } else {
+                imagenDestino.setImage(null);
+            }
+        } else {
+            nombrePaquete.setText("");
+            imagenDestino.setImage(null);
+        }
+    }
+
+    private void cambiarPaquete(int cambio) {
+        int nuevoIndice = indicePaqueteActual + cambio;
+
+        if (nuevoIndice >= 0 && nuevoIndice < agenciaDeViajes.getPaquetesTuristicos().size()) {
+            indicePaqueteActual = nuevoIndice;
+            mostrarPaquete(agenciaDeViajes.getPaquetesTuristicos().get(indicePaqueteActual));
+        }
+    }
+
+    @FXML
+    public void conocerDestino(ActionEvent event){
+        agenciaDeViajes.setDestino(destinos.get(indiceActual));
+
+        Object evt = event.getSource();
+
+        if(evt.equals(nombreDestino)){
+            agenciaDeViajes.loadStage("/ventanas/conocerDestino.fxml", event);
+        }
+    }
+
+    @FXML
+    public void conocerPaquete(ActionEvent event){
+        agenciaDeViajes.setPaquetesTuristicos(listaPaquetes.get(indicePaqueteActual));
+
+        Object evt = event.getSource();
+
+        if(evt.equals(nombrePaquete)){
+            agenciaDeViajes.loadStage("/ventanas/conocerPaquete.fxml", event);
+        }
+    }
+
     private void actualizarTextos() {
         iniciarSesion.setText(propiedades.getResourceBundle().getString("TextoIniciarSesion"));
         cambiarIdioma.setText(propiedades.getResourceBundle().getString("TextoCambiarIdioma"));
@@ -68,6 +177,7 @@ public class InicioControlador implements Initializable {
 
 
     public void iniciarSesion(ActionEvent event){
+        agenciaDeViajes.setDestino(agenciaDeViajes.getPaquetesTuristicos().get(indicePaqueteActual).getDestinos().get(indiceActual));
 
         Object evt = event.getSource();
 

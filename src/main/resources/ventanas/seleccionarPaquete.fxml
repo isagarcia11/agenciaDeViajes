@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="441.0" prefWidth="1085.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.agenciaDeViajes.controladores.SeleccionarPaqueteControlador">
+<AnchorPane prefHeight="441.0" prefWidth="1085.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.agenciaDeViajes.controladores.SeleccionarPaqueteControlador">
     <children>
         <TextField fx:id="filtroNombre" layoutX="65.0" layoutY="53.0" onKeyReleased="#filtrar" prefHeight="25.0" prefWidth="100.0" promptText="Nombre" />
         <TextField fx:id="filtroDestino" layoutX="187.0" layoutY="53.0" onKeyReleased="#filtrar" prefHeight="25.0" prefWidth="137.0" promptText="Destino" />
@@ -38,10 +38,14 @@
             <Image url="@../imagenes/FILTRO.png" />
          </image>
       </ImageView>
+      <Button layoutX="794.0" layoutY="388.0" mnemonicParsing="false" onAction="#actualizarBusquedasDestinos" text="Guardar Busqueda" />
+      <Button layoutX="924.0" layoutY="388.0" mnemonicParsing="false" onAction="#actualizarTabla" text="Sugerencias" />
+
       <Button fx:id="btnAtras" layoutX="524.0" layoutY="388.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="179.0" text="ATRÁS">
          <font>
             <Font name="Franklin Gothic Medium" size="15.0" />
          </font>
       </Button>
+
     </children>
 </AnchorPane>

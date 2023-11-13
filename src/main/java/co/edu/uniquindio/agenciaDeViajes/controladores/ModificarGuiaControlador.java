@@ -138,7 +138,9 @@ public class ModificarGuiaControlador implements Initializable, CambioIdiomaList
                     guiaTuristico.getIdentificacion(),
                     txtNombre.getText(),
                     guiaTuristico.getIdiomas(),
-                    Float.parseFloat(txtExperiencia.getText())
+                    Float.parseFloat(txtExperiencia.getText()),
+                    guiaTuristico.getCalificaciones(),
+                    guiaTuristico.getComentarios()
             );
 
             mostrarMensaje(Alert.AlertType.INFORMATION, propiedades.getResourceBundle().getString("TextoGuia7") + guiaTuristico.getNombre());

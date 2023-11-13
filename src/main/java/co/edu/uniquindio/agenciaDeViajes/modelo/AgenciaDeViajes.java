@@ -5,6 +5,7 @@ import co.edu.uniquindio.agenciaDeViajes.enums.Estado;
 import co.edu.uniquindio.agenciaDeViajes.enums.Idioma;
 import co.edu.uniquindio.agenciaDeViajes.exceptions.*;
 import co.edu.uniquindio.agenciaDeViajes.utils.ArchivoUtils;
+import com.twilio.Twilio;
 import javafx.fxml.FXMLLoader;
 import javafx.event.Event;
 import javafx.scene.Node;
@@ -12,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.java.Log;
 
 import java.io.*;
@@ -19,11 +21,22 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.logging.FileHandler;
 import java.util.logging.SimpleFormatter;
+
+import java.util.Properties;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 @Getter
 @Log
 public class AgenciaDeViajes {
 
-    private final ArrayList<Cliente> clientes;
+    private ArrayList<Cliente> clientes;
 
     private ArrayList<Destino> destinos;
 
@@ -33,9 +46,11 @@ public class AgenciaDeViajes {
 
     private ArrayList<Reserva> reservas;
 
+    private ArrayList<BusquedasDestinos> busquedasDestinos;
+
     private static AgenciaDeViajes agenciaDeViajes;
 
-    private static final String RUTA_CLIENTES = "src/main/resources/persistencia/clientes.txt";
+    private static final String RUTA_CLIENTES = "src/main/resources/persistencia/clientes.ser";
 
     private static final String RUTA_DESTINOS = "src/main/resources/persistencia/destinos.ser";
 
@@ -45,11 +60,17 @@ public class AgenciaDeViajes {
 
     private static final String RUTA_RESERVAS = "src/main/resources/persistencia/reservas.ser";
 
+    private static final String RUTA_BUSQUEDAS = "src/main/resources/persistencia/busquedasDestinos.ser";
+
     private static Cliente clienteAutenticado;
 
     private static PaqueteTuristico paqueteTuristico;
 
     private static GuiaTuristico guiaTuristico;
+
+    private static Reserva reserva;
+
+    private static Destino destino;
 
     private AgenciaDeViajes(){
         inicializarLogger();
@@ -57,6 +78,9 @@ public class AgenciaDeViajes {
 
         this.clientes = new ArrayList<>();
         leerClientes();
+        for(Cliente cliente : clientes){
+            System.out.println(cliente);
+        }
 
         this.destinos = new ArrayList<>();
         leerDestinos();
@@ -81,6 +105,12 @@ public class AgenciaDeViajes {
         for(Reserva reserva : reservas){
             System.out.println(reserva);
         }
+
+        this.busquedasDestinos = new ArrayList<>();
+        leerBusquedas();
+        for(BusquedasDestinos busquedasDestinos1 : busquedasDestinos){
+            System.out.println(busquedasDestinos1);
+        }
     }
 
     private void inicializarLogger(){
@@ -101,7 +131,7 @@ public class AgenciaDeViajes {
         return agenciaDeViajes;
     }
 
-    public Cliente registrarCliente(String identificacion, String nombre, String correo, String telefono, String direccion) throws AtributoVacioException, InformacionRepetidaException {
+    public Cliente registrarCliente(String identificacion, String nombre, String correo, String telefono, String direccion, ArrayList<Destino> destinos) throws AtributoVacioException, InformacionRepetidaException {
 
         if(identificacion == null || identificacion.isBlank()){
             throw new AtributoVacioException("La cédula es obligatoria");
@@ -137,10 +167,11 @@ public class AgenciaDeViajes {
                 .correo(correo)
                 .telefono(telefono)
                 .direccion(direccion)
+                .busquedasDestinos(destinos)
                 .build();
 
         clientes.add(cliente);
-        escribirCliente(cliente);
+        escribirCliente();
 
         log.info("Se ha registrado un nuevo cliente con la cedula: "+identificacion);
 
@@ -156,7 +187,7 @@ public class AgenciaDeViajes {
         return new ArrayList<>(Arrays.asList(imagenesArray)); // Convierte el arreglo en un ArrayList
     }
 
-    public Destino registrarDestino(String nombreDestino, String ciudad, String descripcion, String imagen, Clima clima) throws AtributoVacioException, InformacionRepetidaException {
+    public Destino registrarDestino(String nombreDestino, String ciudad, String descripcion, String imagen, Clima clima, ArrayList<Integer> calificaciones, ArrayList<String> comentarios) throws AtributoVacioException, InformacionRepetidaException {
 
         if (nombreDestino == null || nombreDestino.isBlank()) {
             throw new AtributoVacioException("El nombre del destino es obligatorio");
@@ -176,9 +207,12 @@ public class AgenciaDeViajes {
 
         ArrayList<String> imagenesList = obtenerListaDeImagenes(imagen);
 
+        /*
         if(obtenerImagen(imagenesList, imagen, 0) != null ){
             throw new InformacionRepetidaException("La imagen "+imagen+" ya está registrado");
+
         }
+        */
 
         Destino destino = Destino.builder()
                 .nombre(nombreDestino)
@@ -186,6 +220,8 @@ public class AgenciaDeViajes {
                 .descripcion(descripcion)
                 .imagenes(imagenesList)
                 .clima(clima)
+                .calificaciones(calificaciones)
+                .comentarios(comentarios)
                 .build();
 
         destinos.add(destino);
@@ -313,6 +349,7 @@ public class AgenciaDeViajes {
         return obtenerDestino(nombreDestino, index + 1);
     }
 
+    /*
     public Cliente obtenerImagen(ArrayList<String> imagenesList, String imagen, int index) {
         if (index >= imagenesList.size()) {
             return null;  // No se encontró el cliente
@@ -324,7 +361,7 @@ public class AgenciaDeViajes {
 
         // Llamada recursiva para buscar en el siguiente elemento de la lista
         return obtenerImagen(imagenesList, imagen, index + 1);
-    }
+    }*/
 
     public Cliente obtenerPaqueteNombre(String nombrePaquete, int index) {
         if (index >= paquetesTuristicos.size()) {
@@ -339,36 +376,24 @@ public class AgenciaDeViajes {
         return obtenerPaqueteNombre(nombrePaquete, index + 1);
     }
 
-    private void escribirCliente(Cliente cliente){
-        try {
-            String linea = cliente.getIdentificacion()+";"+cliente.getNombre()+";"+cliente.getCorreo()+";"+cliente.getTelefono()+";"+cliente.getDireccion();
-            ArchivoUtils.escribirArchivoBufferedWriter(RUTA_CLIENTES, List.of(linea), true);
-        }catch (IOException e){
+    private void escribirCliente(){
+        try{
+            ArchivoUtils.serializarObjeto(RUTA_CLIENTES, clientes);
+        }catch (Exception e){
             log.severe(e.getMessage());
         }
     }
 
     private void leerClientes() {
 
-        try{
-            ArrayList<String> lineas = ArchivoUtils.leerArchivoScanner(RUTA_CLIENTES);
-
-            for(String linea : lineas){
-
-                String[] valores = linea.split(";");
-                this.clientes.add( Cliente.builder()
-                        .identificacion(valores[0])
-                        .nombre(valores[1])
-                        .correo(valores[2])
-                        .telefono(valores[3])
-                        .direccion(valores[4])
-                        .build());
+        try {
+            ArrayList<Cliente> lista = (ArrayList<Cliente>) ArchivoUtils.deserializarObjeto(RUTA_CLIENTES);
+            if (lista != null) {
+                this.clientes = lista;
             }
-
-        }catch (IOException e){
+        } catch (IOException | ClassNotFoundException e) {
             log.severe(e.getMessage());
         }
-
     }
 
     private void escribirDestino(){
@@ -428,7 +453,7 @@ public class AgenciaDeViajes {
         paqueteTuristico = paquete;
     }
 
-    public GuiaTuristico guiaTuristico(){
+    public GuiaTuristico getGuiaTuristico(){
         return guiaTuristico;
     }
 
@@ -438,14 +463,10 @@ public class AgenciaDeViajes {
 
 
 
-    public void actualizarCliente(String identificacion, String nombre, String correo, String telefono, String direccion) throws AtributoVacioException, InformacionRepetidaException {
+    public void actualizarCliente(String identificacion, String nombre, String correo, String telefono, String direccion, ArrayList<Destino> destinos) throws AtributoVacioException, InformacionRepetidaException {
 
         if(identificacion == null || identificacion.isBlank()){
             throw new AtributoVacioException("La cédula es obligatoria");
-        }
-
-        if(obtenerCliente(identificacion, 0) != null ){
-            throw new InformacionRepetidaException("La cédula "+identificacion+" ya está registrada");
         }
 
         if(nombre == null || nombre.isBlank()){
@@ -454,10 +475,6 @@ public class AgenciaDeViajes {
 
         if(correo == null || correo.isBlank()){
             throw new AtributoVacioException("El email es obligatorio");
-        }
-
-        if(obtenerCorreo(correo, 0) != null ){
-            throw new InformacionRepetidaException("El correo "+correo+" ya está registrado");
         }
 
         if(telefono == null || telefono.isBlank()){
@@ -475,8 +492,10 @@ public class AgenciaDeViajes {
                 cliente.setCorreo(correo);
                 cliente.setTelefono(telefono);
                 cliente.setDireccion(direccion);
+                cliente.setBusquedasDestinos(destinos);
 
-                ArchivoUtils.actualizarArchivoCliente(RUTA_CLIENTES, cliente);
+                ArchivoUtils.borrarArchivo(RUTA_CLIENTES);
+                escribirCliente();
 
                 log.info("Se ha actualizado al cliente con la cedula: " + identificacion);
 
@@ -518,14 +537,10 @@ public class AgenciaDeViajes {
         }
     }
 
-    public void actualizarDestino(String nombreDestino, String ciudad, String descripcion, String imagen, Clima clima) throws AtributoVacioException, InformacionRepetidaException {
+    public void actualizarDestino(String nombreDestino, String ciudad, String descripcion, String imagen, Clima clima, ArrayList<Integer> calificaciones, ArrayList<String> comentarios) throws AtributoVacioException, InformacionRepetidaException {
 
         if (nombreDestino == null || nombreDestino.isBlank()) {
             throw new AtributoVacioException("El nombre del destino es obligatorio");
-        }
-
-        if(obtenerDestino(nombreDestino, 0) != null ){
-            throw new InformacionRepetidaException("El destino "+nombreDestino+" ya está registrado");
         }
 
         if (ciudad == null || ciudad.isBlank()) {
@@ -538,9 +553,11 @@ public class AgenciaDeViajes {
 
         ArrayList<String> imagenesList = obtenerListaDeImagenes(imagen);
 
+        /*
         if(obtenerImagen(imagenesList, imagen, 0) != null ){
             throw new InformacionRepetidaException("La imagen "+imagen+" ya está registrado");
         }
+        */
 
         for(Destino destino : destinos){
             if(nombreDestino.equals(destino.getNombre())){
@@ -549,6 +566,8 @@ public class AgenciaDeViajes {
                 destino.setDescripcion(descripcion);
                 destino.setImagenes(imagenesList);
                 destino.setClima(clima);
+                destino.setCalificaciones(calificaciones);
+                destino.setComentarios(comentarios);
 
                 ArchivoUtils.borrarArchivo(RUTA_DESTINOS);
                 escribirDestino();
@@ -567,15 +586,12 @@ public class AgenciaDeViajes {
         log.info("Se ha eliminado el paquete: "+nombrePaquete);
     }
 
-    public void actualizarPaquete(String nombre, ArrayList<Destino> destinos, String duracion, String serviciosAdicionales, float precio, int cupoMaximo, LocalDate fechaInicio, LocalDate fechaFin) throws AtributoVacioException, AtributoNegativoException, FechaInvalidaException, InformacionRepetidaException{
+    public void actualizarPaquete(String nombre, ArrayList<Destino> destinos, String duracion, String serviciosAdicionales, float precio, int cupoMaximo, LocalDate fechaInicio, LocalDate fechaFin) throws AtributoVacioException, AtributoNegativoException, FechaInvalidaException {
 
         if(nombre == null || nombre.isBlank()){
             throw new AtributoVacioException("El nombre del paquete es obligatorio");
         }
 
-        if(obtenerPaqueteNombre(nombre, 0) != null ){
-            throw new InformacionRepetidaException("El nombre "+nombre+" ya está registrado");
-        }
 
         if(duracion == null || duracion.isBlank()){
             throw new AtributoVacioException("La duracion del paquete es obligatoria");
@@ -658,7 +674,7 @@ public class AgenciaDeViajes {
         return rutas;
     }
 
-    public GuiaTuristico registrarGuiaTuristico(String nombre, String identificacion, ArrayList<Idioma> idiomas, float experiencia) throws AtributoVacioException, InformacionRepetidaException, AtributoNegativoException {
+    public GuiaTuristico registrarGuiaTuristico(String nombre, String identificacion, ArrayList<Idioma> idiomas, float experiencia, ArrayList<Integer> calificaciones, ArrayList<String> comentarios) throws AtributoVacioException, InformacionRepetidaException, AtributoNegativoException {
 
         if(identificacion == null || identificacion.isBlank()){
             throw new AtributoVacioException("La identificación es obligatoria");
@@ -687,6 +703,8 @@ public class AgenciaDeViajes {
                 .identificacion(identificacion)
                 .idiomas(idiomas)
                 .experiencia(experiencia)
+                .calificaciones(calificaciones)
+                .comentarios(comentarios)
                 .build();
 
         guiasTuristicos.add(guia);
@@ -759,15 +777,12 @@ public class AgenciaDeViajes {
         }
     }
 
-    public void actualizarGuiaTuristico(String identificacion, String nombre, ArrayList<Idioma> idiomas, float experiencia) throws AtributoVacioException, InformacionRepetidaException, AtributoNegativoException {
+    public void actualizarGuiaTuristico(String identificacion, String nombre, ArrayList<Idioma> idiomas, float experiencia, ArrayList<Integer> calificaciones, ArrayList<String> comentarios) throws AtributoVacioException, InformacionRepetidaException, AtributoNegativoException {
 
         if(identificacion == null || identificacion.isBlank()){
             throw new AtributoVacioException("La identificación es obligatoria");
         }
 
-        if(obtenerId(identificacion, 0) != null ){
-            throw new InformacionRepetidaException("La identificacion "+identificacion+" ya está registrada");
-        }
 
         if(nombre == null || nombre.isBlank()){
             throw new AtributoVacioException("El nombre es obligatorio");
@@ -786,6 +801,8 @@ public class AgenciaDeViajes {
                 guia.setNombre(nombre);
                 guia.setIdiomas(idiomas);
                 guia.setExperiencia(experiencia);
+                guia.setCalificaciones(calificaciones);
+                guia.setComentarios(comentarios);
 
                 ArchivoUtils.borrarArchivo(RUTA_GUIAS);
                 escribirGuiaTuristico();
@@ -901,10 +918,159 @@ public class AgenciaDeViajes {
         }
     }
 
+    public void actualizarReserva(){
+        ArchivoUtils.borrarArchivo(RUTA_RESERVAS);
+        escribirReserva();
+    }
+
     public void actualizarCupoPaquete(PaqueteTuristico paquete, int cantidadReserva) throws AtributoVacioException, AtributoNegativoException, FechaInvalidaException, InformacionRepetidaException {
         int nuevoCupo = paquete.getCupoMaximo() - cantidadReserva;
         paquete.setCupoMaximo(nuevoCupo);
         actualizarPaquete(paquete.getNombre(), paquete.getDestinos(), paquete.getDuracion(), paquete.getServiciosAdicionales(), paquete.getPrecio(), nuevoCupo, paquete.getFechaInicio(), paquete.getFechaFin());
     }
 
+    public ArrayList<Reserva> obtenerReservasDeCliente() {
+        ArrayList<Reserva> reservasCliente = new ArrayList<>();
+
+        for (Reserva reserva : reservas) {
+            if (reserva.getCliente().equals(clienteAutenticado)) {
+                reservasCliente.add(reserva);
+            }
+
+        }
+
+        return reservasCliente;
+    }
+
+    public String generarMensajeReserva(Reserva reserva) {
+        String mensaje = "¡Hola " + reserva.getCliente().getNombre() + "!\n\n" +
+                "Te confirmamos que tu reserva ha sido registrada con éxito.\n" +
+                "Aquí están los detalles de tu reserva:\n\n" +
+                "Nombre del Cliente: " + reserva.getCliente().getNombre() + "\n" +
+                "Cantidad de Personas: " + reserva.getCantidadDePersonas() + "\n" +
+                "Paquete Turístico: " + reserva.getPaqueteTuristico().getNombre() + "\n" +
+                "Guía Turístico: " + reserva.getGuiaTuristico().getNombre() + "\n" +
+                "Estado de la Reserva: " + reserva.getEstado() + "\n" +
+                "Fecha de Solicitud: " + reserva.getFechaDeSolicitud() + "\n" +
+                "Fecha de Viaje: " + reserva.getFechaDeViaje() + "\n\n" +
+                "¡Esperamos que tengas un increíble viaje!\n" +
+                "Gracias por elegir nuestra agencia de viajes.";
+
+        return mensaje;
+    }
+
+
+    public void enviarCorreoReserva(Reserva reserva, String mensaje) {
+        try {
+            // Configurar propiedades del servidor de correo
+            Properties props = ConfiguracionCorreo.obtenerPropiedadesCorreo();
+
+            // Crear una sesión de correo
+            Session session = Session.getDefaultInstance(props,
+                    new Authenticator() {
+                        protected PasswordAuthentication getPasswordAuthentication() {
+                            return new PasswordAuthentication(props.getProperty("mail.user"), props.getProperty("mail.password"));
+                        }
+                    });
+
+            // Crear el mensaje de correo
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(props.getProperty("mail.user")));
+            message.setRecipients(
+                    Message.RecipientType.TO,
+                    InternetAddress.parse(clienteAutenticado.getCorreo()));
+            message.setSubject("Detalles de tu reserva");
+
+            // Establecer el contenido del mensaje
+            message.setText(mensaje);
+
+            // Enviar el correo electrónico
+            Transport.send(message);
+
+        } catch (MessagingException e) {
+            e.printStackTrace(); // Manejo de errores al enviar el correo
+        }
+    }
+
+    public boolean fechaFinPaquetePasada(PaqueteTuristico paquete) {
+        LocalDate fechaActual = LocalDate.now();
+        return fechaActual.isAfter(paquete.getFechaFin());
+    }
+
+    public Reserva getReserva() {
+        return reserva;
+    }
+    public void setReserva(Reserva reserva1){
+        reserva = reserva1;
+    }
+
+    public BusquedasDestinos registrarBusqueda(BusquedasDestinos busquedaDestino){
+        busquedasDestinos.add(busquedaDestino);
+        escribirBusqueda();
+        return busquedaDestino;
+    }
+
+    private void escribirBusqueda() {
+        try{
+            ArchivoUtils.serializarObjeto(RUTA_BUSQUEDAS, busquedasDestinos);
+        }catch (Exception e){
+            log.severe(e.getMessage());
+        }
+    }
+
+    private void leerBusquedas() {
+
+        try {
+            ArrayList<BusquedasDestinos> lista = (ArrayList<BusquedasDestinos>) ArchivoUtils.deserializarObjeto(RUTA_BUSQUEDAS);
+            if (lista != null) {
+                this.busquedasDestinos = lista;
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            log.severe(e.getMessage());
+        }
+    }
+
+    public ArrayList<PaqueteTuristico> buscarPaquetesPorDestino() {
+        ArrayList<PaqueteTuristico> paquetesCoincidentes = new ArrayList<>();
+
+        for (PaqueteTuristico paquete : paquetesTuristicos) {
+            ArrayList<Destino> destinosPaquete = paquete.getDestinos();
+
+            for (Destino destino : clienteAutenticado.getBusquedasDestinos()) {
+                if (destinosPaquete.contains(destino)) {
+                    paquetesCoincidentes.add(paquete);
+                    break; // Puede que solo quieras agregar el paquete una vez
+                }
+            }
+        }
+
+        for (PaqueteTuristico paqueteTuristico1 : paquetesCoincidentes){
+            System.out.println(paqueteTuristico1);
+        }
+
+        return paquetesCoincidentes;
+    }
+
+    public boolean reservaFinalizada(Reserva reserva) {
+        LocalDate fechaActual = LocalDate.now();
+        return reserva.getPaqueteTuristico().getFechaFin().isBefore(fechaActual);
+    }
+
+    public void enviarMensajeSMS() {
+        Twilio.init(EnviarSMS.ACCOUNT_SID, EnviarSMS.AUTH_TOKEN);
+        com.twilio.rest.api.v2010.account.Message message = com.twilio.rest.api.v2010.account.Message.creator(
+                        new com.twilio.type.PhoneNumber("+573007590341"),
+                        new com.twilio.type.PhoneNumber("+16573320921"),
+                        "El " + clienteAutenticado.getNombre() + "ha realizo una reserva")
+                .create();
+
+        System.out.println(message.getSid());
+    }
+
+    public Destino getDestino() {
+        return destino;
+    }
+    public void setDestino(Destino destino1){
+        destino = destino1;
+    }
 }

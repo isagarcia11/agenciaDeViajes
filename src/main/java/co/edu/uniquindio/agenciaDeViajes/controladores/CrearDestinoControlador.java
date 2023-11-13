@@ -19,6 +19,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -66,13 +67,18 @@ public class CrearDestinoControlador implements Initializable, CambioIdiomaListe
     }
     public void registrarDestino(ActionEvent actionEvent){
 
+        ArrayList<Integer> calificaiones = new ArrayList<>();
+        ArrayList<String> comentarios = new ArrayList<>();
+
         try{
             Destino destino = agenciaDeViajes.registrarDestino(
                     txtNombreDestino.getText(),
                     txtCiudad.getText(),
                     txtDescripcion.getText(),
                     txtImagen.getText(),
-                    cbxClima.getValue()
+                    cbxClima.getValue(),
+                    calificaiones,
+                    comentarios
             );
 
             mostrarMensaje(Alert.AlertType.INFORMATION, propiedades.getResourceBundle().getString("TextoCrearDestino1")

@@ -4,6 +4,7 @@ import co.edu.uniquindio.agenciaDeViajes.exceptions.AtributoVacioException;
 import co.edu.uniquindio.agenciaDeViajes.exceptions.InformacionRepetidaException;
 import co.edu.uniquindio.agenciaDeViajes.modelo.AgenciaDeViajes;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Cliente;
+import co.edu.uniquindio.agenciaDeViajes.modelo.Destino;
 import co.edu.uniquindio.agenciaDeViajes.modelo.Propiedades;
 import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaEvent;
 import co.edu.uniquindio.agenciaDeViajes.utils.CambioIdiomaListener;
@@ -15,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class RegistrarClienteControlador implements Initializable, CambioIdiomaListener {
@@ -59,13 +61,15 @@ public class RegistrarClienteControlador implements Initializable, CambioIdiomaL
     }
 
     public void registrarCliente(ActionEvent actionEvent){
+        ArrayList<Destino> destinos = new ArrayList<>();
         try{
             Cliente cliente = agenciaDeViajes.registrarCliente(
                     txtIdentificacion.getText(),
                     txtNombre.getText(),
                     txtCorreo.getText(),
                     txtTelefono.getText(),
-                    txtDireccion.getText()
+                    txtDireccion.getText(),
+                    destinos
             );
 
             mostrarMensaje(Alert.AlertType.INFORMATION, propiedades.getResourceBundle().getString("TextoCliente1")+cliente.getNombre());

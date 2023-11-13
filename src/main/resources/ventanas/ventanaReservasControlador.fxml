@@ -17,5 +17,10 @@
                 <TableColumn fx:id="columnFechaViaje" prefWidth="141.0" text="Fecha Viaje" />
             </columns>
         </TableView>
+      <Button fx:id="btnAtras" layoutX="275.0" layoutY="361.0" mnemonicParsing="false" onAction="#volverInicio" text="Atras" />
+      <Button fx:id="btnCancelarReserva" layoutX="556.0" layoutY="361.0" mnemonicParsing="false" onAction="#cancelarReserva" text="Cancelar Reserva" />
+      <Button fx:id="btnConfirmarReserva" layoutX="669.0" layoutY="361.0" mnemonicParsing="false" onAction="#confirmarReserva" text="Confirmar Reserva" />
+      <Button fx:id="btnCalificarDestino" layoutX="332.0" layoutY="361.0" mnemonicParsing="false" onAction="#calificarDestinos" text="Calificar Destino(s)" />
+      <Button fx:id="btnCalificarGuia" layoutX="457.0" layoutY="361.0" mnemonicParsing="false" onAction="#calificarGuia" text="Calificar Guia" />
     </children>
 </AnchorPane>

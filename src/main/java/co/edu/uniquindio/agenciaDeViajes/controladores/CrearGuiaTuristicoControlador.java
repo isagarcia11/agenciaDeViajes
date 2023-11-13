@@ -83,12 +83,18 @@ public class CrearGuiaTuristicoControlador implements Initializable, CambioIdiom
     }
 
     public void registrarGuiaTuristico(ActionEvent actionEvent){
+
+        ArrayList<Integer> calificaiones = new ArrayList<>();
+        ArrayList<String> comentarios = new ArrayList<>();
+
         try{
             GuiaTuristico guia = agenciaDeViajes.registrarGuiaTuristico(
                     txtNombre.getText(),
                     txtIdentificacion.getText(),
                     idiomas,
-                    Float.parseFloat(txtExperiencia.getText())
+                    Float.parseFloat(txtExperiencia.getText()),
+                    calificaiones,
+                    comentarios
             );
 
             mostrarMensaje(Alert.AlertType.INFORMATION, propiedades.getResourceBundle().getString("TextoCrearGuia1")+guia.getNombre());
