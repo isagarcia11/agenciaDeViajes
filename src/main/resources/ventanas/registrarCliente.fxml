@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="432.0" prefWidth="460.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.agenciaDeViajes.controladores.RegistrarClienteControler">
+<AnchorPane prefHeight="432.0" prefWidth="460.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.agenciaDeViajes.controladores.RegistrarClienteControlador">
    <children>
       <ImageView fitHeight="184.0" fitWidth="308.0" layoutX="74.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@imagenes/registrate.png" />
+            <Image url="@../imagenes/registrate.png" />
          </image>
       </ImageView>
       <Separator layoutX="-4.0" layoutY="131.0" prefHeight="3.0" prefWidth="463.0" />

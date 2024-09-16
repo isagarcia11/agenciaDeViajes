@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="390.0" prefWidth="510.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.agenciaDeViajes.controladores.ConocerPaqueteControlador">
+
+    <ImageView fx:id="imageView" fitHeight="200.0" fitWidth="200.0" layoutX="285.0" layoutY="101.0" />
+
+    <TextField fx:id="txtNombreDestino" editable="false" layoutX="35.0" layoutY="60.0" prefHeight="25.0" prefWidth="230.0" promptText="Nombre del paquete" />
+    <TextField fx:id="txtCiudad" editable="false" layoutX="35.0" layoutY="139.0" prefHeight="25.0" prefWidth="230.0" promptText="Duración del paquete" />
+    <TextField fx:id="txtDescripcion" editable="false" layoutX="35.0" layoutY="175.0" prefHeight="25.0" prefWidth="230.0" promptText="Servicios adicionales" />
+    <TextField fx:id="txtClima" editable="false" layoutX="35.0" layoutY="210.0" prefHeight="25.0" prefWidth="230.0" promptText="Precio" />
+
+    <Button fx:id="btnAnterior" layoutX="303.0" layoutY="322.0" text="Anterior">
+        <font>
+            <Font name="Franklin Gothic Medium" size="15.0" />
+        </font></Button>
+    <Button fx:id="btnSiguiente" layoutX="394.0" layoutY="320.0" text="Siguiente">
+        <font>
+            <Font name="Franklin Gothic Medium" size="15.0" />
+        </font></Button>
+    <Button fx:id="btnAtras" layoutX="35.0" layoutY="322.0" mnemonicParsing="false" onAction="#atras" text="Atrás">
+        <font>
+            <Font name="Franklin Gothic Medium" size="15.0" />
+        </font>
+    </Button>
+   <TextField fx:id="txtCupo" layoutX="35.0" layoutY="246.0" prefHeight="25.0" prefWidth="230.0" promptText="Cupo máximo" />
+   <TextField fx:id="txtFechas" layoutX="35.0" layoutY="282.0" prefHeight="25.0" prefWidth="230.0" promptText="Fechas" />
+   <TextField fx:id="txtDestinos" layoutX="32.0" layoutY="101.0" prefHeight="25.0" prefWidth="230.0" promptText="Destinos del paquete" />
+
+</AnchorPane>
